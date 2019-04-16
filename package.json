@@ -1,0 +1,67 @@
+{
+  "name": "dbanksdesign-website",
+  "private": true,
+  "description": "Website and blog for Danny Banks",
+  "version": "0.1.0",
+  "author": "Danny Banks <dbanks.design@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/dbanksdesign/dbanksdesign-gatsby/issues"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^0.16.6",
+    "@mdx-js/tag": "^0.16.6",
+    "gatsby": "^2.3.14",
+    "gatsby-image": "^2.0.22",
+    "gatsby-mdx": "^0.3.5",
+    "gatsby-plugin-feed": "^2.0.8",
+    "gatsby-plugin-google-analytics": "^2.0.5",
+    "gatsby-plugin-manifest": "^2.0.5",
+    "gatsby-plugin-offline": "^2.0.5",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.2",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-s3": "^0.2.5",
+    "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-plugin-typography": "^2.2.0",
+    "gatsby-remark-copy-linked-files": "^2.0.5",
+    "gatsby-remark-images": "^2.0.4",
+    "gatsby-remark-responsive-iframe": "^2.0.5",
+    "gatsby-remark-smartypants": "^2.0.5",
+    "gatsby-source-filesystem": "^2.0.28",
+    "gatsby-transformer-javascript-frontmatter": "^2.0.9",
+    "gatsby-transformer-remark": "^2.1.6",
+    "gatsby-transformer-sharp": "^2.1.3",
+    "mdx-utils": "^0.0.2",
+    "prism-react-renderer": "^0.1.5",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-helmet": "^5.2.0",
+    "react-icons": "^3.5.0",
+    "react-live": "^1.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.2"
+  },
+  "homepage": "https://github.com/dbanksdesign/dbanksdesign-gatsby#readme",
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbanksdesign/dbanksdesign-gatsby.git"
+  },
+  "scripts": {
+    "dev": "gatsby develop",
+    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "build": "gatsby build",
+    "deploy": "npm run build && gatsby-plugin-s3 deploy",
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+  }
+}

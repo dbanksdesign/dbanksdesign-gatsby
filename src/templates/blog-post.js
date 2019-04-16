@@ -1,0 +1,57 @@
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import SEO from '$components/SEO'
+import styles from './BlogPost.module.css'
+
+class BlogPostTemplate extends React.Component {
+  render() {
+    const post = this.props.data.mdx;
+    const { previous, next } = this.props.pageContext;
+
+    return (
+      <>
+        <SEO title={post.frontmatter.title} description={post.excerpt} />
+
+        <h1>{post.frontmatter.title}</h1>
+        <p>
+          {post.frontmatter.date}
+        </p>
+
+        <MDXRenderer>{post.code.body}</MDXRenderer>
+
+        <nav className={styles.nav}>
+          {previous && (
+            <Link className={styles.navItem} to={previous.fields.slug} rel="prev">
+              <FaChevronLeft /> {previous.frontmatter.title}
+            </Link>
+          )}
+          {next && (
+            <Link className={styles.navItem} to={next.fields.slug} rel="next">
+              {next.frontmatter.title} <FaChevronRight />
+            </Link>
+          )}
+        </nav>
+      </>
+    )
+  }
+}
+
+export default BlogPostTemplate
+
+export const pageQuery = graphql`
+  query($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+      }
+      code {
+        body
+      }
+    }
+  }
+`

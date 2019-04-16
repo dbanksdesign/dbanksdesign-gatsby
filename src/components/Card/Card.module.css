@@ -1,0 +1,33 @@
+.card {
+  background-color: var(--color-background-secondary);
+  display: block;
+  padding: var(--size-padding-large);
+}
+
+.cardGrid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.projectCard {
+  composes: card;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: var(--size-padding-base);
+  text-decoration: none;
+}
+
+.projectCardContent {
+  flex: 1;
+  padding-left: var(--size-padding-base);
+}
+
+.projectCardImage {
+  flex: 0 1 25%;
+}
+
+.projectCardTitle {
+
+}

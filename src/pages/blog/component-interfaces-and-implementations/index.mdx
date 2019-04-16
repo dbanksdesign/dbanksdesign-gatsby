@@ -1,0 +1,28 @@
+---
+title: 'Component Interfaces and Implementations'
+date: '2019-05-01'
+draft: true
+---
+
+In some *classical* programming languages like Objective-C and Java, classes can have an Interface and an Implementation. The interface is like a contract to the user, this is the API for a component. The underlying implementation can change as long as the interface remains the same.
+
+NOTE: When I refer to *interface* here, I am referring to a programming interface like so:
+```Java
+public interface Person {
+  private static String name;
+  public void talk();
+}
+```
+
+When we talk about *semantic* versus *presentational* components in Design Systems, a semantic component clearly separates the interface from the implementation whereas a presentational one tightly couples them. Let's take a look at some examples.
+
+I've been working on some data visualization components in my design system and depending on how we structured and named the API or Interface of them, they could either be classified as semantic or presentational. A presentational version might look like this:
+
+```Java
+public interface DataVisualization {
+  private static String rightHeader;
+  private static String leftHeader;
+  private static String footerButton;
+  private static String footerText;
+}
+```

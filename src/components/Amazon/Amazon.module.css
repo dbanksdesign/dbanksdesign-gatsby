@@ -1,0 +1,11 @@
+.amazon {
+  display: inline-block;
+}
+
+.svg {
+  height: 3rem;
+}
+
+.text {
+  fill: var(--color-font-primary);
+}

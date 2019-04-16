@@ -1,0 +1,11 @@
+.footer {
+  padding: var(--size-padding-base);
+  background-color: var(--color-background-primary);
+  color: var(--color-font-tertiary);
+  text-align: center;
+}
+
+.socialLink {
+  padding: var(--size-padding-small);
+  display: inline-block;
+}

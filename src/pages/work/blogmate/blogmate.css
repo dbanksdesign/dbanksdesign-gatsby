@@ -1,0 +1,108 @@
+
+/* Blogmate Colors */
+.blogmate {
+  --blogmate_blue        : #61A5C7;
+  --blogmate_light_blue  : #a1cadd;
+  --blogmate_grey        : #A1ACB3;
+  --blogmate_dark_grey   : #41494E;
+  --blogmate_highlight   : #FCF4A9;
+}
+
+
+/* Blogmate Logo */
+.blogmate_logo {
+  display:inline-block;
+  height:1em;
+  width: 8.23em;
+}
+
+.blogmate_logo_svg {}
+
+.blogmate_logo_icon { fill:var(--blogmate_blue); }
+.blogmate_logo_b    { fill:var(--blogmate_grey); }
+.blogmate_logo_l    { fill:var(--blogmate_grey); }
+.blogmate_logo_o    { fill:var(--blogmate_grey); }
+.blogmate_logo_g    { fill:var(--blogmate_grey); }
+.blogmate_logo_m    { fill:var(--blogmate_grey); }
+.blogmate_logo_a    { fill:var(--blogmate_grey); }
+.blogmate_logo_t    { fill:var(--blogmate_grey); }
+.blogmate_logo_e    { fill:var(--blogmate_grey); }
+
+
+.blogmate_tagline {
+  display : inline-block;
+  height  : 1em;
+  width   : 6.25em;
+}
+
+.blogmate_tagline_highlight { fill:var(--blogmate_highlight); }
+.blogmate_tagline_letter    { fill:var(--color-font-primary); }
+
+
+.blogmate_module {
+  background-color: var(--color-background-secondary);
+}
+
+
+.blogmate .case_study_header {
+  background-color: var(--color-background-secondary);
+}
+
+.blogmate .case_study_subtitle {
+  color: var(--color-font-secondary);
+}
+
+.blogmate .bg_photo_article_content {
+  background-color: var(--blogmate_light_blue);
+}
+
+.blogmate .case_study_role_icon { color:var(--blogmate_blue); }
+
+.blogmate .button {
+  background-color : var(--blogmate_blue);
+  color            : var(--color-core-white);
+  font-weight      : bold;
+  margin-bottom    : var(--size-padding-base);
+}
+
+.blogmate .button:hover {
+  padding-left  : var(--size-padding-larger);
+  padding-right : var(--size-padding-larger);
+}
+
+.blogmate_animation_figure {
+  position: relative;
+  display: block;
+}
+
+.blogmate_animation_height {
+  padding-top:70%;
+}
+
+.blogmate_animation_video {
+  position : absolute;
+  top      : 0;
+  right    : 0;
+  bottom   : 0;
+  left     : 0;
+}
+
+.blogmate_technologies {
+  margin-left:-2%;
+}
+
+.blogmate_technology_backend,
+.blogmate_technology_frontend {
+  display: block;
+  float: left;
+  width: 31%;
+  margin-left: 2%;
+  padding: var(--size-padding-large);
+}
+
+.blogmate_technology_separator {
+  position: relative;
+  text-align: center;
+  clear: both;
+  color: var(--color-font-tertiary);
+}

@@ -1,0 +1,50 @@
+.talk {
+  padding: var(--size-padding-base) 0;
+  /* background-color: var(--color-background-secondary); */
+  border-top: 0.125rem solid var(--color-border-tertiary);
+  border-bottom: 0.125rem solid var(--color-border-tertiary);
+  /* margin-bottom: var(--size-padding-large); */
+  display: flex;
+  flex-direction: row;
+}
+
+.talk + .talk {
+  border-top: none;
+}
+
+.talk-content {
+  flex: 1;
+}
+
+.talk-date {
+  padding: var(--size-padding-base);
+  margin-right: var(--size-padding-base);
+  background-color: var(--color-brand-secondary);
+  color: var(--color-font-inverse);
+  font-family: var(--font-family-mono);
+}
+
+.talk-date-day,
+.talk-date-moth,
+.talk-date-year {
+  width: 100%;
+  text-align: justify;
+  line-height: 1;
+}
+
+.talk-date-day {
+  font-size: var(--size-font-large);
+  font-weight: bold;
+}
+
+.talk-date-month {
+  font-size: var(--size-font-base);
+}
+
+.talk-date-year {
+  font-size: var(--size-font-small);
+}
+
+.talk-event {
+  margin-top: 0;
+}
