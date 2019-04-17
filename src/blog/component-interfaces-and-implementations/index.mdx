@@ -4,7 +4,9 @@ date: '2019-04-01'
 draft: true
 ---
 
-Test In some traditional programming languages like Objective-C and Java, classes can have an **Interface** and an **Implementation**. For those familiar with Javascript and React, a class interface is similar to a type definition in TypeScript or a React component's PropTypes. A class interface is like an API contract to the user. The underlying implementation can change as long as the interface remains the same.
+import Graph from "./Graph"
+
+In some traditional programming languages like Objective-C and Java, classes can have an **Interface** and an **Implementation**. For those familiar with Javascript and React, a class interface is similar to a type definition in TypeScript or a React component's PropTypes. A class interface is like an API contract to the user. The underlying implementation can change as long as the interface remains the same.
 
 An interface in Java looks like this:
 
@@ -49,6 +51,8 @@ This gets to what [Ysenia Perez-Cruz](https://twitter.com/yeseniaa) describes as
 
 > Scenarios, not layout should drive variation.  
 > — <cite>[Ysenia Perez-Cruz](https://speakerdeck.com/yeseniaperezcruz/building-flexible-design-systems)</cite>
+
+<Graph />
 
 I've been working on some data visualization components in a design system and depending on how we structured and named the APIs, they could either be classified as semantic or presentational. A presentational version might look like this:
 

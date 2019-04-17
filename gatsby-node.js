@@ -58,11 +58,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: `blog${value}`
     })
   }
 }
@@ -78,3 +78,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     },
   });
 };
+
+// exports.onCreatePage = (...args) => {
+//   console.log(args);
+// };

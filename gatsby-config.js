@@ -26,33 +26,20 @@ module.exports = {
         name: `pages`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/blog`,
+        name: `blog`,
+      },
+    },
     `gatsby-transformer-javascript-frontmatter`,
     {
       resolve: `gatsby-mdx`,
       options: {
+        // Apply gatsby-mdx to both .mdx and .md files
         extensions: ['.mdx', '.md'],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          {
-            resolve: `gatsby-remark-copy-linked-files`,
-          },
-
-          {
-            resolve: `gatsby-remark-smartypants`,
-          },
-        ],
-      },
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
