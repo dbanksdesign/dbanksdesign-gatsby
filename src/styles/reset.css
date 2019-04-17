@@ -14,7 +14,7 @@ time, mark, audio, video, button {
     padding: 0;
     border: 0;
     outline: 0;
-    font-size: 100%;
+    /* font-size: 100%; */
     vertical-align: baseline;
     background: transparent;
 }
@@ -33,4 +33,15 @@ html, body {
 
 p {
   margin-bottom: var(--size-padding-base);
+}
+
+code,
+pre {
+  font-size: inherit;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+p > code {
+  padding: 0 var(--size-padding-tiny);
+  background-color: var(--color-background-secondary);
 }

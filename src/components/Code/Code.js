@@ -18,9 +18,9 @@ const Code = ({ codeString, language, ...props }) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className}>
             {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })}>
+              <div {...getLineProps({ line, key: i })} style={null}>
                 {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
+                  <span {...getTokenProps({ token, key })} style={null} />
                 ))}
               </div>
             ))}

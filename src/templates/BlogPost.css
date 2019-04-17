@@ -1,0 +1,28 @@
+.post-metadata {
+  text-align: center;
+  padding-bottom: var(--size-padding-large);
+  margin-bottom: var(--size-padding-xl);
+  position: relative;
+  color: var(--color-font-tertiary);
+}
+
+.post-metadata::after {
+  position: absolute;
+  content: '';
+  width: 50%;
+  bottom: 0;
+  left: 25%;
+  border-bottom: var(--size-border-large) solid var(--color-border-tertiary);
+}
+
+.post-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.post-nav-link {
+  padding: var(--size-padding-base);
+  border: var(--size-border-base) solid var(--color-border-primary);
+  text-decoration: none;
+}

@@ -2,7 +2,7 @@
   background-color: var(--color-background-secondary);
 }
 
-.toggleButton {
+.nav-toggle-button {
   position: relative;
   display: inline-block;
   width: 1.5rem;
@@ -11,7 +11,7 @@
   box-sizing: content-box;
 }
 
-.toggleButtonBar {
+.nav-toggle-button-bar {
   position: absolute;
   top: var(--size-padding-base);
   left: var(--size-padding-base);
@@ -22,48 +22,44 @@
   transition: all var(--time-duration-base) ease;
 }
 
-.toggleButtonBar:nth-child(2) { top: 50%; margin-top: -0.125rem; }
-.toggleButtonBar:nth-child(3) { top: auto; bottom: var(--size-padding-base); }
+.nav-toggle-button-bar:nth-child(2) { top: 50%; margin-top: -0.125rem; }
+.nav-toggle-button-bar:nth-child(3) { top: auto; bottom: var(--size-padding-base); }
 
-.open .toggleButtonBar:nth-child(1) {
+.open .nav-toggle-button-bar:nth-child(1) {
   transform: rotate(45deg);
   width: 1.75rem;
 }
-.open .toggleButtonBar:nth-child(2) { opacity: 0; }
-.open .toggleButtonBar:nth-child(3) {
+.open .nav-toggle-button-bar:nth-child(2) { opacity: 0; }
+.open .nav-toggle-button-bar:nth-child(3) {
   transform: rotate(-45deg);
   width: 1.75rem;
 }
 
-.logo {
-  /* order: 1; */
-}
-
-.navItems {
+.nav-items {
   max-height: 0;
   overflow: hidden;
   transition: max-height var(--time-duration-base) ease;
 }
 
-.open > .navItems {
+.open > .nav-items {
   max-height: 100rem;
 }
 
-.navItem {
+.nav-item {
   padding: var(--size-padding-base);
   display: block;
   text-decoration: none;
-  border-bottom-width: var(--size-border-base);
-  border-bottom-style: solid;
-  border-bottom-color: transparent;
+  border-left-width: var(--size-border-base);
+  border-left-style: solid;
+  border-left-color: transparent;
 }
 
-.navItem[aria-current] {
+.nav-item.active {
   color: var(--color-font-active);
-  border-bottom-color: var(--color-font-active);
+  border-left-color: var(--color-font-active);
 }
 
-.button {
+.theme-toggle-button {
   background-color: transparent;
   color: var(--color-font-link);
   font-size: var(--size-font-base);
@@ -81,8 +77,18 @@
   }
 
   .logo { order: 1; }
-  .navItems { order: 2; max-height:none; }
-  .button { order: 3; float: none; }
-  .toggleButton { display: none; }
-  .navItem { display: inline-block; }
+  .nav-items { order: 2; max-height:none; }
+  .theme-toggle-button { order: 3; float: none; }
+  .nav-toggle-button { display: none; }
+  .nav-item {
+    display: inline-block;
+    border-left-width: 0;
+    border-bottom-width: var(--size-border-base);
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+  }
+
+  .nav-item.active {
+    border-bottom-color: var(--color-font-active);
+  }
 }

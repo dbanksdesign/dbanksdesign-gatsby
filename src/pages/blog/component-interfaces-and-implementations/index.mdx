@@ -1,28 +1,77 @@
 ---
 title: 'Component Interfaces and Implementations'
-date: '2019-05-01'
+date: '2019-04-01'
 draft: true
 ---
 
-In some *classical* programming languages like Objective-C and Java, classes can have an Interface and an Implementation. The interface is like a contract to the user, this is the API for a component. The underlying implementation can change as long as the interface remains the same.
+Test In some traditional programming languages like Objective-C and Java, classes can have an **Interface** and an **Implementation**. For those familiar with Javascript and React, a class interface is similar to a type definition in TypeScript or a React component's PropTypes. A class interface is like an API contract to the user. The underlying implementation can change as long as the interface remains the same.
 
-NOTE: When I refer to *interface* here, I am referring to a programming interface like so:
-```Java
+An interface in Java looks like this:
+
+```java
 public interface Person {
   private static String name;
   public void talk();
 }
 ```
 
-When we talk about *semantic* versus *presentational* components in Design Systems, a semantic component clearly separates the interface from the implementation whereas a presentational one tightly couples them. Let's take a look at some examples.
+You could also think of it like an abstract class where you have to override all the methods and attributes. 
 
-I've been working on some data visualization components in my design system and depending on how we structured and named the API or Interface of them, they could either be classified as semantic or presentational. A presentational version might look like this:
+Then you can have an **implementation** of `Person`:
 
-```Java
+```java
+public class Stan implements Person {
+  private static String name = 'Stan';
+
+  public void talk() {
+    System.out.print("Hello World");
+  }
+}
+```
+
+Now we can change the underlying implementation, `Stan`, as long as it implements the interface, `Person`:
+
+```java
+public class Stan implements Person {
+  private static String name = 'Stan';
+
+  public void talk() {
+    System.out.print("I'm Stan!");
+  }
+}
+```
+
+<hr />
+
+#### What does this have to do with design systems and components?
+
+This gets to what [Ysenia Perez-Cruz](https://twitter.com/yeseniaa) describes as [scenario driven components](https://www.clarityconf.com/session/scenario-driven-design-systems). The definition of the component is based on a scenario rather than a presentation. This could also be described as *semantic* versus *presentational* components. A semantic component clearly separates the *interface* from the *implementation* whereas a presentational one tightly couples them.
+
+> Scenarios, not layout should drive variation.  
+> — <cite>[Ysenia Perez-Cruz](https://speakerdeck.com/yeseniaperezcruz/building-flexible-design-systems)</cite>
+
+I've been working on some data visualization components in a design system and depending on how we structured and named the APIs, they could either be classified as semantic or presentational. A presentational version might look like this:
+
+```java
 public interface DataVisualization {
   private static String rightHeader;
   private static String leftHeader;
   private static String footerButton;
   private static String footerText;
+  private static DataSet dataSet;
 }
 ```
+
+This component interface is presentational because the API is based on how it *looks* rather than what it *does*. This makes the component very brittle and rigid. I can't change where the `footerText` is without breaking what it means to people using the component. I could instead write the interface like this:
+
+```java
+public interface DataVisualization {
+  private static String title;
+  private static String subTitle;
+  private static String action;
+  private static String metaData;
+  private static DataSet dataSet;
+}
+```
+
+This now describes what each part does, rather than how it might be implemented. This allows the component owner to make visual updates, like changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense.

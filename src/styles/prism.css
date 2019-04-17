@@ -7,3 +7,81 @@
 .light .prism-code {
 
 }
+
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--color-font-tertiary);
+}
+
+.token.punctuation {
+  color: var(--color-font-secondary);
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace {
+  color: var(--color-font-code-1);
+}
+
+.token.function-name {
+  color: var(--color-font-code-2);
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+  color: var(--color-font-code-3);
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+  color: var(--color-font-code-4);
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+  color: var(--color-font-code-2);
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+  color: var(--color-font-code-1);
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: var(--color-font-code-5);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  background-color: green;
+}
+
+.token.deleted {
+  background-color: red;
+}

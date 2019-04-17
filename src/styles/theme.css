@@ -83,12 +83,14 @@
   --color-core-purlple-light: #F2D9FF;
 
   /* Sizes */
-  --size-padding-tiny : 0.25rem;
-  --size-padding-small : 0.5rem;
-  --size-padding-base : 1rem;
-  --size-padding-large : 1.5rem;
+  --size-padding-tiny: 0.25rem;
+  --size-padding-small: 0.5rem;
+  --size-padding-base: 1rem;
+  --size-padding-large: 1.5rem;
+  --size-padding-xl: 2.5rem;
 
-  --size-border-base : 0.125rem;
+  --size-border-base: 0.125rem;
+  --size-border-large: 0.5rem;
 
   --size-font-small: 0.75rem;
   --size-font-base: 1rem;
@@ -111,6 +113,12 @@ body.light {
   --color-font-tertiary : rgba(0, 6, 38, 0.6);
   --color-font-inverse: rgba(255, 255, 255, 0.9);
 
+  --color-font-code-1: var(--color-core-blue-dark);
+  --color-font-code-2: var(--color-core-green-dark);
+  --color-font-code-3: var(--color-core-purple-dark);
+  --color-font-code-4: var(--color-core-red-dark);
+  --color-font-code-5: var(--color-core-orange-dark);
+
   --color-background-primary: var(--color-core-white);
   --color-background-secondary: var(--color-core-gray-10);
   --color-background-highlight: var(--color-core-yellow-light);
@@ -124,9 +132,9 @@ body.light {
 }
 
 body {
-  --color-font-primary : rgba(255, 255, 255, 0.9);
-  --color-font-secondary : rgba(255, 255, 255, 0.8);
-  --color-font-tertiary : rgba(255, 255, 255, 0.6);
+  --color-font-primary: rgba(255, 255, 255, 0.9);
+  --color-font-secondary: rgba(255, 255, 255, 0.8);
+  --color-font-tertiary: rgba(255, 255, 255, 0.6);
   --color-font-inverse: rgba(0, 6, 38, 0.9);
 
   --color-background-primary: var(--color-core-gray-140);
@@ -134,16 +142,22 @@ body {
   --color-background-highlight: var(--color-core-yellow-dark);
   --color-background-highlight: rgba(57, 250, 179, 0.25);
 
-  --color-brand-primary : var(--color-core-purple);
-  --color-brand-secondary : var(--color-core-green);
+  --color-brand-primary: var(--color-core-purple);
+  --color-brand-secondary: var(--color-core-green);
 
   --color-border-primary: rgba(255, 255, 255, 0.4);
   --color-border-secondary: rgba(255, 255, 255, 0.2);
   --color-border-tertiary: rgba(255, 255, 255, 0.1);
 
-  --color-font-link : var(--color-brand-primary);
-  --color-font-hover : var(--color-brand-secondary);
-  --color-font-active : var(--color-brand-secondary);
+  --color-font-link: var(--color-brand-primary);
+  --color-font-hover: var(--color-brand-secondary);
+  --color-font-active: var(--color-brand-secondary);
+
+  --color-font-code-1: var(--color-core-blue);
+  --color-font-code-2: var(--color-core-green);
+  --color-font-code-3: var(--color-core-purple);
+  --color-font-code-4: var(--color-core-red);
+  --color-font-code-5: var(--color-core-orange);
 }
 
 html {
@@ -223,6 +237,7 @@ svg {
 
 .font-secondary { color: var(--color-font-secondary); }
 .font-tertiary { color: var(--color-font-tertiary); }
+.text-center { text-align: center; }
 
 .row {
   display: flex;
@@ -263,6 +278,21 @@ svg {
 .responsive-image {
   margin: 0 auto;
   width: 50%;
+}
+
+blockquote {
+  font-weight: bold;
+  font-size: var(--size-font-large);
+  padding: var(--size-padding-base);
+  margin: var(--size-padding-large) 0;
+  border: var(--size-border-large) solid var(--color-border-tertiary);
+  text-align: center;
+}
+
+cite {
+  font-weight: normal;
+  font-style: italic;
+  font-size: var(--size-font-base);
 }
 
 @media screen and (min-width: 600px) {

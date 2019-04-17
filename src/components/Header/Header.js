@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import headerStyles from './Header.module.css'
 import Logo from '$components/Logo'
 import { Link } from 'gatsby'
 import { FaCloudSun, FaCloudMoon } from 'react-icons/fa'
+import './Header.css'
 
 // TODO: do this with graphQL or something?
 const navItems = [{
@@ -25,7 +25,8 @@ const navItems = [{
 const NavItem = ({ url, label }) => (
   <Link to={url}
     activeClassName="active"
-    className={headerStyles.navItem}>
+    partiallyActive={true}
+    className="nav-item">
     {label}
   </Link>
 );
@@ -66,27 +67,29 @@ export default class Header extends Component {
   }
 
   render() {
-    const className = this.state.navOpen ? headerStyles.open : '';
+    const className = this.state.navOpen ? 'open' : '';
     return (
-      <header className={`${headerStyles.header} ${className}`}>
-        <nav className={`${headerStyles.navItems}`}>
+      <header className={`header ${className}`}>
+        <nav className="nav-items">
           {navItems.map(navItem =>
             <NavItem {...navItem} key={navItem.url} />
           )}
         </nav>
 
-        <button className={headerStyles.toggleButton}
+        <button className="nav-toggle-button"
+          aria-hidden={true}
           onClick={this.toggleNav}>
-          <span className={headerStyles.toggleButtonBar} />
-          <span className={headerStyles.toggleButtonBar} />
-          <span className={headerStyles.toggleButtonBar} />
+          <span className="nav-toggle-button-bar" />
+          <span className="nav-toggle-button-bar" />
+          <span className="nav-toggle-button-bar" />
         </button>
 
-        <Link to="/" className={headerStyles.logo}>
+        <Link to="/" className="logo" aria-label="home">
           <Logo />
         </Link>
 
-        <button className={headerStyles.button}
+        <button className="theme-toggle-button"
+          aria-hidden={true}
           onClick={this.toggleTheme}>
           {themeEmoji[this.state.theme]}
         </button>

@@ -14,8 +14,9 @@ class WorkIndex extends React.Component {
           keywords={[`dbanksdesign`, `projects`, `design`, `design systems`]}
         />
         <h1>Work</h1>
+        <p className="text-center"><em>Coming soon...</em></p>
 
-        {projects.map(({ node }) => {
+        {/* {projects.map(({ node }) => {
           const title = node.childJavascriptFrontmatter.frontmatter.title;
           const url = node.relativeDirectory;
           return (
@@ -27,7 +28,7 @@ class WorkIndex extends React.Component {
               </h3>
             </div>
           )
-        })}
+        })} */}
       </>
     )
   }

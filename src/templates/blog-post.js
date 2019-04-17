@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import SEO from '$components/SEO'
-import styles from './BlogPost.module.css'
+import './BlogPost.css'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,20 +15,20 @@ class BlogPostTemplate extends React.Component {
         <SEO title={post.frontmatter.title} description={post.excerpt} />
 
         <h1>{post.frontmatter.title}</h1>
-        <p>
-          {post.frontmatter.date}
-        </p>
+        <section className="post-metadata">
+          <span className="post-date">{post.frontmatter.date}</span>
+        </section>
 
         <MDXRenderer>{post.code.body}</MDXRenderer>
 
-        <nav className={styles.nav}>
+        <nav className="post-nav">
           {previous && (
-            <Link className={styles.navItem} to={previous.fields.slug} rel="prev">
+            <Link className="post-nav-link" to={previous.fields.slug} rel="prev">
               <FaChevronLeft /> {previous.frontmatter.title}
             </Link>
           )}
           {next && (
-            <Link className={styles.navItem} to={next.fields.slug} rel="next">
+            <Link className="post-nav-link" to={next.fields.slug} rel="next">
               {next.frontmatter.title} <FaChevronRight />
             </Link>
           )}

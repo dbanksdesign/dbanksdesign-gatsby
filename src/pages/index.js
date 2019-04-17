@@ -16,23 +16,13 @@ class Home extends React.Component {
       <>
         <SEO
           title="dbanksdesign - The home of Danny Banks"
-          keywords={[`dbanksdesign`, `design system`, `style dictionary`, `design technologist`]}
+          keywords={[`dbanksdesign`, `design system`, `style dictionary`, `design technologist`, `design tokens`]}
         />
 
         <div style={{textAlign:'center'}}>
           <h1>Danny Banks</h1>
-          <h2>Designineer at <Amazon /></h2>
-
-        </div>
-
-        <Code codeString={`
-{
-  name: 'Danny Banks',
-  title: 'Designineer',
-  employer: 'Amazon'
-}`} language="javascript" />
-        <div>
-          I design and develop <mark>design system</mark> things. Occassionally I write about it and speak about it.
+          <h2>Design Systems Architect<sup>*</sup>, Design Technologist, Designineer at <Amazon /></h2>
+          <p>I design and develop <mark>design system</mark> things. Occassionally I write about it and speak about it.</p>
         </div>
 
         <h3>Recent Articles</h3>

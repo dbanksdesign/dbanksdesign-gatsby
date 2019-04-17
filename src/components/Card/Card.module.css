@@ -2,20 +2,23 @@
   background-color: var(--color-background-secondary);
   display: block;
   padding: var(--size-padding-large);
+  color: var(--color-font-primary);
 }
 
 .cardGrid {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .projectCard {
   composes: card;
   display: flex;
   flex-direction: row;
-  flex: 1;
-  margin: var(--size-padding-base);
+  flex-basis: 100%;
+  margin: var(--size-padding-base) 0;
   text-decoration: none;
 }
 
@@ -25,9 +28,21 @@
 }
 
 .projectCardImage {
-  flex: 0 1 25%;
+  /* flex: 0 1 25%; */
+  width: 25%;
 }
 
 .projectCardTitle {
+  margin-top: 0;
+}
 
+.projectCardDescription {
+  margin: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .projectCard {
+    flex: 1;
+    margin: 0 var(--size-padding-base);
+  }
 }
