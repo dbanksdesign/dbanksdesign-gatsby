@@ -52,9 +52,11 @@ This gets to what [Ysenia Perez-Cruz](https://twitter.com/yeseniaa) describes as
 > Scenarios, not layout should drive variation.  
 > — <cite>[Ysenia Perez-Cruz](https://speakerdeck.com/yeseniaperezcruz/building-flexible-design-systems)</cite>
 
+I've been working on some data visualization components in a design system, let's use this as an example (don't judge the design of this, it is just an example):
+
 <Graph />
 
-I've been working on some data visualization components in a design system and depending on how we structured and named the APIs, they could either be classified as semantic or presentational. A presentational version might look like this:
+ Depending on how we structured and named the APIs for this component, it could either be semantic or presentational. A presentational version might look like this:
 
 ```java
 public interface DataVisualization {
@@ -66,7 +68,7 @@ public interface DataVisualization {
 }
 ```
 
-This component interface is presentational because the API is based on how it *looks* rather than what it *does*. This makes the component very brittle and rigid. I can't change where the `footerText` is without breaking what it means to people using the component. I could instead write the interface like this:
+This component interface is presentational because the API is based on how it *looks* rather than what it *does*. This makes the component very brittle and rigid. I can't change where the `footerText` is displayed without breaking what it means to people using the component. I could instead write the interface like this:
 
 ```java
 public interface DataVisualization {
@@ -78,4 +80,4 @@ public interface DataVisualization {
 }
 ```
 
-This now describes what each part does, rather than how it might be implemented. This allows the component owner to make visual updates, like changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense.
+This now describes what each part does, rather than how it might be implemented visually. This allows the component owner to make visual updates, like changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense.
