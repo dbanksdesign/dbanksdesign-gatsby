@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Logo from '$components/Logo'
 import { Link } from 'gatsby'
-import { FaCloudSun, FaCloudMoon } from 'react-icons/fa'
+import { FiSun, FiMoon } from 'react-icons/fi'
 import './Header.css'
 
 // TODO: do this with graphQL or something?
@@ -36,14 +36,9 @@ const themeMap = {
   light: 'dark'
 }
 
-// const themeEmoji = {
-//   dark: '☀️',
-//   light: '🌚'
-// }
-
 const themeEmoji = {
-  dark: <FaCloudSun />,
-  light: <FaCloudMoon />
+  dark: <FiSun />,
+  light: <FiMoon />
 }
 
 export default class Header extends Component {
@@ -70,6 +65,7 @@ export default class Header extends Component {
     const className = this.state.navOpen ? 'open' : '';
     return (
       <header className={`header ${className}`}>
+        <div className="header-inner">
         <nav className="nav-items">
           {navItems.map(navItem =>
             <NavItem {...navItem} key={navItem.url} />
@@ -93,6 +89,7 @@ export default class Header extends Component {
           onClick={this.toggleTheme}>
           {themeEmoji[this.state.theme]}
         </button>
+        </div>
       </header>
     )
   }

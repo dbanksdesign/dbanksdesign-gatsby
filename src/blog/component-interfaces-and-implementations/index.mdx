@@ -1,10 +1,10 @@
 ---
 title: 'Component Interfaces and Implementations'
-date: '2019-04-01'
-draft: true
+date: '2019-04-21'
 ---
 
 import Graph from "./Graph"
+import Graphv2 from "./Graphv2"
 
 In some traditional programming languages like Objective-C and Java, classes can have an **Interface** and an **Implementation**. For those familiar with Javascript and React, a class interface is similar to a type definition in TypeScript or a React component's PropTypes. A class interface is like an API contract to the user. The underlying implementation can change as long as the interface remains the same.
 
@@ -17,9 +17,9 @@ public interface Person {
 }
 ```
 
-You could also think of it like an abstract class where you have to override all the methods and attributes. 
+You could also think of it like an abstract class where you have to override all the methods and attributes. Either way it is the same, a construct to describe the API of a class. 
 
-Then you can have an **implementation** of `Person`:
+Then you can have any number of **implementations** of `Person`:
 
 ```java
 public class Stan implements Person {
@@ -31,11 +31,11 @@ public class Stan implements Person {
 }
 ```
 
-Now we can change the underlying implementation, `Stan`, as long as it implements the interface, `Person`:
+Now we can change the underlying implementation, `Stan`, as long as it still properly implements the interface, `Person`:
 
 ```java
 public class Stan implements Person {
-  private static String name = 'Stan';
+  private static String name = 'Stanley';
 
   public void talk() {
     System.out.print("I'm Stan!");
@@ -56,7 +56,7 @@ I've been working on some data visualization components in a design system, let'
 
 <Graph />
 
- Depending on how we structured and named the APIs for this component, it could either be semantic or presentational. A presentational version might look like this:
+Depending on how we structured and named the APIs for this component, it could either be semantic or presentational. A presentational version might look like this:
 
 ```java
 public interface DataVisualization {
@@ -81,3 +81,7 @@ public interface DataVisualization {
 ```
 
 This now describes what each part does, rather than how it might be implemented visually. This allows the component owner to make visual updates, like changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense.
+
+This also has the added bonus of being more localizable. For right-to-left languages attributes like `leftHeader` and `rightHeader` don't make sense. If you really wanted to make the component API based on layout, a more localized version would be `startHeader` and `endHeader`, or something similar.
+
+<Graphv2 />

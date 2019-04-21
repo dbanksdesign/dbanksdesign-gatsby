@@ -1,3 +1,4 @@
 module.exports = {
-  font: require('./font')
+  font: require('./font'),
+  padding: require('./padding')
 }

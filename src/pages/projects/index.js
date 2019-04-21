@@ -10,11 +10,14 @@ class ProjectIndex extends React.Component {
     return (
       <>
         <SEO
-          title="All projects"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          title="dbanksdesign - Projects by Danny Banks"
+          keywords={[`projects`, `open source`, `javascript`, `react`, `design systems`]}
         />
+        
+        <h1>Projects</h1>
+        <p className="text-center"><em>Coming soon...</em></p>
 
-        {projects.map(({ node }) => {
+        {/* {projects.map(({ node }) => {
           const title = node.childJavascriptFrontmatter.frontmatter.title;
           const url = node.relativeDirectory;
           return (
@@ -26,7 +29,7 @@ class ProjectIndex extends React.Component {
               </h3>
             </div>
           )
-        })}
+        })} */}
       </>
     )
   }

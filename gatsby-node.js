@@ -78,7 +78,3 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     },
   });
 };
-
-// exports.onCreatePage = (...args) => {
-//   console.log(args);
-// };

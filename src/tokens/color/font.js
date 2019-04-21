@@ -1,14 +1,36 @@
 const core = require('./core');
 
+const opacity = [
+  0.9,
+  0.8,
+  0.6,
+]
+
 module.exports = {
-  darker_text_color    : core.darkest_grey,
-  dark_text_color      : core.darker_grey,
-  text_color           : core.dark_grey,
-  default_text_color   : core.dark_grey,
-  light_text_color     : core.grey,
-  lighter_text_color   : core.light_grey,
-  lightest_text_color  : core.lighter_grey,
-  link_color           : core.blue,
-  link_hover_color     : core.teal,
-  link_active_color    : core.orange,
+  light: {
+    primary: { value: `rgba(0, 6, 38, ${opacity[0]})`},
+    secondary: { value: `rgba(0, 6, 38, ${opacity[1]})`},
+    tertiary: { value: `rgba(0, 6, 38, ${opacity[2]})`},
+    inverse: { value: `rgba(255, 255, 255, ${opacity[0]})`},
+    code: {
+      1: { value: "{color.core.blue.dark.value}" },
+      2: { value: "{color.core.green.dark.value}" },
+      3: { value: "{color.core.purple.dark.value}" },
+      4: { value: "{color.core.red.dark.value}" },
+      5: { value: "{color.core.orange.dark.value}" },
+    }
+  },
+  dark: {
+    primary: { value: `rgba(255, 255, 255, ${opacity[0]})`},
+    secondary: { value: `rgba(255, 255, 255, ${opacity[1]})`},
+    tertiary: { value: `rgba(255, 255, 255, ${opacity[2]})`},
+    inverse: { value: `rgba(0, 6, 38, ${opacity[0]})`},
+    code: {
+      1: { value: "{color.core.blue.base.value}" },
+      2: { value: "{color.core.green.base.value}" },
+      3: { value: "{color.core.purple.base.value}" },
+      4: { value: "{color.core.red.base.value}" },
+      5: { value: "{color.core.orange.base.value}" },
+    }
+  }
 }

@@ -131,21 +131,21 @@ module.exports = {
         bucketName: 'www.dbanks.design'
       },
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `IBM Plex Sans`,
-            subsets: [`latin`],
-            variants: [`200`, `400`, `400i`, `700`]
-          }, {
-            family: 'IBM Plex Mono',
-            subsets: ['latin'],
-            variants: ['400']
-          }
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `IBM Plex Sans`,
+    //         subsets: [`latin`],
+    //         variants: [`200`, `400`, `400i`, `700`]
+    //       }, {
+    //         family: 'IBM Plex Mono',
+    //         subsets: ['latin'],
+    //         variants: ['400']
+    //       }
+    //     ],
+    //   },
+    // },
   ],
 }

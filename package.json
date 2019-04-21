@@ -55,6 +55,7 @@
   },
   "scripts": {
     "dev": "gatsby develop",
+    "style-dictionary": "style-dictionary build --config ./src/tokens/config.js",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",

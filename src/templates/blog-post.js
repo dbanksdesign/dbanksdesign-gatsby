@@ -7,7 +7,6 @@ import './BlogPost.css'
 
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log(this.props);
     const post = this.props.data.mdx;
     const { previous, next } = this.props.pageContext;
 
@@ -22,7 +21,7 @@ class BlogPostTemplate extends React.Component {
 
         <MDXRenderer>{post.code.body}</MDXRenderer>
 
-        <nav className="post-nav">
+        {/* <nav className="post-nav">
           {previous && (
             <Link className="post-nav-link" to={previous.fields.slug} rel="prev">
               <FaChevronLeft /> {previous.frontmatter.title}
@@ -33,7 +32,7 @@ class BlogPostTemplate extends React.Component {
               {next.frontmatter.title} <FaChevronRight />
             </Link>
           )}
-        </nav>
+        </nav> */}
       </>
     )
   }

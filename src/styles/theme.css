@@ -139,7 +139,6 @@ body {
 
   --color-background-primary: var(--color-core-gray-140);
   --color-background-secondary: var(--color-core-gray-120);
-  --color-background-highlight: var(--color-core-yellow-dark);
   --color-background-highlight: rgba(57, 250, 179, 0.25);
 
   --color-brand-primary: var(--color-core-purple);
@@ -202,13 +201,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--size-padding-base);
 }
 
-h1, h2, h3 {
-  text-align: center;
-}
-
 h1 {
   font-size: var(--size-font-xxl);
   font-weight: 100;
+  text-align: center;
 }
 
 h2 {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import SEO from '$components/SEO'
+import Post from '$components/Post'
 
 class BlogIndex extends React.Component {
   render() {
@@ -13,18 +14,15 @@ class BlogIndex extends React.Component {
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
+        <h1>Blog</h1>
         {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
+          const title = node.frontmatter.title || node.fields.slug
           return (
-            <div key={node.fields.slug}>
-              <h3>
-                <Link to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
+            <Post key={node.fields.slug}
+              href={node.fields.slug}
+              title={title}
+              date={node.frontmatter.date}
+              body={node.excerpt} />
           )
         })}
       </>
@@ -41,7 +39,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC },
+      filter: {
+        frontmatter: {
+          draft: {ne: true}
+        }
+      },
+    ) {
       edges {
         node {
           excerpt

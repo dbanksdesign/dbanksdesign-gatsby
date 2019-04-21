@@ -1,0 +1,14 @@
+.home-swatches {
+  display: flex;
+  flex-direction: row;
+}
+
+.color-group {
+  
+}
+
+.color-swatch {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-core-red-dark);
+}

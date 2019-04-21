@@ -17,7 +17,7 @@
   composes: card;
   display: flex;
   flex-direction: row;
-  flex-basis: 100%;
+  /* width: 48%; */
   margin: var(--size-padding-base) 0;
   text-decoration: none;
 }
@@ -40,9 +40,10 @@
   margin: 0;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
   .projectCard {
-    flex: 1;
-    margin: 0 var(--size-padding-base);
+    /* flex: 1; */
+    width: 48%;
+    margin: 0;
   }
 }

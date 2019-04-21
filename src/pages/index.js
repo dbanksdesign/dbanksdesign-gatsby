@@ -4,8 +4,23 @@ import { Link, graphql } from 'gatsby'
 import SEO from '$components/SEO'
 import Amazon from '$components/Amazon'
 import {ProjectCard, CardGrid} from '$components/Card'
-import Code from '$components/Code'
+import Post from '$components/Post'
 
+// import colors from '../tokens/color/core'
+// const swatches = () => (
+//   <div className="home-swatches">
+//     {Object.keys(colors).filter(color => !['white','gray'].includes(color))
+//       .map(color => (
+//       <div className="color-group">
+//         {Object.keys(colors[color]).map(shade => (
+//           <div className="color-swatch" style={{backgroundColor: colors[color][shade].value}} />
+//         ))}
+//       </div>
+//     ))}
+//   </div>
+// )
+
+import './home.css'
 class Home extends React.Component {
   render() {
     const { data } = this.props;
@@ -18,38 +33,34 @@ class Home extends React.Component {
           title="dbanksdesign - The home of Danny Banks"
           keywords={[`dbanksdesign`, `design system`, `style dictionary`, `design technologist`, `design tokens`]}
         />
-
-        <div style={{textAlign:'center'}}>
+        
+        <div>
           <h1>Danny Banks</h1>
           <h2>Design Systems Architect<sup>*</sup>, Design Technologist, Designineer at <Amazon /></h2>
-          <p>I design and develop <mark>design system</mark> things. Occassionally I write about it and speak about it.</p>
+          <p>I design and develop <mark>design system</mark> things. Occassionally I write and speak about it too. I work on mobile and web apps, designing and developing.</p>
         </div>
-
+        <hr />
         <h3>Recent Articles</h3>
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <div key={node.fields.slug}>
-              <h4>
-                <Link to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h4>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
+            <Post key={node.fields.slug}
+              href={node.fields.slug}
+              title={title}
+              date={node.frontmatter.date}
+              body={node.excerpt} />
           )
         })}
-        <Link to="/blog">See all articles</Link>
-
+        <hr />
         <h3>Projects</h3>
         <CardGrid>
           {projects.map(({ node }) => {
-            const {title, graphic, description} = node.childJavascriptFrontmatter.frontmatter;
+            const {title, graphic, description, publicURL} = node.childJavascriptFrontmatter.frontmatter;
             return (
-              <ProjectCard title={title}
+              <ProjectCard key={title}
+                title={title}
                 description={description}
-                url={node.relativeDirectory}
+                url={publicURL}
                 graphic={graphic ? graphic.publicURL : null} />
             )
           })}
@@ -65,11 +76,16 @@ export const pageQuery = graphql`
   query {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC },
+      filter: {
+        frontmatter: {
+          draft: {ne: true}
+        }
+      },
       limit: 3
     ) {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 200)
           fields {
             slug
           }
@@ -93,6 +109,7 @@ export const pageQuery = graphql`
           childJavascriptFrontmatter {
             frontmatter {
               title
+              publicURL
               graphic {
                 publicURL
               }
