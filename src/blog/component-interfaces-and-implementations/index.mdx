@@ -80,8 +80,17 @@ public interface DataVisualization {
 }
 ```
 
-This now describes what each part does, rather than how it might be implemented visually. This allows the component owner to make visual updates, like changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense.
+This now describes what each part does, rather than how it might be implemented visually. This allows the component owner to make visual updates, like changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense. For example we could update the component to look like this without breaking the meaning of it:
+
+<Graphv2 />
 
 This also has the added bonus of being more localizable. For right-to-left languages attributes like `leftHeader` and `rightHeader` don't make sense. If you really wanted to make the component API based on layout, a more localized version would be `startHeader` and `endHeader`, or something similar.
 
-<Graphv2 />
+#### Component naming
+
+Similar to how the component API should be based on its scenario or use case, the name of the component itself should reflect the use case of the component rather than how it looks. A presentationally named component cannot change how it looks without breaking what the user expects the component to do. One example is:
+
+* **Horizontal Scrolling Tiles**: This component name is presentational; it describes how the component looks. You know when you use this component, it will be tiles arranged horizontally that scrolls.
+* **Key Data Points**: This is the same component, but named based on the use case. It is meant to display key data points. They could be displayed in horizontal tiles, or maybe they are displayed in a bar or some other cool way I don't even know. 
+
+Thinking about the scenario and the semantics of the component before doing any design or development work is important to get right from the start. The component name and API is a contract to the user, that this component will do what it says. 

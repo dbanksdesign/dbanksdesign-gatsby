@@ -73,11 +73,12 @@
 }
 
 .theme-toggle-button {
-  background-color: transparent;
-  color: var(--color-font-link);
+  background-color: var(--color-font-link);
+  color: var(--color-font-inverse);
   font-size: var(--size-font-base);
-  padding: var(--size-padding-base);
-  float: right;
+  padding: var(--size-padding-small) var(--size-padding-base);
+  margin: var(--size-padding-base);
+  border-radius: var(--size-font-base);
 }
 
 @media(min-width: 800px) {

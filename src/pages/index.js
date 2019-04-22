@@ -35,9 +35,10 @@ class Home extends React.Component {
         />
         
         <div>
-          <h1>Danny Banks</h1>
+          <h1 style={{textAlign: 'left'}}>Danny Banks</h1>
           <h2>Design Systems Architect<sup>*</sup>, Design Technologist, Designineer at <Amazon /></h2>
           <p>I design and develop <mark>design system</mark> things. Occassionally I write and speak about it too. I work on mobile and web apps, designing and developing.</p>
+          <p><em>* Design System Architect is a title I gave myself.</em></p>
         </div>
         <hr />
         <h3>Recent Articles</h3>
@@ -55,12 +56,13 @@ class Home extends React.Component {
         <h3>Projects</h3>
         <CardGrid>
           {projects.map(({ node }) => {
-            const {title, graphic, description, publicURL} = node.childJavascriptFrontmatter.frontmatter;
+            const {title, graphic, description, publicURL, emoji} = node.childJavascriptFrontmatter.frontmatter;
             return (
               <ProjectCard key={title}
                 title={title}
                 description={description}
                 url={publicURL}
+                emoji={emoji}
                 graphic={graphic ? graphic.publicURL : null} />
             )
           })}
@@ -110,6 +112,7 @@ export const pageQuery = graphql`
             frontmatter {
               title
               publicURL
+              emoji
               graphic {
                 publicURL
               }

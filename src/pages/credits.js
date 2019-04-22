@@ -9,15 +9,16 @@ class Credits extends React.Component {
         <SEO
           title="dbanksdesign : Source" />
         <h1>Source</h1>
-        <a href="https://github.com/dbanksdesign/dbanksdesign-gatsby">Source</a>
-        <p>This website is built with some amazing open-source projects. Check them out and show them some 💚 if you can.</p>
+        <p>The source code of this site and blog is available on <a href="https://github.com/dbanksdesign/dbanksdesign-gatsby">Github</a>. It is not super pretty yet, but I'm working on it. I think it is good to not wait until something is perfect to share it. </p>
 
-        <h4>Gatsby</h4>
-        <p>Static site generation using react and webpack.</p>
-        <h3>React</h3>
-        <p></p>
-        <h3>React-Icons</h3>
-        <p>Easy-to-use icons for React. Comes with FontAwesome, Material, and other icon sets.</p>
+        <p>This website is built with some amazing open-source projects. Check them out and show them some 💚 if you can.</p>
+        <dl>
+          <dt><a href="https://www.gatsbyjs.org">Gatsby</a></dt>
+          <dd>Static site generation using react and webpack.</dd>
+
+          <dt><a href="https://github.com/react-icons/react-icons">React-Icons</a></dt>
+          <dd>Easy-to-use icons for React. Comes with FontAwesome, Material, and other icon sets.</dd>
+        </dl>
       </>
     )
   }

@@ -95,8 +95,8 @@
   --size-font-small: 0.75rem;
   --size-font-base: 1rem;
   --size-font-large: 1.5rem;
-  --size-font-xl: 2.5rem;
-  --size-font-xxl: 4rem;
+  --size-font-xl: 2.25rem;
+  --size-font-xxl: 3.25rem;
 
   --size-breakpoint-small : 400px;
   --size-breakpoint-medium : 1000px;
@@ -161,7 +161,6 @@ body {
 
 html {
   font-family: 'IBM Plex Sans', 'Open Sans', Arial, Helvetica, sans-serif;
-  border: 1rem solid var(--color-background-secondary);
 }
 
 body {
@@ -229,6 +228,7 @@ mark {
 svg {
   max-width: 100%;
   max-height: 100%;
+  display: block;
 }
 
 .font-secondary { color: var(--color-font-secondary); }
@@ -285,10 +285,18 @@ blockquote {
   text-align: center;
 }
 
+blockquote > p {
+  margin: 0;
+}
+
 cite {
   font-weight: normal;
   font-style: italic;
   font-size: var(--size-font-base);
+}
+
+dd {
+  margin-bottom: var(--size-padding-base);
 }
 
 @media screen and (min-width: 600px) {

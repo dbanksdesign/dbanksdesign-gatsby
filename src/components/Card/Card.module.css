@@ -17,7 +17,7 @@
   composes: card;
   display: flex;
   flex-direction: row;
-  /* width: 48%; */
+  align-items: center;
   margin: var(--size-padding-base) 0;
   text-decoration: none;
 }
@@ -30,6 +30,12 @@
 .projectCardImage {
   /* flex: 0 1 25%; */
   width: 25%;
+}
+
+.projectCardEmoji {
+  width: 25%;
+  font-size: var(--size-font-xl);
+  text-align: center;
 }
 
 .projectCardTitle {

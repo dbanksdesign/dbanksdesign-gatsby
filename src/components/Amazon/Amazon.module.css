@@ -1,7 +1,8 @@
 .amazon {
   display: inline-block;
-  top: 0.5rem;
+  top: 0.6rem;
   position: relative;
+  vertical-align: bottom;
 }
 
 .svg {
