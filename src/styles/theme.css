@@ -299,6 +299,10 @@ dd {
   margin-bottom: var(--size-padding-base);
 }
 
+ul {
+  margin-bottom:  var(--size-padding-base);
+}
+
 @media screen and (min-width: 600px) {
   .column {
     flex: 1;

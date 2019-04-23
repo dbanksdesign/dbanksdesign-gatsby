@@ -23,7 +23,7 @@ Then you can have any number of **implementations** of `Person`:
 
 ```java
 public class Stan implements Person {
-  private static String name = 'Stan';
+  private static String name = "Stan";
 
   public void talk() {
     System.out.print("Hello World");
@@ -35,7 +35,7 @@ Now we can change the underlying implementation, `Stan`, as long as it still pro
 
 ```java
 public class Stan implements Person {
-  private static String name = 'Stanley';
+  private static String name = "Stanley";
 
   public void talk() {
     System.out.print("I'm Stan!");
@@ -91,6 +91,6 @@ This also has the added bonus of being more localizable. For right-to-left langu
 Similar to how the component API should be based on its scenario or use case, the name of the component itself should reflect the use case of the component rather than how it looks. A presentationally named component cannot change how it looks without breaking what the user expects the component to do. One example is:
 
 * **Horizontal Scrolling Tiles**: This component name is presentational; it describes how the component looks. You know when you use this component, it will be tiles arranged horizontally that scrolls.
-* **Key Data Points**: This is the same component, but named based on the use case. It is meant to display key data points. They could be displayed in horizontal tiles, or maybe they are displayed in a bar or some other cool way I don't even know. 
+* **Key Data Points**: This is the same component, but named based on the use case. It is meant to display key data points. They could be displayed in horizontal tiles, or maybe they are displayed in a bar or some other cool way I don't even know.
 
 Thinking about the scenario and the semantics of the component before doing any design or development work is important to get right from the start. The component name and API is a contract to the user, that this component will do what it says. 
