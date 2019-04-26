@@ -65,7 +65,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value: `blog${value}`
     })
   }
-}
+};
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({

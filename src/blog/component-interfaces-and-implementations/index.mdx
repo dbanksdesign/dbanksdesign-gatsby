@@ -6,7 +6,15 @@ date: '2019-04-21'
 import Graph from "./Graph"
 import Graphv2 from "./Graphv2"
 
-In some traditional programming languages like Objective-C and Java, classes can have an **Interface** and an **Implementation**. For those familiar with Javascript and React, a class interface is similar to a type definition in TypeScript or a React component's PropTypes. A class interface is like an API contract to the user. The underlying implementation can change as long as the interface remains the same.
+I've been thinking recently about *how* to define components in a design system; what makes a component *good*. Not components that look good, but ones that are well defined and future-proof. A good component is one that is useful, understandable, and easy to update without breaking consumers.
+
+We can break down a component into two pieces: the API, and the implementation. The API is how consumers use the component, and the implementation is how the component owner defines the appearance and functionality. 
+
+This is where taking a look at more traditional programming languages like Java or Objective-C can help define what makes a good component. The API of a component is similar to a class interface, and the implementation is well, the implementation of the class.
+
+If you are familiar with Javascript and React, a class interface is similar to a type definition in TypeScript or a React component's PropTypes. A class interface is an API contract to the user. The underlying implementation can change as long as the interface remains the same.
+
+An interface describes the methods, or method signatures, and attributes a class should implement. You could also think of it like an abstract class in a language like Ruby, where you have to override all the methods and attributes. Either way it is the same; a construct to describe the API of a class. 
 
 An interface in Java looks like this:
 
@@ -17,13 +25,11 @@ public interface Person {
 }
 ```
 
-You could also think of it like an abstract class where you have to override all the methods and attributes. Either way it is the same, a construct to describe the API of a class. 
-
-Then you can have any number of **implementations** of `Person`:
+Then you can have an implementation of `Person`:
 
 ```java
-public class Stan implements Person {
-  private static String name = "Stan";
+public class Astronaut implements Person {
+  private static String name = "Major Tom";
 
   public void talk() {
     System.out.print("Hello World");
@@ -31,21 +37,23 @@ public class Stan implements Person {
 }
 ```
 
-Now we can change the underlying implementation, `Stan`, as long as it still properly implements the interface, `Person`:
+Now we can change the underlying implementation, `Astronaut`, as long as it still properly implements the interface, `Person`:
 
 ```java
-public class Stan implements Person {
-  private static String name = "Stanley";
+public class Astronaut implements Person {
+  private static String name = "Ground Control";
 
   public void talk() {
-    System.out.print("I'm Stan!");
+    System.out.print("I'm stepping through the door");
   }
 }
 ```
 
-<hr />
+If you aren't used to a language with interfaces and implementations, for a class to be a valid implementation it must have the same methods, or method signitures, and attributes. How those methods function and what the value of the attributes are, are up to the implemention to define.
 
-#### What does this have to do with design systems and components?
+A well thought out class interface rarely changes, just like a well thought out API should rarely change as well. If you keep adding or changing API endpoints or interface methods, it becomes burdensome for consumers and signals that it might have been poorly defined from the beginning. Similarly, a well thought out component's interface or API should rarely change, even if the impelmentation changes.
+
+----
 
 This gets to what [Ysenia Perez-Cruz](https://twitter.com/yeseniaa) describes as [scenario driven components](https://www.clarityconf.com/session/scenario-driven-design-systems). The definition of the component is based on a scenario rather than a presentation. This could also be described as *semantic* versus *presentational* components. A semantic component clearly separates the *interface* from the *implementation* whereas a presentational one tightly couples them.
 
@@ -56,7 +64,7 @@ I've been working on some data visualization components in a design system, let'
 
 <Graph />
 
-Depending on how we structured and named the APIs for this component, it could either be semantic or presentational. A presentational version might look like this:
+Depending on how we structured and named the API for this component, it could either be semantic or presentational. A presentational version might look like this:
 
 ```java
 public interface DataVisualization {
@@ -80,17 +88,33 @@ public interface DataVisualization {
 }
 ```
 
-This now describes what each part does, rather than how it might be implemented visually. This allows the component owner to make visual updates, like changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense. For example we could update the component to look like this without breaking the meaning of it:
+This now describes what each part does, rather than how it might be implemented visually. This allows the component owner to make visual updates, changing the implementation, without breaking the API. Now we are free to change where the `metaData` is presented, maybe we move it above the graph. If it were called `footerText` this attribute name would no longer make sense. For example we could update the component to look like this without breaking the meaning of it:
 
 <Graphv2 />
 
 This also has the added bonus of being more localizable. For right-to-left languages attributes like `leftHeader` and `rightHeader` don't make sense. If you really wanted to make the component API based on layout, a more localized version would be `startHeader` and `endHeader`, or something similar.
 
-#### Component naming
+### Component naming
 
 Similar to how the component API should be based on its scenario or use case, the name of the component itself should reflect the use case of the component rather than how it looks. A presentationally named component cannot change how it looks without breaking what the user expects the component to do. One example is:
 
 * **Horizontal Scrolling Tiles**: This component name is presentational; it describes how the component looks. You know when you use this component, it will be tiles arranged horizontally that scrolls.
 * **Key Data Points**: This is the same component, but named based on the use case. It is meant to display key data points. They could be displayed in horizontal tiles, or maybe they are displayed in a bar or some other cool way I don't even know.
+
+### Going too far in semantic naming
+
+Taken to an extreme, this can cause issues if you define components so strictly they do not make sense for other areas of your application to use. For example we could define the chart above as a `TrafficChart`, but that would severly constrain the scenarios it can be used for. 
+
+### Good presentational components
+
+Presentational components are not necessarily a bad thing, just use them purposefully. For example layout type components like cards or grids are fine. Generally the more atomic the component, the more presentational it becomes and that is ok.
+
+### General tips for naming
+
+* Words like primary, secondary, tertiary are good because they describe the importance, which could be implemented in a number of ways: text size, color, weight, position. 
+* Use semantic abstractions like 'title' and 'subtitle' to make the API generic, but semantic.
+* Use abstract theme or variation attributes, such as: danger, warning, success.
+
+----
 
 Thinking about the scenario and the semantics of the component before doing any design or development work is important to get right from the start. The component name and API is a contract to the user, that this component will do what it says. 

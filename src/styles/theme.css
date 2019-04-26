@@ -300,7 +300,8 @@ dd {
 }
 
 ul {
-  margin-bottom:  var(--size-padding-base);
+  margin-bottom: var(--size-padding-base);
+  margin-left: var(--size-padding-base);
 }
 
 @media screen and (min-width: 600px) {
