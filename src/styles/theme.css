@@ -92,11 +92,11 @@
   --size-border-base: 0.125rem;
   --size-border-large: 0.5rem;
 
-  --size-font-small: 0.75rem;
+  --size-font-small: 0.875rem;
   --size-font-base: 1rem;
-  --size-font-large: 1.5rem;
-  --size-font-xl: 2.25rem;
-  --size-font-xxl: 3.25rem;
+  --size-font-large: 1.25rem;
+  --size-font-xl: 1.75rem;
+  --size-font-xxl: 2.5rem;
 
   --size-breakpoint-small : 400px;
   --size-breakpoint-medium : 1000px;
@@ -320,6 +320,15 @@ ul {
 }
 
 @media(min-width: 1000px) {
+  :root {
+    --size-font-small: 0.75rem;
+    --size-font-base: 1rem;
+    --size-font-large: 1.5rem;
+    --size-font-xl: 2.25rem;
+    --size-font-xxl: 3.25rem;
+  }
+  
+  
   html {
     font-size: 125%;
   }

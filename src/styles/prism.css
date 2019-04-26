@@ -2,6 +2,7 @@
   padding: var(--size-padding-base);
   margin-bottom: var(--size-padding-xl);
   background-color: var(--color-background-secondary);
+  overflow-x: auto;
 }
 
 p + .prism-code {
