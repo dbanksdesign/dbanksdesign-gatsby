@@ -1,5 +1,5 @@
 .footer {
-  padding: var(--size-padding-large);
+  padding-top: var(--size-padding-xl);
   background-color: var(--color-background-primary);
   color: var(--color-font-tertiary);
   text-align: center;

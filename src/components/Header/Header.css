@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--color-background-secondary);
+  /* background-color: var(--color-background-secondary); */
   top: 0;
   left: 0;
   width: 100%;
@@ -7,7 +7,7 @@
 }
 
 .header-inner {
-  
+  background-color: var(--color-background-secondary);
 }
 
 .logo {
@@ -30,7 +30,7 @@
   left: var(--size-padding-base);
   width: 1.5rem;
   height: 0.25rem;
-  background-color: var(--color-font-primary);
+  background-color: var(--color-font-tertiary);
   transform-origin: 0;
   transition: all var(--time-duration-base) ease;
 }
@@ -89,6 +89,8 @@
   .header-inner {
     position: fixed;
     top: 0;
+    bottom: 0;
+    width: 10rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

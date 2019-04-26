@@ -32,7 +32,7 @@ html, body {
 }
 
 p {
-  margin-bottom: var(--size-padding-base);
+  margin-bottom: var(--size-padding-xl);
 }
 
 code,

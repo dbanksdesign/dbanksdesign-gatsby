@@ -16,7 +16,7 @@ class About extends React.Component {
         <div className="row">
           <div className="column">
             <Image
-              className="responsive-image round-image"
+              className="bg-image responsive-image round-image"
               fluid={data.dangie.childImageSharp.fluid}
               alt="Danny and wife Angie drinking a beer" />
           </div>

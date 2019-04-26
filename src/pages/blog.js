@@ -11,10 +11,11 @@ class BlogIndex extends React.Component {
     return (
       <>
         <SEO
-          title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          title="dbanksdesing - Blog"
+          keywords={[`blog`, `design systems`, `components`, `front-end`]}
         />
         <h1>Blog</h1>
+        <hr />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
@@ -25,6 +26,7 @@ class BlogIndex extends React.Component {
               body={node.excerpt} />
           )
         })}
+        <hr />
       </>
     )
   }
@@ -49,7 +51,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 200)
           fields {
             slug
           }

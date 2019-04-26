@@ -49,9 +49,9 @@ public class Astronaut implements Person {
 }
 ```
 
-If you aren't used to a language with interfaces and implementations, for a class to be a valid implementation it must have the same methods, or method signitures, and attributes. How those methods function and what the value of the attributes are, are up to the implemention to define.
+If you aren't used to a language with interfaces and implementations, for a class to be a valid implementation it must have the same methods, or method signatures, and attributes. How those methods function and what the value of the attributes are, are up to the implementation to define.
 
-A well thought out class interface rarely changes, just like a well thought out API should rarely change as well. If you keep adding or changing API endpoints or interface methods, it becomes burdensome for consumers and signals that it might have been poorly defined from the beginning. Similarly, a well thought out component's interface or API should rarely change, even if the impelmentation changes.
+A well thought out class interface rarely changes, just like a well thought out API should rarely change as well. If you keep adding or changing API endpoints or interface methods, it becomes burdensome for consumers and signals that it might have been poorly defined from the beginning. Similarly, a well thought out component's interface or API should rarely change, even if the implementation changes.
 
 ----
 
@@ -103,7 +103,7 @@ Similar to how the component API should be based on its scenario or use case, th
 
 ### Going too far in semantic naming
 
-Taken to an extreme, this can cause issues if you define components so strictly they do not make sense for other areas of your application to use. For example we could define the chart above as a `TrafficChart`, but that would severly constrain the scenarios it can be used for. 
+Taken to an extreme, this can cause issues if you define components so strictly they do not make sense for other areas of your application to use. For example we could define the chart above as a `TrafficChart`, but that would severely constrain the scenarios it can be used for. 
 
 ### Good presentational components
 
@@ -111,9 +111,10 @@ Presentational components are not necessarily a bad thing, just use them purpose
 
 ### General tips for naming
 
-* Words like primary, secondary, tertiary are good because they describe the importance, which could be implemented in a number of ways: text size, color, weight, position. 
-* Use semantic abstractions like 'title' and 'subtitle' to make the API generic, but semantic.
-* Use abstract theme or variation attributes, such as: danger, warning, success.
+* Words like 'primary', 'secondary', 'tertiary' are good because they describe the importance, which could be implemented in a number of ways: text size, color, weight, position.
+* Typographic definitions like 'title' and 'subtitle', and 'prefix' and 'suffix' make the API generic, but meaningful. 
+* T-shirt sizing allows for a middle ground of presentational and semantic. The component can decide what 'large' means, but still give consumers the ability to choose a size. 
+* Try to keep attribute names consistent across components. If you use 'variation' in some components, and 'type' in others to mean the same thing it can get confusing.
 
 ----
 

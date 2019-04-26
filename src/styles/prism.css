@@ -1,7 +1,11 @@
 .prism-code {
   padding: var(--size-padding-base);
-  margin-bottom: var(--size-padding-base);
+  margin-bottom: var(--size-padding-xl);
   background-color: var(--color-background-secondary);
+}
+
+p + .prism-code {
+  margin-top: calc(-1 * var(--size-padding-large));
 }
 
 .light .prism-code {

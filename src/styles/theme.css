@@ -193,7 +193,7 @@ hr {
   border-width: 0.25rem;
   border-style: solid;
   width: 25%;
-  margin: var(--size-padding-large) 0;
+  margin: var(--size-padding-xl) 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -280,7 +280,7 @@ blockquote {
   font-weight: bold;
   font-size: var(--size-font-large);
   padding: var(--size-padding-base);
-  margin: var(--size-padding-large) 0;
+  margin: var(--size-padding-xl) 0;
   border: var(--size-border-large) solid var(--color-border-tertiary);
   text-align: center;
 }
@@ -300,7 +300,7 @@ dd {
 }
 
 ul {
-  margin-bottom: var(--size-padding-base);
+  margin-bottom: var(--size-padding-xl);
   margin-left: var(--size-padding-base);
 }
 

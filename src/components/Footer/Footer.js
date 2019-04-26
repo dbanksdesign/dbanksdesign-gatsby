@@ -23,10 +23,10 @@ export default () => (
       const {github, twitter, instagram, dribbble} = data.site.siteMetadata.social;
       return (
         <footer className={styles.footer}>
-          <p>© {new Date().getFullYear()},
+          <div>© {new Date().getFullYear()},
             Danny Banks.&nbsp;&nbsp;
             <Link to="/credits">Built with open-source</Link>
-          </p>
+          </div>
 
           <div>
             <a className={styles.socialLink}
