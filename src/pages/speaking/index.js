@@ -5,17 +5,23 @@ import SEO from '$components/SEO'
 import Talk from '$components/Talk'
 
 const talks = [{
-  event: 'The Mixin SF',
-  eventLink: 'https://themixinsf.com/',
-  date: {day:'11', month:'JUL', year:'2018'},
-  title: 'Cross-Platform Styles with Style Dictionary',
-  slideLink: ''
+  event: 'FrontConf 2019',
+  eventLink: 'https://frontconf.com/',
+  date: {day: '27', month: 'APR', year: '2019'},
+  title: 'Building Consistent Cross-Platform Interfaces',
+  slideLink: 'http://bit.ly/frontconf-2019-cross-platform'
 },{
-  event: 'Big Design 2018',
-  eventLink: 'https://bigdesignevents.com/',
-  date: {day:'24', month:'SEP', year:'2018'},
+  event: 'Codemotion Amsterdam 2019',
+  eventLink: 'https://events.codemotion.com/conferences/amsterdam/2019/',
+  date: {day:'03', month:'APR', year:'2019'},
+  title: 'Building Consistent Cross-Platform Interfaces',
+  slideLink: 'http://bit.ly/codemotion-2019-cross-platform'
+},{
+  event: 'Codemotion Rome 2019',
+  eventLink: 'https://events.codemotion.com/conferences/rome/2019/',
+  date: {day:'22', month:'MAR', year:'2019'},
   title: 'Building Consistent Cross Platform Interfaces',
-  slideLink: 'http://bit.ly/bigdstyled'
+  slideLink: 'http://bit.ly/codemotion-2019-cross-platform'
 },{
   event: 'All Things Open 2018',
   eventLink: 'https://allthingsopen.org/',
@@ -23,26 +29,20 @@ const talks = [{
   title: 'Building Consistent Cross Platform Interfaces',
   slideLink: 'http://bit.ly/ato2018-cross-platform'
 },{
-  event: 'Codemotion Rome 2019',
-  eventLink: 'https://allthingsopen.org/',
-  date: {day:'22', month:'MAR', year:'2019'},
+  event: 'Big Design 2018',
+  eventLink: 'https://bigdesignevents.com/',
+  date: {day:'24', month:'SEP', year:'2018'},
   title: 'Building Consistent Cross Platform Interfaces',
-  slideLink: 'http://bit.ly/codemotion-2019-cross-platform'
+  slideLink: 'http://bit.ly/bigdstyled'
 },{
-  event: 'Codemotion Amsterdam 2019',
-  eventLink: 'https://allthingsopen.org/',
-  date: {day:'03', month:'APR', year:'2019'},
-  title: 'Building Consistent Cross Platform Interfaces',
-  slideLink: 'http://bit.ly/codemotion-2019-cross-platform'
+  event: 'The Mixin SF',
+  eventLink: 'https://themixinsf.com/',
+  date: {day:'11', month:'JUL', year:'2018'},
+  title: 'Cross-Platform Styles with Style Dictionary',
+  slideLink: 'https://dbanksdesign.github.io/style-dictionary-presentation'
 }];
 
 const upcomingTalks = [{
-  event: 'FrontConf 2019',
-  eventLink: 'https://frontconf.com/',
-  date: {day: '27', month: 'APR', year: '2019'},
-  title: 'Building Consistent Cross Platform Interfaces',
-  slideLink: ''
-},{
   event: 'OSCON 2019',
   eventLink: 'https://conferences.oreilly.com/oscon/oscon-or',
   date: {day: '18', month: 'JUL', year: '2019'},

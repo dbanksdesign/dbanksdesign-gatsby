@@ -159,6 +159,9 @@ body {
   --color-font-code-5: var(--color-core-orange);
 }
 
+::-moz-selection { background-color: var(--color-background-highlight); }
+::selection { background-color: var(--color-background-highlight); }
+
 html {
   font-family: 'IBM Plex Sans', 'Open Sans', Arial, Helvetica, sans-serif;
 }
