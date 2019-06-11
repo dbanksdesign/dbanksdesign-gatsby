@@ -1,5 +1,4 @@
 .header {
-  /* background-color: var(--color-background-secondary); */
   top: 0;
   left: 0;
   width: 100%;
@@ -65,6 +64,7 @@
   border-left-width: var(--size-border-base);
   border-left-style: solid;
   border-left-color: transparent;
+  font-weight: 700;
 }
 
 .nav-item.active {

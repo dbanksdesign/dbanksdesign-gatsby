@@ -33,12 +33,27 @@ module.exports = {
         name: `blog`,
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: ["gatsby-remark-copy-linked-files"],
+      },
+    },
     `gatsby-transformer-javascript-frontmatter`,
     {
       resolve: `gatsby-mdx`,
       options: {
         // Apply gatsby-mdx to both .mdx and .md files
         extensions: ['.mdx', '.md'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 1035,
+              sizeByPixelDensity: true
+            }
+          }
+        ]
       }
     },
     `gatsby-transformer-sharp`,
@@ -46,7 +61,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-141683959-1`,
       },
     },
     {
@@ -136,11 +151,11 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `IBM Plex Sans`,
+            family: `Source Sans Pro`,
             subsets: [`latin`],
-            variants: [`200`, `400`, `400i`, `700`]
+            variants: [`200`,`400`,`400i`,`700`]
           }, {
-            family: 'IBM Plex Mono',
+            family: 'Source Code Pro',
             subsets: ['latin'],
             variants: ['400']
           }

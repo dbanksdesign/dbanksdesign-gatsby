@@ -1,9 +1,7 @@
 .talk {
   padding: var(--size-padding-base) 0;
-  /* background-color: var(--color-background-secondary); */
   border-top: 0.125rem solid var(--color-border-tertiary);
   border-bottom: 0.125rem solid var(--color-border-tertiary);
-  /* margin-bottom: var(--size-padding-large); */
   display: flex;
   flex-direction: row;
 }

@@ -25,6 +25,7 @@ html, body {
   border: 0;
   outline: 0;
   background: transparent;
+  line-height: 1.5;
 }
 
 * {
@@ -38,10 +39,19 @@ p {
 code,
 pre {
   font-size: inherit;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Source Code Pro', monospace;
 }
 
 p > code {
   padding: 0 var(--size-padding-tiny);
   background-color: var(--color-background-secondary);
+}
+
+sup {
+  vertical-align: super;
+  font-size: var(--size-font-small);
+}
+
+li {
+  margin-bottom: var(--size-padding-small);
 }

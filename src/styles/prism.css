@@ -84,9 +84,9 @@ p + .prism-code {
 }
 
 .token.inserted {
-  background-color: green;
+  background-color: var(--color-background-success);
 }
 
 .token.deleted {
-  background-color: red;
+  background-color: var(--color-background-error);
 }
