@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+    install:
+        commands:
+            - npm ci
+    build:
+        commands:
+            - npm run build && aws s3 sync --delete public "s3://dbanksesign-preview/$(echo $CODEBUILD_WEBHOOK_TRIGGER | tr / -)"
+            
+cache:
+    paths:
+        - node_modules/**/*
+        - public/**/*
+        - /usr/local/lib/node_modules/**/*
