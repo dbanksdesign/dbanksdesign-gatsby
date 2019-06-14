@@ -8,7 +8,7 @@ phases:
             - npm ci
     build:
         commands:
-            - npm run build && aws s3 sync --delete public "s3://dbanksesign-preview/$(echo $CODEBUILD_WEBHOOK_TRIGGER | tr / -)"
+            - npm run build && aws s3 sync --delete public "s3://dbanksdesign-preview/$(echo $CODEBUILD_WEBHOOK_TRIGGER | tr / -)"
             
 cache:
     paths:
