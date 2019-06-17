@@ -122,6 +122,7 @@ body.light {
 
   --color-background-primary: var(--color-core-white);
   --color-background-secondary: var(--color-core-gray-10);
+  --color-background-tertiary: var(--color-core-gray-20);
   --color-background-highlight: var(--color-core-yellow-light);
   --color-background-success: var(--color-core-green-light);
   --color-background-error: var(--color-core-red-light);
@@ -192,8 +193,28 @@ a:focus {
   color: var(--color-font-active);
 }
 
-* {
-  box-sizing: border-box;
+p {
+  margin-bottom: var(--size-padding-base);
+}
+
+code,
+pre {
+  font-size: inherit;
+  font-family: 'Source Code Pro', monospace;
+}
+
+p > code {
+  padding: 0 var(--size-padding-tiny);
+  background-color: var(--color-background-secondary);
+}
+
+sup {
+  vertical-align: super;
+  font-size: var(--size-font-small);
+}
+
+li {
+  margin-bottom: var(--size-padding-small);
 }
 
 hr {
@@ -207,7 +228,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--size-padding-base);
   font-weight: 700;
-  font-family: 'Source Sans Pro', 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-primary);
 }
 
 h1 {

@@ -1,0 +1,23 @@
+.designSystem {
+  overflow: hidden;
+}
+
+.designSystemInfo {
+  
+}
+
+.designSystemImage {
+  max-width: 50%;
+}
+
+@media screen and (min-width: 1000px) {
+  .designSystemInfo,
+  .designSystemImage {
+    width: 50%;
+    float: left;
+  }
+  
+  .designSystemInfo {
+    padding-left: var(--size-padding-base);
+  }
+}

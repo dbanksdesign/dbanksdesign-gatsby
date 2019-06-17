@@ -8,17 +8,18 @@ import './BlogPost.css'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx;
+    const { frontmatter } = post;
     const { previous, next } = this.props.pageContext;
-
+    
     return (
       <>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
+        <SEO title={frontmatter.title} description={post.excerpt} />
 
-        <h1>{post.frontmatter.title}</h1>
+        <h1>{frontmatter.title}</h1>
         <section className="post-metadata">
           <span className="post-date">{post.frontmatter.date}</span>
         </section>
-
+        
         <MDXRenderer>{post.code.body}</MDXRenderer>
 
         {/* <nav className="post-nav">
@@ -48,6 +49,10 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        toc {
+          anchor
+          label
+        }
       }
       code {
         body

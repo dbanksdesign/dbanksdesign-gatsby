@@ -1,0 +1,37 @@
+
+.toc {
+  width: 10rem;
+  position: relative;
+}
+
+.toc-inner {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 10rem;
+  width: 10rem;
+  overflow-y: auto;
+  border-right: 0.125rem solid var(--color-border-tertiary);
+}
+
+.toc h4 {
+  padding: 0 var(--size-padding-base);
+}
+
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc a {
+  display: block;
+  padding: var(--size-padding-small) var(--size-padding-base);
+  text-decoration: none;
+  font-size: var(--size-font-small);
+  color: inherit;
+}
+
+.is-current {
+  color: var(--color-font-active);
+}
