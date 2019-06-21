@@ -8,7 +8,7 @@ toc:
     label: 'Overview'
   - anchor: 'Features'
     label: 'Features'
-  - anchor: 'Bonus-Experimental-Features'
+  - anchor: 'Experimental-Features'
     label: 'Experimental Features'
   - anchor: 'Types-of-tokens'
     label: 'Token Types'
@@ -20,13 +20,13 @@ import DesignSystems from './DesignSystems'
 
 ## Introduction
 
-Before we get started, a few quick notes.
+In this article I will show you all the cool things people are doing to document design tokens. Hopefully, you will learn something new you can take back to your design system. Before we get started, a few quick notes.
 
-1. I am specifically **not** going to write about naming conventions, how to organize and build design tokens, how to distribute or use them, or anything not related to *documenting* them. Stuart Robson has a great Github repo that has articles and talks and tools if you want to know more about design tokens in general: [Awesome Design Tokens](https://github.com/sturobson/Awesome-Design-Tokens).
-2. Some of the examples shown below might not *technically* be design tokens because they are documenting styles in a platform-specific way, such as SCSS variables. The examples shown are still useful in the ways in which they display information about the styles as it relates to design tokens. 
-3. I will try to not say certain things are better than others, or what you should or shouldn't do building your design system. Each team and product has their own needs, and I can't tell you what will work for you. Instead I want to give you tools, information, and inspiration so hopefully you can improve your design system in the way that makes sense for you. 
+1. I am specifically **not** writing about naming conventions, how to organize and build design tokens, how to distribute or use them, or anything not related to *documenting* them. [Stuart Robson](https://twitter.com/StuRobson) has a great Github repo that has articles and talks and tools if you want to know more about design tokens in general: [Awesome Design Tokens](https://github.com/sturobson/Awesome-Design-Tokens).
+2. Some of the examples shown below might not *technically* be design tokens because they are documenting styles in a platform-specific way, such as SCSS variables. The examples shown are still useful in how they display information about the styles as it relates to design tokens. 
+3. I will try to not say certain things are better than others, or what you should or shouldn't be doing in your design system. Each team and product has their own needs, and I can't tell you what will work for you. Instead I want to give you tools, information, and inspiration so hopefully you can improve your design system in the way that makes sense for you. 
 
-This article is broken down into sections. First, we will look at information architecture and design token documentation pages. Then we will dive into features of design token documentation in general such as search and copy. Finally we will look at different types (color, size, motion, etc.) of design tokens and their unique features. In the appendix I have a list of all the design systems with design tokens that I have found, with links to source code if available. 
+This is a longer article so it is broken down into sections. First, we will look at where design tokens generally exist in the information architecture of design systems. Then we will dive into features of design token documentation in general such as search and copy. Finally we will look at different types (color, size, motion, etc.) of design tokens and their unique features. In the appendix I have a list of all the design systems with design token documentation that I have found, with links to source code if available.
 
 ---
 
@@ -34,7 +34,7 @@ This article is broken down into sections. First, we will look at information ar
 
 ### Information Architecture
 
-Let's start with where design tokens are generally documented in a design system. Some design system websites have a dedicated 'Design Tokens' page that includes all design tokens, in addition to information about design tokens in general. Others put them on 'Style' or 'Foundation' pages broken down by type such as 'Color' and 'Size'. Some do both. Doing both can be helpful because they are solving different problems. Having style pages like 'Color' lets you add more content and guidance around color usage. It can also be helpful to see a page with all the design tokens if you are searching for a specific token, or to learn about what design tokens are and how to use them.
+Let's start with where design tokens are generally documented in design systems. Some design system websites have a dedicated 'Design Tokens' page that includes all design tokens, in addition to information about design tokens in general. Others put them in 'Style' or 'Foundation' sections with pages for each type such as 'Color' and 'Size'. Some do both. Doing both can be helpful because they are solving different problems. Having style pages like 'Color' lets you add more content and guidance around color usage. It can also be helpful to see a page with all the design tokens if you are searching for a specific token, or to learn about what design tokens are and how to use them.
 
 A 'Style' page lets customers know *how* to apply color, typography, size, motion, etc. A design token page is generally more about the *what* design tokens are in general and how to use them in code. 
 
@@ -53,8 +53,7 @@ A lot of design system websites have some content explaining the concept of desi
 
 [Sprout Social Seeds](https://sproutsocial.com/seeds/resources/tokens/) separates the tokens by type and puts them in different packages, each versioned independently, and shows how to install them. What is cool about this token page is it has links to the built artifacts teams would be importing so they can see what the files actually look like. 
 
-[US Web Design System](https://designsystem.digital.gov/design-tokens/) has 'Design tokens' in the top-level navigation with an overview page, and sub-pages for each type of design token. 
-I especially like this quote:
+[US Web Design System](https://designsystem.digital.gov/design-tokens/) has 'Design tokens' in the top-level navigation with an overview page, and sub-pages for each type of design token. I especially like this quote on their page:
 
 > Design tokens are a limited set of discrete options, just like a scale of musical notes is drawn from the spectrum of all possible frequencies. Or like the presets on a car radio — not every option, just a specific selection.  
 > — <cite>[US Web Design System](https://designsystem.digital.gov/design-tokens/)</cite>
@@ -67,7 +66,7 @@ Now lets take a look at some of the features used when documenting design tokens
 
 ### Platforms
 
-Design tokens are used in multiple platforms and languages so you have to decide how you want to display the usage for each. A token on a specific platform might have both a different *name* as well as a different *value*. Some design system documentation sites show all names and/or all values by default. Others let you toggle between the supported languages either with a dropdown or tabs.
+Design tokens are used in multiple platforms and languages so you have to decide how you want to display the usage for each. A token on a specific platform might have both a different *name* and a different *value*. Some design system  sites show all names and/or all values by default. Others let you toggle between the supported languages either with a dropdown or tabs.
 
 #### All
 

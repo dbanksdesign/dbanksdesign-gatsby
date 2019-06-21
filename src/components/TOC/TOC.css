@@ -24,7 +24,7 @@
   padding: 0;
 }
 
-.toc a {
+.toc-link {
   display: block;
   padding: var(--size-padding-small) var(--size-padding-base);
   text-decoration: none;
@@ -32,6 +32,10 @@
   color: inherit;
 }
 
-.is-current {
+.toc-link:focus {
+  color: var(--color-font-link);
+}
+
+.toc-link.is-current {
   color: var(--color-font-active);
 }
