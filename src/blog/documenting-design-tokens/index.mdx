@@ -18,13 +18,16 @@ toc:
 
 import DesignSystems from './DesignSystems'
 
+![Design tokens are so hot right now](./images/so-hot.jpg "Photo credit: Jina")
+
 ## Introduction
 
 In this article I will show you all the cool things people are doing to document design tokens. Hopefully, you will learn something new you can take back to your design system. Before we get started, a few quick notes.
 
 1. I am specifically **not** writing about naming conventions, how to organize and build design tokens, how to distribute or use them, or anything not related to *documenting* them. [Stuart Robson](https://twitter.com/StuRobson) has a great Github repo that has articles and talks and tools if you want to know more about design tokens in general: [Awesome Design Tokens](https://github.com/sturobson/Awesome-Design-Tokens).
-2. Some of the examples shown below might not *technically* be design tokens because they are documenting styles in a platform-specific way, such as SCSS variables. The examples shown are still useful in how they display information about the styles as it relates to design tokens. 
+2. Some of the examples shown are CSS/SCSS variables and not cross-platform tokens. As [Sarah Federman](https://twitter.com/sarah_federman) succinctly put it, "I would classify having CSS vars as design tokens anyway as long as there's a design intent behind how they're named and used."
 3. I will try to not say certain things are better than others, or what you should or shouldn't be doing in your design system. Each team and product has their own needs, and I can't tell you what will work for you. Instead I want to give you tools, information, and inspiration so hopefully you can improve your design system in the way that makes sense for you. 
+4. There are **a lot** of images in this article. They are lazy loaded, but be warned if you are not on wifi before scrolling. 
 
 This is a longer article so it is broken down into sections. First, we will look at where design tokens generally exist in the information architecture of design systems. Then we will dive into features of design token documentation in general such as search and copy. Finally we will look at different types (color, size, motion, etc.) of design tokens and their unique features. In the appendix I have a list of all the design systems with design token documentation that I have found, with links to source code if available.
 
@@ -36,13 +39,7 @@ This is a longer article so it is broken down into sections. First, we will look
 
 Let's start with where design tokens are generally documented in design systems. Some design system websites have a dedicated 'Design Tokens' page that includes all design tokens, in addition to information about design tokens in general. Others put them in 'Style' or 'Foundation' sections with pages for each type such as 'Color' and 'Size'. Some do both. Doing both can be helpful because they are solving different problems. Having style pages like 'Color' lets you add more content and guidance around color usage. It can also be helpful to see a page with all the design tokens if you are searching for a specific token, or to learn about what design tokens are and how to use them.
 
-A 'Style' page lets customers know *how* to apply color, typography, size, motion, etc. A design token page is generally more about the *what* design tokens are in general and how to use them in code. 
-
-The next question is do you have 'Design Tokens' in the top-level navigation, 
-
-What I've seen is one of three things:
-1. 'Design Tokens' in the top-level navigation, with an overview/all tokens page and potentially pages for each type like color, sizing, etc.
-2. 'Style' or 'Foundation' in the top-level navigation, with pages for color, sizing, etc. that show design tokens on them. 
+Style/Foundation pages let customers know *how* to apply color, typography, size, motion, etc. A design token page is generally more about the *what* design tokens are  and how to use them in code. 
 
 
 ### Design Token Overviews
@@ -68,38 +65,39 @@ Now lets take a look at some of the features used when documenting design tokens
 
 Design tokens are used in multiple platforms and languages so you have to decide how you want to display the usage for each. A token on a specific platform might have both a different *name* and a different *value*. Some design system  sites show all names and/or all values by default. Others let you toggle between the supported languages either with a dropdown or tabs.
 
+*Note: I will use 'platform' and 'language' interchangeably*
+
 #### All
 
-[Sprout Social Seeds](https://sproutsocial.com/seeds/visual/color) shows the token name for each supported platform. 
+[Sprout Social Seeds](https://sproutsocial.com/seeds/visual/color) and [Meetup Swarm](https://meetup.github.io/swarm-design-system/design/color/) show the token name for all platforms. 
 
-![Screenshot of Sprout Social Seeds color token page showing all platform names](./images/platform-all.png)
+![Sprout Social Seeds color token page showing all platform names](./images/platform-all.png "Sprout Social Seeds color token page showing all platform names")
+
+![Meetup Swarm colors page showing all platform names](./images/platforms-swarm.png "Meetup Swarm colors page showing all platform names")
 
 [REI Cedar](https://rei.github.io/rei-cedar-tokens/) doesn't include the all the different names for every token, they do show how you can translate the name to each platform, which is cool. 
 
-![Screenshot of REI Cedar token page showing platform naming scheme](./images/platform-naming.png)
+![REI Cedar token page showing platform naming scheme](./images/platform-naming.png "REI Cedar token page showing platform naming scheme")
 
 #### Tabs
 
-[Thumbprint](https://thumbprint.design/tokens/scss/) has tabs for each language, SCSS and Javascript, and all the tokens broken down by type. Each tab also shows how to install and import the tokens for each language. I also like its simple clean style, it is easy to read and understand. [Backpack](https://backpack.github.io/tokens/spacings) also uses tabs for each language. If you notice, some of the tokens have slightly different names and values. [Uniform Huddle](http://uniform.hudl.com/guidelines/colors/content/code?web) also uses tabs to toggle between different platforms.
+[Thumbprint](https://thumbprint.design/tokens/scss/) has a tab for each language it supports, and each tab shows how to install and import the tokens. I really love its simple clean style, which makes it easy to understand. [Backpack](https://backpack.github.io/tokens/spacings) and [Uniform Huddle](http://uniform.hudl.com/guidelines/colors/content/code?web) also use tabs to toggle between different platforms.
 
 ![Screenshot of Thumbprint design token page showing platform dropdown](./images/platform-tabs-thumbprint.png)
 
 ![Uniform Huddle design tokens with tabs for each platform](./images/platform-tabs.png)
 
-#### Dropdown
+#### Dropdown 
 
-[Salesforce Lightning]() and  use a dropdown to select the platform for the token name.
+[Salesforce Lightning](https://lightningdesignsystem.com) and use a dropdown to select the platform for the token name.
 
-![Screenshot of Salesforce Lightning tokens page showing platform dropdown](./images/platform-dropdown.png)
+![Salesforce Lightning tokens page showing platform dropdown](./images/platform-dropdown.png "Salesforce Lightning tokens page showing platform dropdown")
 
+### Alias
 
-### The Name
+Design token values can be a reference to an *alias* to another value. If you have aliased tokens it can be helpful to show the reference in the value as well as the resolved value. [Salesforce Lightning](https://lightningdesignsystem.com/design-tokens) does this
 
-
-
-### The Value
-
-Design tokens have a value, which can be represented in text like "#ff9900". Design tokens describe visual attributes so they can also be displayed visually. You can display that color  as a rectangle like a swatch, text of that color, or something else like a chart with the color being used. 
+![Salesforce Lightning token with an alias](./images/alias.png)
 
 ### Description
 
@@ -107,9 +105,13 @@ Design tokens have a value, which can be represented in text like "#ff9900". Des
 
 [Bitmani HEx](https://design.bitnami.com/category/Design-Tokens) has very good descriptions for each of their tokens. Some even have code and links in them!
 
+![Bitmani HEx tokens with detailed descriptions](./images/description-hex.png "Bitmani HEx tokens with detailed descriptions")
+
 ### Additional Attributes
 
 Some design tokens have extra attributes or metadata that is shown as well. Salesforce Lightning shows 3 extra attributes: what version it was released in, if it is themeable, and if it is for internal or external use. 
+
+![Salesforce Lightning token showing additional attributes: themeable, version, and use](./images/alias.png)
 
 ### Search & Filter
 
@@ -117,13 +119,23 @@ Depending on your use case, search might be an invaluable feature or potentially
 
 [Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) allows you to search (filter) by name or value. 
 
+![Basalt Crux with name and value filters](./images/filter-basalt.png "Basalt Crux with name and value filters")
+
 Although I haven't seen this yet, you could make search more useful by adding search terms in the metadata of each token. This could be helpful if you have a lot of tokens and it might be hard to remember the exact token you are looking for.
+
+### Anchors
+
+If you have design token pages that are really long, it can be a good idea to provide anchor links so your users can send or bookmark the exact location of the documentation. A lot of design systems do this, for example [Mineral UI](https://mineral-ui.com/tokens), [Sprout Social Seeds](https://sproutsocial.com/seeds/visual/motion), [Thumbprint](https://thumbprint.design/tokens/scss/), and [Udacity Veritas](https://veritas.udacity.design/tokens/)
+
+![Mineral UI with heading anchors](./images/anchors-mineral.png "Mineral UI with heading anchors")
 
 ### Copy
 
-To be honest, a copy button is something I have overlooked when I documented tokens in the systems I've worked on, but I think it is incredibly useful. [Orbit Kiwi](https://orbit.kiwi/design-tokens/) has a token page that gives you buttons to copy the name and value of the design token. [Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) also lets you copy the name and value, although it is a bit hidden: you have to click on the name or value and it copies it to your clipboard!
+To be honest, a copy button is something I have overlooked when I documented tokens in the systems I've worked on, but I think it is incredibly useful. [Orbit Kiwi](https://orbit.kiwi/design-tokens/) and [Formstack](https://www.formstack.com/brand/design-system/tokens) have token pages that give you buttons to copy the name and value of the design token when you hover over the token. [Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) also lets you copy the name and value, although it is a bit hidden: you have to click on the name or value and it copies it to your clipboard!
 
-![Orbit Kiwi design token page showing copy buttons](./images/copy.png)
+![Orbit Kiwi design token page showing copy buttons](./images/copy.png "Orbit Kiwi design token page showing copy buttons")
+
+![Formstack has a copy button that shows up on hover](./images/copy-formstack.png "Formstack has a copy button that shows up on hover")
 
 ----
 
@@ -139,81 +151,104 @@ As your token library grows, one thing that would be interesting to see is a rev
 
 Your design system documentation site is using live components and production code right? Depending on how you integrate the design tokens with your web components and documentation site, you could allow for live editing of the tokens to see their effect. If you use CSS variables (custom properties) or CSS-in-JS solutions you could be able to achieve this functionality purely on the client-side. I think this would be a very useful feature to teach designers and developers how the token system works and to see cascading changes. 
 
-### Object Explorer
+### 🏔 Object Explorer
 
-If you define your design tokens in an object fashion, either by using an actual nested object or by inferring an object structure in the token name, you can have an interactive object explorer. 
+If you define your design tokens in an object fashion, either by using an actual nested object or by inferring an object structure in the token name, you can have an interactive object explorer. This can be helpful to visualize the structure and organization of all the design tokens used. 
+
+![Screenshot of an object explorer for design tokens](./images/object-explorer.png)
 
 ----
 
 ## Types of tokens
 
-Different types of tokens can have interesting displays and information specific to the type of token. In this section I will take you through some cool features that relate to specific types of design tokens. 
+Different types of tokens can have interesting displays and information specific to its type.
 
 ### 🎨 Colors
 
-Color pages are generally where I am initially attracted to. I feel like design systems generally tend to go all out and make really cool color pages. 
+Color pages are generally very visually pleasing. Design systems generally tend to go all out and make really cool color pages. The most common display for colors is to show color ramps that show all the shades of each type of color, like [Kalo design system](https://kalo.design/foundations/color/).
 
-![](./images/color-contrast.png)
+![Kalo color page](./images/color-palette.png "Kalo color page")
 
-### 📐 Sizes
+[Mineral UI](https://mineral-ui.com/color) has a very detailed color ramp that shows HSL values and accessibility ratings.
 
-To be honest, I wish there was a little bit more to see for size tokens. 
+![Mineral UI color ramp with HSL values and accessibility ratings](./images/color-ramp-mineral.png "Mineral UI color ramp with HSL values and accessibility ratings")
 
-![](./images/spacing.png)
+[Meetup Swarm](https://meetup.github.io/swarm-design-system/design/color/) displays color contrast information as well for all their text colors on background colors.
 
-![](./images/space-name-picker.png)
+![Meetup Swarm color token with color contrast information](./images/color-contrast.png "Meetup Swarm color token with color contrast information")
+
+Some color pages also break down colors by use: text, background, border, etc. and show examples. 
+
+![Udacity Veritas displaying examples of border colors](./images/border-color-udacity.png "Udacity Veritas displaying examples of border colors")
+
+### 📐 Size & Spacing
+
+Most of the time I see sizes being shown as a rectangle of the value, seen below. [US Web Design System](https://designsystem.digital.gov/design-tokens/spacing-units/) shows the multiple (1x, 2x, etc.) of the value along with the absolute value which makes it easy to see the rhythm. 
+
+![US Web Design System spacing tokens with multiplier](./images/spacing.png "US Web Design System spacing tokens with multiplier")
+
 
 ### 📝 Typography
 
-First, I'll talk about 'simple' typography tokens: ones that specify a single value like font size, font family, font color, line height, etc. Some design systems separate out each of those into their own type, like [Salesforce Lightning](https://www.lightningdesignsystem.com/design-tokens/). Others put them all under a typography page like [Infor](https://design.infor.com/guidelines/identity/typography) and 
+First, I'll talk about 'simple' typography tokens: ones that specify a single value like font size, font family, font color, line height, etc. Some design systems separate out each of those into their own section, like [Salesforce Lightning](https://www.lightningdesignsystem.com/design-tokens/). Others put them all under a typography page like [Infor](https://design.infor.com/guidelines/identity/typography). [Thumbprint](https://thumbprint.design/tokens/scss/#section-font) takes an interesting approach where they group typography tokens together, showing all the tokens (size, line height, weight, etc.) for a single style together, but also showing the raw values organized by type below.
 
-[Thumbprint](https://thumbprint.design/tokens/scss/#section-font) takes an interesting approach where they group typography tokens together, showing all the tokens (size, line height, weight, etc.) for a single style together, but also showing the raw values organized by type below.
+![Thumbprint typography token group](./images/typography-group-thumbprint.png "Thumbprint typography token group")
 
-Typography is interesting in that there are 'compound' tokens, ones which group multiple lower-level tokens together. For example you might have a 'heading1' token that has font-size, color, line-height, and letter-spacing values. I won't get too far into the different ways to do this, that deserves its own article. 
+[Udacity Veritas](https://veritas.udacity.design/tokens/) has a lot of typographic design tokens, even ones for line-height, max-width, and font-weight. I really like how they display line-height tokens:
 
-![Sprout Social typography picker](./images/typography-picker-sprout.png)
+![Udacity Veritas line-height tokens](./images/line-height-veritas.png "Udacity Veritas line-height tokens")
+
+Most design systems show some example text styled with the design token, like [US Web Design System](https://designsystem.digital.gov/design-tokens/typesetting/font-size/):
+
+![US Web Design System showing type size tokens](./images/type-size-us-web-design.png "US Web Design System showing type size tokens")
+
+Typography is interesting in that there are 'compound' tokens as well; ones which group multiple lower-level tokens together. For example you might have a 'heading1' token that has font-size, color, line-height, and letter-spacing values. I won't get too far into the different ways to do this, that deserves its own article. [Sprout Social Seeds](https://sproutsocial.com/seeds/visual/typography#typefaces) has a typography picker and an editable text area so you can customize the text:
+
+![Sprout Social Seeds typography picker](./images/typography-picker-sprout.png "Sprout Social Seeds typography picker")
 
 
 ### 🎬 Motion
 
-I think there is a lot of untapped potential in documenting motion tokens. There are some really cool things 
-
-Here are some examples that do some cool things documenting motion tokens:
-
 [Sprout Social Seeds](https://sproutsocial.com/seeds/visual/motion) has an amazing page about motion. It includes in depth principles and guidelines in addition to displaying the tokens. The motion token documentation though is where the fun happens. Each easing token has a chart, a full paragraph description, an example animation, and names for each language in addition to the raw value. It also includes a lot of external resources at the bottom of the page, which is really cool to see in a design system. Sprout Social Seeds is also pretty easy on the 👀.
 
+![Sprout Social Seeds motion token](./images/motion-seeds.gif "Sprout Social Seeds motion token")
 
 ### 💬 Icons
 
-Depending how you implement your icons, either with SVG, an icon font, or something else, you can show the actual icon in the documentation. If you use an icon font, don't judge that is currently what I'm doing, it can be useful to allow users to copy the icon so they can paste it in their design tool assuming they have the icon font installed. If you have a lot of icons, it might be a good idea to be able to search them as well.
+Depending how you implement your icons, either with SVG, an icon font, or something else, you can show the actual icon in the documentation. If you use an icon font, don't judge that is currently what I'm doing, it can be useful to allow users to copy the icon so they can paste it in their design tool assuming they have the icon font installed. If you have a lot of icons, it might be a good idea to be able to search them as well. [Kalo design system](https://kalo.design/foundations/icons/) has groups of icons also with the ability to search all icons.
 
-Descriptions I think can be very valuable for icon tokens specifically so you can let users know when to use the icon. 
+![Kalo design system's icon page with search](./images/icons-kalo.png "Kalo design system's icon page with search")
 
-### 🌫 Shadow
+![Infor design system icons with SVG and PNG download buttons](./images/icon-download-infor.png "Infor design system icons with SVG and PNG download buttons")
 
-![Screenshot showing shadow tokens](./images/shadow.png)
+
+### 🌫 Shadow and Elevation
+
+Unfortunately there are not a lot of examples of shadow and elevation tokens. But [Udacity Veritas](https://veritas.udacity.design/tokens/#box-shadow) and [Sprout Social Seeds](https://sproutsocial.com/seeds/visual/elevation) show shadow and elevation respectively:
+
+![Udactiy Veritas displaying shadow tokens](./images/shadow.png "Udactiy Veritas displaying shadow tokens")
+
+![Sprout Social Seeds elevation token display](./images/elevation-seeds.png "Sprout Social Seeds elevation token display")
 
 ### 📱 Media Query
 
-Media query tokens are a bit more rare than others, but there are some good examples. 
+Media query tokens are a bit more rare than others, but [Basalt Crux](https://design.basalt.io/design-tokens/sizing) has a good example. It shows their media query tokens in a graphic that shows common phone screen sizes and where the media queries are. This is a great visualization to understand which media queries target which class of device. 
 
-[Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) shows their media query tokens in a graphic that shows common phone screen sizes and where the media queries are. This is a great visualization to understand which media queries target which class of device. 
-
-![Screenshot showing media query token display in Basalt Crux](./images/media-queries.png)
+![Basalt Cruz media query token display](./images/media-queries.png "Basalt Cruz media query token display")
 
 ----
 
-I was going to include *how* to go about documenting design tokens with actual code examples, but it felt like too much for one article. So stay tuned for an article on how to document design tokens whether you are using Theo, Style Dictionary, or something else.
+I was going to include *how* to go about documenting design tokens with actual code examples, but it felt like too much for one article. So stay tuned for an article on how to document design tokens whether you are using [Theo](https://github.com/salesforce-ux/theo), [Style Dictionary](https://amzn.github.io/style-dictionary), or something else.
 
 Thank you to everyone who helped with this article, and to all the design systems featured in this article. You are all making the community better! ❤️
 
-If you have a design system that uses design tokens that is not featured in this article, let me know on Twitter: [@dbanksdesign](https://twitter.com/dbanksdesign)
+I apologize if I missed your design token documentation in this article. If you have a design system that uses design tokens that is not featured in this article, let me know on Twitter: [@dbanksdesign](https://twitter.com/dbanksdesign)
 
 ----
 
 ## Appendix
 
-List of design systems and open source code if available used in this article:
+List of design systems using design tokens I found for this article:
 
 <DesignSystems />
 

@@ -16,10 +16,10 @@ class Layout extends React.Component {
     return (
       <div className="app">
         <Header />
-        {toc && 
-          <TOC links={toc} />}
 
         <div className="content">
+          {toc && 
+            <TOC links={toc} />}
           <div className="content-inner">
           {children}
           <Footer />

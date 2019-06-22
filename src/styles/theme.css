@@ -329,6 +329,10 @@ dd {
   margin-bottom: var(--size-padding-base);
 }
 
+dd:last-child {
+  margin-bottom: 0;
+}
+
 ul {
   margin-bottom: var(--size-padding-xl);
   margin-left: var(--size-padding-base);
@@ -336,6 +340,12 @@ ul {
 
 li > ul {
   margin-bottom: 0;
+}
+
+figcaption {
+  color: var(--color-font-tertiary);
+  text-align: center;
+  font-size: var(--size-font-small);
 }
 
 @media screen and (min-width: 600px) {

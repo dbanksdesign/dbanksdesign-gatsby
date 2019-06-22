@@ -28,6 +28,15 @@ module.exports = [{
     source: `https://github.com/bloombergbna/fishtank-colors`,
   },
 },{
+  title: `Discover Comet`,
+  image: `discover-comet.png`,
+  ds: {
+    site: `https://comet.discoveryeducation.com`,
+  },
+  token: {
+    site: `https://comet.discoveryeducation.com/visual-language/tokens.html`,
+  },
+},{
   title: `Envato Foundation`,
   image: `envato-tokens.png`,
   ds: {
@@ -103,6 +112,17 @@ module.exports = [{
     source: `https://github.com/mineral-ui/mineral-ui/tree/master/packages/mineral-ui-tokens`,
   },
 },{
+  title: `Mozilla Protocol`,
+  image: `mozilla-protocol.png`,
+  ds: {
+    site: `https://protocol.mozilla.org`,
+    source: `https://github.com/mozilla/protocol`,
+  },
+  token: {
+    site: `https://protocol.mozilla.org/fundamentals/tokens.html`,
+    source: `https://github.com/mozilla/protocol-tokens`,
+  },
+},{
   title: `Owncloud`,
   image: `owncloud-tokens.png`,
   ds: {
@@ -114,8 +134,16 @@ module.exports = [{
     // source: `https://github.com/mineral-ui/mineral-ui/tree/master/packages/mineral-ui-tokens`,
   },
 },{
+  title: `Open Table Design Bar`,
+  image: `opentable-design-bar.png`,
+  ds: {},
+  token: {
+    site: `https://opentable.github.io/design-tokens/`,
+    source: `https://github.com/opentable/design-tokens`,
+  },
+},{
   title: `REI Cedar`,
-  // image: `kiwi-tokens.png`,
+  image: `rei-cedar.png`,
   ds: {
     site: `https://rei.github.io/rei-cedar-docs`,
     source: `https://github.com/rei/rei-cedar-docs`,
@@ -135,17 +163,16 @@ module.exports = [{
     site: `https://www.lightningdesignsystem.com/design-tokens`,
     // source: `https://github.com/rei/rei-cedar-tokens`,
   },
-},{
-  title: `Shopify Polaris`,
-  image: `shopify-tokens.png`,
-  ds: {
-    site: `https://polaris.shopify.com`,
-    // source: `https://github.com/salesforce-ux/design-system`,
-  },
-  token: {
-    site: `https://shopify.github.io/polaris-tokens`,
-    source: `https://github.com/Shopify/polaris-tokens`,
-  },
+// },{
+//   title: `Shopify Polaris`,
+//   image: `shopify-tokens.png`,
+//   ds: {
+//     site: `https://polaris.shopify.com`,
+//   },
+//   token: {
+//     site: `https://shopify.github.io/polaris-tokens`,
+//     source: `https://github.com/Shopify/polaris-tokens`,
+//   },
 },{
   title: `Skyscanner Backpack`,
   image: `backpack-tokens.png`,
@@ -172,6 +199,7 @@ module.exports = [{
   image: `thumbprint-tokens.png`,
   ds: {
     site: `https://thumbprint.design`,
+    source: `https://github.com/thumbtack/thumbprint`
   },
   token: {
     site: `https://thumbprint.design/tokens`,
