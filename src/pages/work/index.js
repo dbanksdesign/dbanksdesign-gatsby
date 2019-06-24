@@ -8,7 +8,7 @@ class WorkIndex extends React.Component {
     const projects = data.allFile.edges
 
     return (
-      <>
+      <div className="content-inner">
         <SEO
           title="dbanksdesign - Work"
           keywords={[`dbanksdesign`, `projects`, `design`, `design systems`]}
@@ -29,7 +29,7 @@ class WorkIndex extends React.Component {
             </div>
           )
         })} */}
-      </>
+      </div>
     )
   }
 }

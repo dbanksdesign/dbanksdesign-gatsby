@@ -9,7 +9,7 @@ class BlogIndex extends React.Component {
     const posts = data.allMdx.edges;
 
     return (
-      <>
+      <div className="content-inner">
         <SEO
           title="dbanksdesing - Blog"
           keywords={[`blog`, `design systems`, `components`, `front-end`]}
@@ -27,7 +27,7 @@ class BlogIndex extends React.Component {
           )
         })}
         <hr />
-      </>
+      </div>
     )
   }
 }

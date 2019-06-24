@@ -3,18 +3,25 @@ import { Link, graphql } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import SEO from '$components/SEO'
+import TOC from '$components/TOC'
 import './BlogPost.css'
 
 class BlogPostTemplate extends React.Component {
   render() {
+    let toc;
     const post = this.props.data.mdx;
     const { frontmatter } = post;
     const { previous, next } = this.props.pageContext;
+    if (frontmatter && frontmatter.toc) {
+      toc = frontmatter.toc;
+    }
     
     return (
       <>
+        {toc &&
+          <TOC links={toc} />}
         <SEO title={frontmatter.title} description={post.excerpt} />
-
+        <div className="blog-content">
         <h1>{frontmatter.title}</h1>
         <section className="post-metadata">
           <span className="post-date">{post.frontmatter.date}</span>
@@ -34,6 +41,7 @@ class BlogPostTemplate extends React.Component {
             </Link>
           )}
         </nav> */}
+        </div>
       </>
     )
   }

@@ -1,13 +1,18 @@
 .header {
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
   z-index: 100;
 }
 
 .header-inner {
-  background-color: var(--color-background-secondary);
+  border-bottom: 1px solid var(--color-border-secondary);
+  /* background-color: var(--color-background-secondary); */
+  /* background-color: #01011b; */
+  /* border-bottom: 1px solid var(--color-core-purple-100); */
 }
+
+/* .light .header-inner {
+  border-bottom: none;
+} */
 
 .logo {
   color: var(--color-font-tertiary);

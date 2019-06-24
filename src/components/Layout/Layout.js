@@ -12,19 +12,19 @@ class Layout extends React.Component {
     if (data && data.mdx && data.mdx.frontmatter && data.mdx.frontmatter.toc) {
       toc = data.mdx.frontmatter.toc;
     }
+    
+    if (this.props.location.hash) {
+      console.log(this.props.location.hash.replace('#',''));
+      // console.log(document.getElementById(this.props.location.hash.replace('#','')).offsetTop);
+    }
 
     return (
       <div className="app">
         <Header />
-
         <div className="content">
-          {toc && 
-            <TOC links={toc} />}
-          <div className="content-inner">
           {children}
-          <Footer />
-          </div>
         </div>
+        <Footer />
       </div>
     )
   }

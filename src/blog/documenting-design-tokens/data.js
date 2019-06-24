@@ -2,7 +2,7 @@ module.exports = [{
   title: "Basalt Crux",
   image: "basalt-tokens.png",
   ds: {
-    site: `https://design.basalt.io/`,
+    site: `https://design.basalt.io`,
     source: `https://github.com/basaltinc/crux`
   },
   token: {
@@ -13,7 +13,7 @@ module.exports = [{
   title: "Bitmani HEx",
   image: "bitmani-tokens.png",
   ds: {
-    site: `https://design.bitnami.com/`,
+    site: `https://design.bitnami.com`,
   },
   token: {
     site: `https://design.bitnami.com/category/Design-Tokens`,
@@ -71,7 +71,7 @@ module.exports = [{
   title: `Kalo`,
   image: `kalo-tokens.png`,
   ds: {
-    site: ``,
+    site: `https://kalo.design`,
     source: ``,
   },
   token: {

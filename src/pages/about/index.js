@@ -8,7 +8,7 @@ class About extends React.Component {
     const { data } = this.props;
 
     return (
-      <>
+      <div className="content-inner">
         <SEO
           title="dbanksdesign - About Danny Banks"
           keywords={[`Danny Banks`, `dbanksdesign`, `Daniel Banks`]} />
@@ -26,7 +26,7 @@ class About extends React.Component {
             <p>My partner and I love to travel when we can and eat all the carbs: 🍩, 🥐, 🍕.</p>
           </div>
         </div>
-      </>
+      </div>
     )
   }
 }

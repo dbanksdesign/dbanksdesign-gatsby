@@ -55,7 +55,7 @@ class Speaking extends React.Component {
     const { photo } = this.props.data;
     const { twitter } = this.props.data.site.siteMetadata.social;
     return (
-      <>
+      <div className="content-inner">
         <SEO
           title="Danny Banks : Speaking"
           keywords={[`Danny Banks`, `Speaking`, `design systems`, `front-end development`, `style dictionary`, `cross-platform`]} />
@@ -78,7 +78,7 @@ class Speaking extends React.Component {
 
         <h4 className="font-secondary">Past Events</h4>
         {talks.map(talk => <Talk {...talk} />)}
-      </>
+      </div>
     )
   }
 }

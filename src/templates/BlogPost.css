@@ -1,3 +1,10 @@
+.blog-content {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--size-padding-xl);
+}
+
 .post-metadata {
   text-align: center;
   padding-bottom: var(--size-padding-large);

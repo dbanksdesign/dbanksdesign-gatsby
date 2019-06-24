@@ -6,17 +6,18 @@
 
 .toc-inner {
   position: fixed;
-  top: 0;
+  top: 3rem;
   bottom: 0;
   left: 0;
   width: 10rem;
-  padding-top: 3rem;
+  padding-top: var(--size-padding-xl);
   overflow-y: auto;
-  border-right: 0.125rem solid var(--color-background-secondary);
+  /* border-right: 1px solid var(--color-core-purple-100); */
 }
 
 .toc h4 {
   padding: 0 var(--size-padding-base);
+  margin-bottom: 0;
 }
 
 .toc ul {
@@ -30,7 +31,7 @@
   padding: var(--size-padding-small) var(--size-padding-base);
   text-decoration: none;
   font-size: var(--size-font-small);
-  color: inherit;
+  color: var(--color-font-tertiary);
 }
 
 .toc-link:focus {
@@ -38,5 +39,6 @@
 }
 
 .toc-link.is-current {
-  color: var(--color-font-active);
+  color: var(--color-font-primary);
+  font-weight: bold;
 }
