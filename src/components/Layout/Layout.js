@@ -9,14 +9,10 @@ class Layout extends React.Component {
     let toc;
     const { children } = this.props;
     const { data } = this.props;
-    if (data && data.mdx && data.mdx.frontmatter && data.mdx.frontmatter.toc) {
-      toc = data.mdx.frontmatter.toc;
-    }
     
-    if (this.props.location.hash) {
-      console.log(this.props.location.hash.replace('#',''));
-      // console.log(document.getElementById(this.props.location.hash.replace('#','')).offsetTop);
-    }
+    // if (this.props.location.hash) {
+    //   console.log(this.props.location.hash.replace('#',''));
+    // }
 
     return (
       <div className="app">
