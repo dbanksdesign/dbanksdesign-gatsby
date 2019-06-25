@@ -1,8 +1,14 @@
 .blog-content {
   width: 100%;
-  max-width: 40rem;
-  margin: 0 auto;
   padding: var(--size-padding-xl);
+  flex: 1;
+}
+
+@media(min-width: 800px) {
+  .blog-content {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
 }
 
 .post-metadata {

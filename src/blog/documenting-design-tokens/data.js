@@ -83,7 +83,7 @@ module.exports = [{
   image: `kiwi-tokens.png`,
   ds: {
     site: `https://orbit.kiwi`,
-    source: ``,
+    source: `https://github.com/kiwicom/orbit-components`,
   },
   token: {
     site: `https://orbit.kiwi/design-tokens`,
@@ -216,7 +216,7 @@ module.exports = [{
     // source: `https://github.com/sproutsocial/seeds-packets`,
   },
 },{
-  title: `US Web Design`,
+  title: `US Web Design System`,
   image: `us-web-design-system-tokens.png`,
   ds: {
     site: `https://designsystem.digital.gov`,

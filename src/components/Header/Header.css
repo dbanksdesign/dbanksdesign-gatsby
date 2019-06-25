@@ -17,13 +17,17 @@
 .logo {
   color: var(--color-font-tertiary);
   padding: var(--size-padding-base);
+  box-sizing: content-box;
+  height: 1rem;
+  line-height: 1;
+  display: inline-block;
 }
 
 .nav-toggle-button {
   position: relative;
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   padding: var(--size-padding-base);
   box-sizing: content-box;
 }
@@ -32,24 +36,24 @@
   position: absolute;
   top: var(--size-padding-base);
   left: var(--size-padding-base);
-  width: 1.5rem;
-  height: 0.25rem;
+  width: 1rem;
+  height: 0.125rem;
   background-color: var(--color-font-tertiary);
   transform-origin: 0;
   transition: all var(--time-duration-base) ease;
 }
 
-.nav-toggle-button-bar:nth-child(2) { top: 50%; margin-top: -0.125rem; }
+.nav-toggle-button-bar:nth-child(2) { top: 50%; margin-top: -0.0625rem; }
 .nav-toggle-button-bar:nth-child(3) { top: auto; bottom: var(--size-padding-base); }
 
 .open .nav-toggle-button-bar:nth-child(1) {
   transform: rotate(45deg);
-  width: 1.75rem;
+  width: 1.25rem;
 }
 .open .nav-toggle-button-bar:nth-child(2) { opacity: 0; }
 .open .nav-toggle-button-bar:nth-child(3) {
   transform: rotate(-45deg);
-  width: 1.75rem;
+  width: 1.25rem;
 }
 
 .nav-items {
@@ -84,6 +88,9 @@
   padding: var(--size-padding-small) var(--size-padding-base);
   margin: 0 var(--size-padding-base);
   border-radius: var(--size-font-base);
+  line-height: 1;
+  height: 1rem;
+  box-sizing: content-box;
 }
 
 @media(min-width: 800px) {
