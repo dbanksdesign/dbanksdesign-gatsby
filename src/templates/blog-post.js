@@ -4,9 +4,19 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import SEO from '$components/SEO'
 import TOC from '$components/TOC'
+import smoothScroll from '$components/TOC/smoothScroll'
 import './BlogPost.css'
 
 class BlogPostTemplate extends React.Component {
+  componentDidMount() {
+    const { hash } = this.props.location;
+    if (hash && hash.length > 0) {
+      setTimeout(() => {
+        smoothScroll.scrollTo(hash.replace('#',''))
+      }, 100);
+    }
+  }
+  
   render() {
     let toc;
     const post = this.props.data.mdx;

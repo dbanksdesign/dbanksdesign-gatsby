@@ -161,18 +161,14 @@ module.exports = [{
   },
   token: {
     site: `https://www.lightningdesignsystem.com/design-tokens`,
-    // source: `https://github.com/rei/rei-cedar-tokens`,
   },
-// },{
-//   title: `Shopify Polaris`,
-//   image: `shopify-tokens.png`,
-//   ds: {
-//     site: `https://polaris.shopify.com`,
-//   },
-//   token: {
-//     site: `https://shopify.github.io/polaris-tokens`,
-//     source: `https://github.com/Shopify/polaris-tokens`,
-//   },
+},{
+  title: `Shopify Polaris Icons`,
+  image: `shopify-polaris-icons.png`,
+  ds: {},
+  token: {
+    site: `https://polaris-icons.shopify.com`,
+  },
 },{
   title: `Skyscanner Backpack`,
   image: `backpack-tokens.png`,
