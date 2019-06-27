@@ -5,8 +5,6 @@ phases:
         runtime-versions:
           nodejs: 10
         commands:
-            - curl -s -o mime.types "https://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/mime.types?view=co"
-            - sudo mv mime.types /etc/
             - npm ci
     build:
         commands:
