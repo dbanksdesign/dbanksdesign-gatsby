@@ -12,7 +12,11 @@ class Scrollsy extends React.Component {
   
   componentDidMount() {
     this.offsets = this.props.items.map((link) => {
-      return document.getElementById(link.anchor).offsetTop;
+      if (!document.getElementById(link.anchor)) {
+        console.log(link);
+      } else {
+        return document.getElementById(link.anchor).offsetTop;
+      }
     });
     
     window.addEventListener('scroll', this.scroll);
@@ -49,7 +53,11 @@ class Scrollsy extends React.Component {
             <a key={item.label}
               className={className}
               href={`#${item.anchor}`}
-              onClick={() => smoothScroll.scrollTo(item.anchor)}>
+              onClick={(e) => {
+                smoothScroll.scrollTo(item.anchor);
+                e.preventDefault();
+                document.location.hash = `#${item.anchor}`;
+              }}>
                 {item.label}
             </a>
           )

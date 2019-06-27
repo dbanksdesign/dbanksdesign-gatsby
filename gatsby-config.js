@@ -33,12 +33,12 @@ module.exports = {
         name: `blog`,
       },
     },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: ["gatsby-remark-copy-linked-files"],
-      },
-    },
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: ["gatsby-remark-copy-linked-files"],
+    //   },
+    // },
     `gatsby-transformer-javascript-frontmatter`,
     {
       resolve: `gatsby-mdx`,
@@ -57,11 +57,13 @@ module.exports = {
               withWebp: true,
             }
           },{
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              maintainCase: true,
-              removeAccents: true,
-            },
+          //   resolve: `gatsby-remark-autolink-headers`,
+          //   options: {
+          //     maintainCase: true,
+          //     removeAccents: true,
+          //   },
+          // },{
+            resolve: `gatsby-remark-smartypants`
           }
         ]
       }
