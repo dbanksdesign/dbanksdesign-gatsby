@@ -17,6 +17,12 @@ class BlogPostTemplate extends React.Component {
     }
   }
   
+  // A blog post layout should never be re-rendered...
+  // I think...
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
+  }
+  
   render() {
     let toc;
     const post = this.props.data.mdx;

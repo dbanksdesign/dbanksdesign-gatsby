@@ -16,6 +16,21 @@ const components = {
       return <pre {...preProps} />
     }
   },
+  // remark-autolink-headers is crapping out. doing this myself
+  h2: props => {
+    if (typeof props.children === 'string') {
+      return <h2 id={props.children.replace(/\s/g,'-')} {...props} />
+    } else {
+      const id = props.children.map((node) => {
+        if (typeof node === 'string') {
+          return node;
+        } else {
+          return node.props.children
+        }
+      }).join('-').replace(/\s/g,'-')
+      return <h2 id={id} {...props} />
+    }
+  }
 }
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>

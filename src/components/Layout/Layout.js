@@ -1,14 +1,13 @@
 import React from 'react'
 import Header from '$components/Header'
 import Footer from '$components/Footer'
-import TOC from '$components/TOC'
 import './Layout.css'
 
 class Layout extends React.Component {
   render() {
-    let toc;
     const { children } = this.props;
     const { data } = this.props;
+    console.log("layout rendered");
     
     // if (this.props.location.hash) {
     //   console.log(this.props.location.hash.replace('#',''));
