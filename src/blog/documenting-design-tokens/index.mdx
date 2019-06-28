@@ -1,6 +1,6 @@
 ---
 title: 'Documenting Design Tokens'
-date: '2019-05-31'
+date: '2019-06-28'
 toc:
   - anchor: 'Introduction'
     label: 'Introduction'
@@ -18,7 +18,7 @@ toc:
 
 import DesignSystems from './DesignSystems'
 
-![Design tokens are so hot right now](./images/so-hot.jpg "Photo credit: Jina")
+![Design tokens are so hot right now](./images/so-hot.jpg "Photo credit: <a href='https://twitter.com/jina'>Jina</a>")
 
 ## Introduction
 
@@ -77,23 +77,23 @@ Design tokens are used in multiple platforms and languages so you have to decide
 
 ![REI Cedar token page showing platform naming scheme](./images/platform-naming.png "REI Cedar token page showing platform naming scheme")
 
-[Thumbprint](https://thumbprint.design/tokens/scss/) has a tab for each language it supports, and each tab shows how to install and import the tokens. I really love its clean style, which makes it easy to understand. [Backpack](https://backpack.github.io/tokens/spacings) and [Uniform Huddle](http://uniform.hudl.com/guidelines/colors/content/code?web) also use tabs to toggle between different platforms.
+[Thumbprint](https://thumbprint.design/tokens/scss/) has a tab for each language it supports, and each tab shows how to install and import the tokens. I really love its clean style, which makes it easy to understand. [Backpack](https://backpack.github.io/tokens/spacings) and [Uniform Huddle](http://uniform.hudl.com/guidelines/colors/content/code?web) also use tabs to toggle between different platforms. [Salesforce Lightning](https://lightningdesignsystem.com) uses a dropdown to select the platform for the token name.
 
 ![Thumbprint design token page showing platform dropdown](./images/platform-tabs-thumbprint.png "Thumbprint design token page showing platform dropdown")
 
 ![Uniform Huddle design tokens with tabs for each platform](./images/platform-tabs.png "Uniform Huddle design tokens with tabs for each platform")
 
-[Salesforce Lightning](https://lightningdesignsystem.com) and use a dropdown to select the platform for the token name.
-
 ![Salesforce Lightning tokens page showing platform dropdown](./images/platform-dropdown.png "Salesforce Lightning tokens page showing platform dropdown")
 
 The last platform switcher I want to show is Badoo's design system. They have a platform switcher for their whole design system, and they use icons which look nice. They also have a brand switcher as well, which affects the token values.
 
-![Badoo design system showing platform and brand switching](./images/badoo.gif)
+<video loop="true" muted="true" autoplay="true" playsinline="true">
+  <source src="images/badoo.mp4" type="video/mp4" />
+</video>
 
 ### Alias
 
-Design token values can be a reference to an *alias* to another value. If you have aliased tokens it can be helpful to show the reference in the value as well as the resolved value. [Salesforce Lightning](https://lightningdesignsystem.com/design-tokens) and Badoo do this.
+Design token values can be a reference to an *alias* of another value. If you have aliased tokens it can be helpful to show the reference in the value as well as the resolved value. [Salesforce Lightning](https://lightningdesignsystem.com/design-tokens) and Badoo do this.
 
 ![Salesforce Lightning token with an alias](./images/alias.png "Salesforce Lightning token with an alias")
 
@@ -101,9 +101,9 @@ Design token values can be a reference to an *alias* to another value. If you ha
 
 ### Description
 
-[Bitmani HEx](https://design.bitnami.com/category/Design-Tokens) has very good descriptions for each of their tokens. Some even have code and links in them! [Salesforce Lightning](https://www.lightningdesignsystem.com/design-tokens/) also has descriptions for each of the tokens which provides information about its use and why it exists. Having descriptions like these can help users understand how to properly use each token.
+[Bitnami HEx](https://design.bitnami.com/category/Design-Tokens) has very good descriptions for each of their tokens. Some even have code and links in them! [Salesforce Lightning](https://www.lightningdesignsystem.com/design-tokens/) also has descriptions for each of the tokens which provides information about its use and why it exists. Having descriptions like these can help users understand how to properly use each token.
 
-![Bitmani HEx tokens with detailed descriptions](./images/description-hex.png "Bitmani HEx tokens with detailed descriptions")
+![Bitnami HEx tokens with detailed descriptions](./images/description-hex.png "Bitnami HEx tokens with detailed descriptions")
 
 ### Additional Attributes
 
@@ -113,7 +113,7 @@ Some design tokens have extra attributes or metadata that is shown as well. Sale
 
 ### Search & Filter
 
-Depending on your use case, search might be a valuable feature or potentially something that is rarely used. Searching or filtering tokens can be useful for [Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) allows you to search (filter) by name or value. 
+Depending on your use case, search might be a valuable feature for your design system. [Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) allows you to search (filter) by name or value. 
 
 ![Basalt Crux with name and value filters](./images/filter-basalt.png "Basalt Crux with name and value filters")
 
@@ -127,7 +127,7 @@ If you have design token pages that are really long, it can be a good idea to pr
 
 ### Copy
 
-To be honest, a copy button is something I have overlooked when I documented tokens in the systems I've worked on, but I think it is incredibly useful. [Orbit Kiwi](https://orbit.kiwi/design-tokens/) and [Formstack](https://www.formstack.com/brand/design-system/tokens) have token pages that give you buttons to copy the name and value of the design token when you hover over the token. [Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) also lets you copy the name and value, although it is a bit hidden: you have to click on the name or value and it copies it to your clipboard!
+To be honest, a copy button is something I overlooked when I documented tokens in the systems I've worked on, but I think it is incredibly useful. [Orbit Kiwi](https://orbit.kiwi/design-tokens/) and [Formstack](https://www.formstack.com/brand/design-system/tokens) have token pages that give you buttons to copy the name and value of the design token when you hover over the token. [Basalt Crux](https://design.basalt.io/design-tokens/all-tokens) also lets you copy the name and value, although it is a bit hidden: you have to click on the name or value and it copies it to your clipboard.
 
 ![Orbit Kiwi design token page showing copy buttons](./images/copy.png "Orbit Kiwi design token page showing copy buttons")
 
@@ -147,7 +147,7 @@ This is also something not specific to design tokens, but I think is important e
 
 ## Experimental Features
 
-These are things I haven't seen yet in public design systems, but in my work at Amazon as well as thinking about design tokens a lot and talking to a lot of people about them, I have some ideas...
+These are things I haven't seen yet in public design systems...
 
 ### 🔍 Reverse Lookup
 
@@ -215,7 +215,9 @@ Typography is interesting in that there are 'compound' tokens as well; ones whic
 
 I think is a lot of untapped potential in the documentation of motion tokens. When I write the next version of this article, I really hope there will be some more examples of motion tokens. Luckily, I did find one really great example. [Sprout Social Seeds](https://sproutsocial.com/seeds/visual/motion) has an amazing page about motion that includes in-depth principles and guidelines in addition to displaying the tokens. The motion tokens themselves are where the fun happens. Each easing token has a chart, a full paragraph description, an example animation, and names for each language in addition to the raw value. It also includes a lot of external resources at the bottom of the page, which is really cool to see in a design system.
 
-![Sprout Social Seeds motion token](./images/motion-seeds.gif "Sprout Social Seeds motion token")
+<video loop="true" muted="true" autoplay="true" playsinline="true">
+  <source src="images/motion.mp4" type="video/mp4" />
+</video>
 
 ### 💬 Icons
 

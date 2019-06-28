@@ -5,7 +5,7 @@ class Credits extends React.Component {
   render() {
 
     return (
-      <div className="content-innner">
+      <div className="content-inner">
         <SEO
           title="dbanksdesign : Source" />
         <h1>Source</h1>

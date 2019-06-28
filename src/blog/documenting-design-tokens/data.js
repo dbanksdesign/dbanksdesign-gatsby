@@ -1,6 +1,6 @@
 module.exports = [{
-  title: "Basalt Crux",
-  image: "basalt-tokens.png",
+  title: `Basalt Crux`,
+  image: `basalt-tokens.png`,
   ds: {
     site: `https://design.basalt.io`,
     source: `https://github.com/basaltinc/crux`
@@ -10,8 +10,8 @@ module.exports = [{
     source: ``
   },
 },{
-  title: "Bitmani HEx",
-  image: "bitmani-tokens.png",
+  title: `Bitnami HEx`,
+  image: `bitnami-tokens.png`,
   ds: {
     site: `https://design.bitnami.com`,
   },
@@ -131,7 +131,6 @@ module.exports = [{
   },
   token: {
     site: `https://owncloud.github.io/owncloud-design-system/#/Design%20Tokens`,
-    // source: `https://github.com/mineral-ui/mineral-ui/tree/master/packages/mineral-ui-tokens`,
   },
 },{
   title: `Open Table Design Bar`,
@@ -205,21 +204,18 @@ module.exports = [{
   image: `udacity-tokens.png`,
   ds: {
     site: `https://veritas.udacity.design`,
-    // source: `https://github.com/Skyscanner/backpack-docs`,
   },
   token: {
     site: `https://veritas.udacity.design/tokens`,
-    // source: `https://github.com/sproutsocial/seeds-packets`,
   },
 },{
   title: `US Web Design System`,
   image: `us-web-design-system-tokens.png`,
   ds: {
     site: `https://designsystem.digital.gov`,
-    // source: `https://github.com/Skyscanner/backpack-docs`,
+    source: `https://github.com/uswds/uswds`,
   },
   token: {
     site: `https://designsystem.digital.gov/design-tokens`,
-    // source: `https://github.com/sproutsocial/seeds-packets`,
   },
 }]

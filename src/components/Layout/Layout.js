@@ -6,12 +6,6 @@ import './Layout.css'
 class Layout extends React.Component {
   render() {
     const { children } = this.props;
-    const { data } = this.props;
-    console.log("layout rendered");
-    
-    // if (this.props.location.hash) {
-    //   console.log(this.props.location.hash.replace('#',''));
-    // }
 
     return (
       <div className="app">

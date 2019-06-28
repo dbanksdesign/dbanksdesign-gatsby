@@ -262,7 +262,8 @@ mark {
 }
 
 svg,
-img {
+img,
+video {
   max-width: 100%;
   max-height: 100%;
   display: inline-block;
@@ -364,6 +365,24 @@ dd:last-child {
 ul, ol {
   margin-bottom: var(--size-padding-large);
   margin-left: var(--size-padding-base);
+}
+
+ol {
+  list-style: none;
+  counter-reset: my-awesome-counter;
+}
+ol li {
+  counter-increment: my-awesome-counter;
+  position: relative;
+}
+ol li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: var(--color-font-tertiary);
+  position: absolute;
+  top: 0;
+  left: -2.25rem;
+  text-align: right;
+  width: 2rem;
 }
 
 li > ul {
