@@ -1,8 +1,10 @@
 .footer {
+  margin-top: var(--size-padding-xl);
   padding-top: var(--size-padding-xl);
-  background-color: var(--color-background-primary);
+  border-top: 1px solid var(--color-border-secondary);
   color: var(--color-font-tertiary);
   text-align: center;
+  position: relative;
 }
 
 .socialLink {

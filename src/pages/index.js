@@ -28,7 +28,7 @@ class Home extends React.Component {
     const projects = data.projects.edges;
 
     return (
-      <>
+      <div className="content-inner">
         <SEO
           title="dbanksdesign - The home of Danny Banks"
           keywords={[`dbanksdesign`, `design system`, `style dictionary`, `design technologist`, `design tokens`]}
@@ -67,7 +67,7 @@ class Home extends React.Component {
             )
           })}
         </CardGrid>
-      </>
+      </div>
     )
   }
 }

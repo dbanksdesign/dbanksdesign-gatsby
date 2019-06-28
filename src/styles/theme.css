@@ -2,6 +2,7 @@
   --color-core-white: #FFFFFF;
 
   /* Grays */
+  --color-core-gray-160: #01011b;
   --color-core-gray-140: #191926;
   --color-core-gray-140: #000626;
   --color-core-gray-120: #252535;
@@ -29,6 +30,8 @@
   /* --color-core-teal-40: #40C7C2; */
   --color-core-teal-40: #9CF0CC;
   --color-core-teal-20: #a1e5e5;
+  
+  --color-core-teal-dark: #017E78;
 
   /* Greens */
   --color-core-green-100: #64BA63;
@@ -78,7 +81,7 @@
   --color-core-purple-40: #b6a3bf;
   --color-core-purple-20: #ceb8d9;
 
-  --color-core-purple-dark: #8615BF;
+  --color-core-purple-dark: #6A5096;
   --color-core-purple: #DD99FF;
   --color-core-purlple-light: #F2D9FF;
 
@@ -112,6 +115,7 @@ body.light {
   --color-font-primary : rgba(0, 6, 38, 0.9);
   --color-font-secondary : rgba(0, 6, 38, 0.8);
   --color-font-tertiary : rgba(0, 6, 38, 0.6);
+  --color-font-quaternary : rgba(0, 6, 38, 0.4);
   --color-font-inverse: rgba(255, 255, 255, 0.9);
 
   --color-font-code-1: var(--color-core-blue-dark);
@@ -122,12 +126,13 @@ body.light {
 
   --color-background-primary: var(--color-core-white);
   --color-background-secondary: var(--color-core-gray-10);
+  --color-background-tertiary: var(--color-core-gray-20);
   --color-background-highlight: var(--color-core-yellow-light);
   --color-background-success: var(--color-core-green-light);
   --color-background-error: var(--color-core-red-light);
 
   --color-brand-primary : var(--color-core-purple-dark);
-  --color-brand-secondary : var(--color-core-green-dark);
+  --color-brand-secondary : var(--color-core-teal-dark);
 
   --color-border-primary: rgba(0, 6, 38, 0.4);
   --color-border-secondary: rgba(0, 6, 38, 0.2);
@@ -138,6 +143,7 @@ body {
   --color-font-primary: rgba(255, 255, 255, 0.9);
   --color-font-secondary: rgba(255, 255, 255, 0.8);
   --color-font-tertiary: rgba(255, 255, 255, 0.6);
+  --color-font-quaternary: rgba(255, 255, 255, 0.4);
   --color-font-inverse: rgba(0, 6, 38, 0.9);
 
   --color-background-primary: var(--color-core-gray-140);
@@ -192,8 +198,28 @@ a:focus {
   color: var(--color-font-active);
 }
 
-* {
-  box-sizing: border-box;
+p {
+  margin-bottom: var(--size-padding-large);
+}
+
+code,
+pre {
+  font-size: inherit;
+  font-family: 'Source Code Pro', monospace;
+}
+
+p > code {
+  padding: 0 var(--size-padding-tiny);
+  background-color: var(--color-background-secondary);
+}
+
+sup {
+  vertical-align: super;
+  font-size: var(--size-font-small);
+}
+
+li {
+  margin-bottom: var(--size-padding-small);
 }
 
 hr {
@@ -207,7 +233,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--size-padding-base);
   font-weight: 700;
-  font-family: 'Source Sans Pro', 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-primary);
 }
 
 h1 {
@@ -235,10 +261,12 @@ mark {
   margin: -0.25rem;
 }
 
-svg {
+svg,
+img,
+video {
   max-width: 100%;
   max-height: 100%;
-  display: block;
+  display: inline-block;
 }
 
 .font-secondary { color: var(--color-font-secondary); }
@@ -290,9 +318,31 @@ blockquote {
   font-weight: 200;
   font-size: var(--size-font-large);
   padding: var(--size-padding-base);
-  margin: var(--size-padding-xl) 0;
-  border: var(--size-border-large) solid var(--color-border-tertiary);
+  margin: var(--size-padding-xl) -2rem;
+  /* border-left: var(--size-border-large) solid var(--color-border-tertiary); */
   text-align: center;
+  position: relative;
+}
+
+blockquote:before,
+blockquote:after {
+  position: absolute;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--color-font-quaternary);
+
+}
+
+blockquote:before {
+  content: '“';
+  top: 0;
+  left: -2rem;
+}
+
+blockquote:after {
+  content: '”';
+  bottom: 0;
+  right: -2rem;
 }
 
 blockquote > p {
@@ -308,13 +358,41 @@ dd {
   margin-bottom: var(--size-padding-base);
 }
 
-ul {
-  margin-bottom: var(--size-padding-xl);
+dd:last-child {
+  margin-bottom: 0;
+}
+
+ul, ol {
+  margin-bottom: var(--size-padding-large);
   margin-left: var(--size-padding-base);
+}
+
+ol {
+  list-style: none;
+  counter-reset: my-awesome-counter;
+}
+ol li {
+  counter-increment: my-awesome-counter;
+  position: relative;
+}
+ol li::before {
+  content: counter(my-awesome-counter) ". ";
+  color: var(--color-font-tertiary);
+  position: absolute;
+  top: 0;
+  left: -2.25rem;
+  text-align: right;
+  width: 2rem;
 }
 
 li > ul {
   margin-bottom: 0;
+}
+
+figcaption {
+  color: var(--color-font-tertiary);
+  text-align: center;
+  font-size: var(--size-font-small);
 }
 
 @media screen and (min-width: 600px) {

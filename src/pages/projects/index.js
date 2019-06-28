@@ -8,7 +8,7 @@ class ProjectIndex extends React.Component {
     const projects = data.allFile.edges;
 
     return (
-      <>
+      <div className="content-inner">
         <SEO
           title="dbanksdesign - Projects by Danny Banks"
           keywords={[`projects`, `open source`, `javascript`, `react`, `design systems`]}
@@ -30,7 +30,7 @@ class ProjectIndex extends React.Component {
             </div>
           )
         })} */}
-      </>
+      </div>
     )
   }
 }

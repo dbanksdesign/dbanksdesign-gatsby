@@ -5,7 +5,7 @@ class Credits extends React.Component {
   render() {
 
     return (
-      <>
+      <div className="content-inner">
         <SEO
           title="dbanksdesign : Source" />
         <h1>Source</h1>
@@ -19,7 +19,7 @@ class Credits extends React.Component {
           <dt><a href="https://github.com/react-icons/react-icons">React-Icons</a></dt>
           <dd>Easy-to-use icons for React. Comes with FontAwesome, Material, and other icon sets.</dd>
         </dl>
-      </>
+      </div>
     )
   }
 }
