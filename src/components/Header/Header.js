@@ -6,19 +6,19 @@ import './Header.css'
 
 // TODO: do this with graphQL or something?
 const navItems = [{
-  url: '/blog',
+  url: '/blog/',
   label: 'Blog'
 },{
-  url: '/about',
+  url: '/about/',
   label: 'About'
 },{
-  url: '/projects',
+  url: '/projects/',
   label: 'Projects'
 },{
-  url: '/work',
+  url: '/work/',
   label: 'Work'
 },{
-  url: '/speaking',
+  url: '/speaking/',
   label: 'Speaking'
 }];
 
