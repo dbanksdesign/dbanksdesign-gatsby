@@ -3,7 +3,7 @@ module.exports = {
     title: `dbanksdesign`,
     author: `Danny Banks`,
     description: `Personal portfolio and blog for Danny Banks.`,
-    siteUrl: `https://dbanksdesign.com/`,
+    siteUrl: `https://dbanks.design/`,
     social: {
       twitter: `dbanksdesign`,
       github: 'dbanksdesign',
@@ -102,6 +102,11 @@ module.exports = {
             {
               allMdx(
                 limit: 1000,
+                filter: {
+                  frontmatter: {
+                    draft: {ne: true}
+                  }
+                },
                 sort: { order: DESC, fields: [frontmatter___date] },
               ) {
                 edges {
