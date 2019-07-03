@@ -74,6 +74,8 @@ module.exports = {
                 title
                 description
                 siteUrl
+                siteUrl
+                site_url: siteUrl
               }
             }
           }
