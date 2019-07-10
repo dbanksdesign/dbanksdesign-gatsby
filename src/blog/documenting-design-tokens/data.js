@@ -209,6 +209,13 @@ module.exports = [{
     site: `https://veritas.udacity.design/tokens`,
   },
 },{
+  title: `Hudl Uniform`,
+  image: `hudl-uniform-tokens.png`,
+  ds: {
+    site: `http://uniform.hudl.com`,
+  },
+  token: {},
+},{
   title: `US Web Design System`,
   image: `us-web-design-system-tokens.png`,
   ds: {
