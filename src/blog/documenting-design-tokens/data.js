@@ -214,6 +214,7 @@ module.exports = [{
   ds: {
     site: `http://uniform.hudl.com`,
   },
+  token: {},
 },{
   title: `US Web Design System`,
   image: `us-web-design-system-tokens.png`,
