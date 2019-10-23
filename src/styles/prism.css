@@ -1,12 +1,17 @@
 .prism-code {
   padding: var(--size-padding-base);
   margin-bottom: var(--size-padding-xl);
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-background-tertiary);
   overflow-x: auto;
+  display: block;
 }
 
 p + .prism-code {
-  margin-top: calc(-1 * var(--size-padding-large));
+  margin-top: calc(-1 * var(--size-padding-base));
+}
+
+.prism-code + .prism-code {
+  margin-top: calc(-1 * var(--size-padding-base));
 }
 
 .light .prism-code {
@@ -22,14 +27,17 @@ p + .prism-code {
   color: var(--color-font-tertiary);
 }
 
-.token.punctuation {
-  color: var(--color-font-secondary);
+.language-json .token.plain {
+  color: var(--color-font-tertiary);
 }
 
-.token.tag,
 .token.attr-name,
 .token.namespace {
   color: var(--color-font-code-1);
+}
+
+.token.tag {
+  color: var(--color-font-code-5);
 }
 
 .token.function-name {
@@ -89,4 +97,9 @@ p + .prism-code {
 
 .token.deleted {
   background-color: var(--color-background-error);
+}
+
+
+.token.punctuation {
+  color: var(--color-font-secondary);
 }

@@ -1,9 +1,6 @@
 import React from 'react'
 import smoothScroll from './smoothScroll'
-
 import './TOC.css'
-
-
 
 class Scrollsy extends React.Component {
   state = {

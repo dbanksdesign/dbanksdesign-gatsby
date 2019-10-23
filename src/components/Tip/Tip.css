@@ -1,0 +1,18 @@
+.tip {
+  position: relative;
+  padding: var(--size-padding-base);
+  margin: var(--size-padding-xl);
+  border: 0.125rem solid var(--color-brand-secondary);
+}
+
+.tip::before {
+  position: absolute;
+  line-height: 1;
+  padding: var(--size-padding-tiny) var(--size-padding-small);
+  top: -1.25rem;
+  left: -0.125rem;
+  content: 'HOT TIP';
+  font-size: var(--size-font-small);
+  color: var(--color-font-inverse);
+  background-color: var(--color-brand-secondary);
+}

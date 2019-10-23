@@ -1,0 +1,31 @@
+.scope {
+  display: inline-block;
+  padding: 0.25rem;
+  border: 2px solid #FF82B499;
+  position: relative;
+}
+
+.scope:hover {
+  background: #FF82B422;
+  border-color: #FF82B4;
+}
+
+.scope:hover::before {
+  content: attr(data-scope);
+  position: absolute;
+  top: -1rem;
+  z-index: 2;
+  background: var(--color-background-primary);
+  font-size: var(--size-font-small);
+  padding: 0.125rem;
+}
+
+/* .scope-0 { border-color: rebeccapurple; }
+.scope-1 { border-color: rebeccapurple; }
+.scope-2 { border-color: rebeccapurple; }
+.scope-3 { border-color: rebeccapurple; }
+.scope-4 { border-color: rebeccapurple; }
+.scope-5 { border-color: rebeccapurple; }
+.scope-6 { border-color: rebeccapurple; }
+.scope-7 { border-color: rebeccapurple; }
+.scope-8 { border-color: rebeccapurple; } */

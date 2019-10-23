@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import SEO from '$components/SEO'
 import TOC from '$components/TOC'
 import smoothScroll from '$components/TOC/smoothScroll'
