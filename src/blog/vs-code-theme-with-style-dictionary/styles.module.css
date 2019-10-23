@@ -15,7 +15,7 @@
   position: absolute;
   top: -1rem;
   z-index: 2;
-  background: var(--color-background-primary);
+  background: rgba(0,0,0,0.5);
   font-size: var(--size-font-small);
   padding: 0.125rem;
 }
