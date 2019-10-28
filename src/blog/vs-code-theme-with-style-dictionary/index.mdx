@@ -1,6 +1,7 @@
 ---
 title: "Building a Visual Studio Code Theme with Style Dictionary"
-date: '2019-10-07'
+excerpt: "In this article I will show you how to build a Visual Studio Code color theme extension using Style Dictionary. Throughout the process I will try to explain concepts about VSCode theme development so you can apply them when you are creating a theme even if you don't use Style Dictionary."
+date: '2019-10-28'
 toc:
   - anchor: 'Introduction'
     label: 'Introduction'
@@ -27,8 +28,6 @@ import Tip from "$components/Tip"
 
 ![Screenshot of Nu Disco Visual Studio Code theme](./assets/js.png)
 
-TLDR [Here is the code](https://github.com/dbanksdesign/nu-disco-vscode-theme) for the theme we are going to build. It is a Github template so you can start a new repository based on it. Hopefully the code will be easy to follow, I tried to document everything I was doing. If you want to install the theme, search for 'Nu Disco' in VS code extensions. Feel free to take it and modify it to create your own theme. If you do show it to me!
-
 ----
 
 ## Introduction
@@ -42,6 +41,8 @@ A VSCode theme file is a JSON file that defines colors and styles in a way that 
 1. You can break up the theme into multiple JSON, JSON5, or JS modules. This can be helpful as themes can be hundreds of lines long, and JSON does not allow comments.
 2. You can reference token aliases which allow you to reuse colors. This is helpful so that you can tweak colors you use in multiple places in the theme without having to copy and paste.
 3. Aliases also allow you to make multiple themes without redundant code.
+
+[Here is the code](https://github.com/dbanksdesign/nu-disco-vscode-theme) for the theme we are going to build if you want to skip the article and dive in. It is a Github template so that you can start a new repository based on it. I tried to document and explain everything to make it easy to follow and customize. Feel free to take it and modify it to create your own theme. [If you do show it to me](https://twitter.com/dbanksdesign)! Or if you want to install the theme I created, search for 'Nu Disco' in VSCode extensions.
 
 ----
 
@@ -139,7 +140,7 @@ A VSCode theme is a JSON file that define colors and styles. The filename should
 
 ## Style Dictionary Setup
 
-The VSCode theme file looks a lot like design tokens to me. We will use Style Dictionary to define design tokens that will output VSCode theme JSON files. I created a repository on Github you can use as a template to start your theme:
+The VSCode theme file looks a lot like design tokens to me! We will use Style Dictionary to define design tokens that will be used to output VSCode theme JSON files. To get started, you can use my Github repository as a template to start your theme:
 
 1. Click on the **use this template** button on [Github](https://github.com/dbanksdesign/nu-disco-vscode-theme)
 1. Clone your new repository locally
@@ -157,13 +158,23 @@ Here is the structure of the package:
 * **package.json**: a VSCode extension package.json file, with needed dependencies and npm scripts. **Make sure to update the VSCode-specific attributes before you publish!**
 * **demo/**: files used for testing syntax colors. These files were borrowed from [Sarah Drasner's](https://twitter.com/sarah_edo) [Night Owl theme](https://github.com/sdras/night-owl-vscode-theme/) (and added to)
 
-You can run `npm run build` or `npm run watch` it will run the **build.js** file which uses Style Dictionary to create the VSCode theme files. Those files will be created in the **build/** directory. 
+You can run `npm run build` or `npm run watch` it will run the **build.js** file which uses Style Dictionary to create the VSCode theme files. Those files will be created in the **build/** directory. Here is a quick overview of what happens when you run the build script:
+
+1. Register a custom transform and format used for creating the VSCode theme
+1. Create a new Style Dictionary with a configuration object
+1. Style Dictionary finds all the source token files and merges them into a single object. In this case this is all the JSON5 files in the **tokens/** directory
+1. For each platform defined in the configuration:
+    1. Perform transforms on each token
+    1. Resolve token alias references
+    1. Run formats that produce finalized build files (in this case the VSCode theme JSON)
+
+We will go into the build process more later. For now let's talk about application and syntax styles in a VSCode theme.
 
 ----
 
 ## Application styles
 
-These are the theme styles of the editor *outside* of syntax highlighting colors, but does include some styles of the text editor itself like highlighting backgrounds, borders, and backgrounds. This is everything like the side bar, file tree, tabs, action bar, popups, etc. [Here is the full API reference for application theme colors](https://code.visualstudio.com/api/references/theme-color). It helps me to think of these as the application colors, even though they are defined in a `colors` attribute in a VSCode theme file. The `colors` attribute in the theme file is a flat object with dot notation separated keys. For example if you wanted to change the background of the activity bar, which is on the far left or right of VSCode, you would add this to the colors object:
+These are the theme styles of the editor *outside* of syntax highlighting colors, but does include some styles of the text editor itself like highlighting backgrounds, borders, and backgrounds. This is everything like the side bar, file tree, tabs, action bar, popups, etc. [Here is the full API reference for application theme colors](https://code.visualstudio.com/api/references/theme-color). It helps me to think of these as the application colors, even though they are defined in a `colors` attribute in a VSCode theme file. The `colors` attribute is a flat object with dot notation separated keys. For example if you wanted to change the background of the activity bar, which is on the far left or right of VSCode, you would add this to the colors object:
 
 ```json
 "activityBar.background": "#ffffff"
@@ -188,11 +199,11 @@ The activity bar has other colors you can set like `activityBar.foreground` and 
 }
 ```
 
-<Tip>If you want to hide a border, you can define its color as `#0000` which is fully transparent white in RGBA Hex.</Tip>
+<Tip>If you want to hide a border, you can define its color as `#0000` which is fully transparent black in RGBA Hex.</Tip>
 
 This brings me to the second reason why Style Dictionary is helpful: [aliases](https://amzn.github.io/style-dictionary/#/properties?id=attribute-reference-alias). You can define common colors that are used throughout the theme, like `color.background.tertiary` and reference them in the application and syntax styles.
 
-One thing you might notice is that each color definition is not a string, but rather an object with a `value` attribute. This is how Style Dictionary knows what parts of the object are design tokens. When Style Dictionary runs, the generated output from that file would look something like this:
+One thing you might notice is that each color definition is not a string, but rather an object with a `value` attribute. This is how Style Dictionary knows what parts of the object are design tokens. When Style Dictionary runs, it performs transforms on the tokens like creating a name based on the object path and resolving any references to other token values. In this case, the generated output from that file would look something like this:
 
 ```json
 "activityBar.background": "#231934",
@@ -202,7 +213,7 @@ One thing you might notice is that each color definition is not a string, but ra
 "activityBarBadge.foreground": "#FFFFFFEE",
 ```
 
-The most difficult thing for me was trying to figure out what all the color names meant. Unfortunately the [VSCode docs](https://code.visualstudio.com/api/references/theme-color) for this weren't always helpful. To help with this there are comments throughout the JSON5 files with descriptions of what things mean and how to trigger them.
+The most difficult thing for me was trying to figure out what all the color names meant. Unfortunately the [VSCode docs](https://code.visualstudio.com/api/references/theme-color) for this weren't always super helpful. To help with this there are comments throughout the JSON5 files with descriptions of what things mean and how to trigger them. Some things
 
 ### Editor highlighting and selecting
 
@@ -272,9 +283,9 @@ That HTML and CSS would produce this highlighted syntax:
 </span>
 </code>
 
-The only thing that is not the same as HTML and CSS is that scopes are nested. For instance there is no `js` scope, even though in this example you could write CSS to target the `js` class.
+The only thing that is not the same as HTML and CSS is that scopes are nested. For example there is no `js` or `quoted` scopes, even though in this example you could write CSS to target the `js` or `quoted` classes.
 
-Styling scopes is a double-edged sword because you can apply a style to a very generic scope on the *syntax* side that will get inherited, like styling the `meta.class` scope which applies to all nested elements inside of a class definition. Or you can also apply a style to the `punctuation` scope which applies to all sub-scopes under punctuation like `punctuation.definition.comment.js` and `punctuation.separator.comma.js`. Because of this, defining a style on a top level scope like `keyword` or `meta` can be dangerous. This was a bit difficult to wrap my mind around, but it provides a lot of power and flexibility. 
+Styling scopes is a double-edged sword because you can apply a style to a very generic scope on the *syntax* side that will be inherited, like styling the `meta.class` scope which applies to all nested elements inside of a class definition. Or you can also apply a style to the `punctuation` scope which applies to all sub-scopes under punctuation like `punctuation.definition.comment.js` and `punctuation.separator.comma.js`. Because of this, defining a style on a top level scope like `keyword` or `meta` can be dangerous. This was a bit difficult to wrap my mind around, but it provides a lot of power and flexibility. 
 
 Normally when building a VSCode theme to create these syntax highlighting styles you would put objects in the `tokenColors` array in the theme JSON like this:
 
@@ -414,7 +425,7 @@ StyleDictionary.registerTransform({
 });
 ```
 
-Next we add a [custom format](https://amzn.github.io/style-dictionary/#/api?id=registerformat). This will take all the design tokens and map them to the appropriate places in the VSCode theme JSON. A format in Style Dictionary takes the merged design token object, with tokens transformed, and the platform configuration and returns a string which will be written to a file. Internally Style Dictionary creates a flat array of all the design tokens, `dictionary.allProperties` below.
+Next we add a [custom format](https://amzn.github.io/style-dictionary/#/api?id=registerformat). This will take all the design tokens and map them to the appropriate places in the VSCode theme JSON. A format in Style Dictionary takes the merged design token object, with tokens transformed, and the platform configuration and returns a string which will be written to a file. Internally Style Dictionary creates a flat array of all the design tokens, `dictionary.allProperties` that you can use when outputting files with flat arrays of values.
 
 ```javascript
 // Add a custom format that will generate the VSCode theme JSON
