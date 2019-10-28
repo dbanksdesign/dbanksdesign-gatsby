@@ -4,8 +4,8 @@ date: '2019-10-07'
 toc:
   - anchor: 'Introduction'
     label: 'Introduction'
-  - anchor: 'VSCode-Extension-Structure'
-    label: 'VSCode Extension Structure'
+  - anchor: 'Extension-Structure'
+    label: 'Extension Structure'
   - anchor: 'Style-Dictionary-Setup'
     label: 'Style Dictionary Setup'
   - anchor: 'Application-styles'
@@ -27,7 +27,7 @@ import Tip from "$components/Tip"
 
 ![Screenshot of Nu Disco Visual Studio Code theme](./assets/js.png)
 
-[TLDR Hey just show me the code!](https://github.com/dbanksdesign/nu-disco-vscode-theme)This is the code for the theme we are going to build. It is a Github template so you can start a new repository based on it. Hopefully the code will be easy to follow, I tried to document everything I was doing. If you want to install the theme, search for 'Nu Disco' in VS code extensions. Feel free to take it and modify it to create your own theme. If you do show it to me!
+TLDR [Here is the code](https://github.com/dbanksdesign/nu-disco-vscode-theme) for the theme we are going to build. It is a Github template so you can start a new repository based on it. Hopefully the code will be easy to follow, I tried to document everything I was doing. If you want to install the theme, search for 'Nu Disco' in VS code extensions. Feel free to take it and modify it to create your own theme. If you do show it to me!
 
 ----
 
@@ -45,9 +45,9 @@ A VSCode theme file is a JSON file that defines colors and styles in a way that 
 
 ----
 
-## VSCode Extension Structure
+## Extension Structure
 
-A VSCode extension is very similar to an npm module. It uses a **package.json** file to describe the extension, and then points to other files in the package. For a color theme, that will be another JSON file. 
+What we are really building is a VSCode *extension* that contributes one or more themes. A VSCode extension is very similar to an npm module. It uses a **package.json** file to describe the extension, and then points to other files in the package. For a color theme, that will be another JSON file. 
 
 ### package.json
 
@@ -80,7 +80,7 @@ The **package.json** is similar to one for an npm package, but has some differen
 * `categories` tells VSCode what type of *extension* this is.
 * `keywords` Used for search terms
 
-What we are really building is a VSCode *extension* that contributes one or more themes. You define the themes your extension contributes in the package.json like this:
+You define the themes your extension contributes in the package.json like this:
 
 ```json
   "contributes": {
@@ -133,15 +133,15 @@ A VSCode theme is a JSON file that define colors and styles. The filename should
 * `colors` is an object that defines the styles of the VSCode application itself, I call these 'application' styles
 * `tokenColors` is an array of objects consisting of styles to apply to syntax scopes. These affect the styles of the actual text in a code file. I call these 'syntax' styles. More on scopes later.
 
-<Tip>If you end the filename with `color-theme.json`, for example `my-theme.color-theme.json` you will get syntax hints and autocomplete if you are editing in VS Code.</Tip>
+<Tip>If you end the filename with <strong>color-theme.json</strong>, for example <strong>my-theme.color-theme.json</strong> you will get syntax hints and autocomplete if you are editing in VS Code.</Tip>
 
 ----
 
 ## Style Dictionary Setup
 
-The VSCode theme file looks a lot like design tokens to me. We will use Style Dictionary to define design tokens that will output a VSCode theme JSON file. I created a repository on Github you can use as a template to start your theme:
+The VSCode theme file looks a lot like design tokens to me. We will use Style Dictionary to define design tokens that will output VSCode theme JSON files. I created a repository on Github you can use as a template to start your theme:
 
-1. Click on the 'use this template' button on [Github](https://github.com/dbanksdesign/nu-disco-vscode-theme)
+1. Click on the **use this template** button on [Github](https://github.com/dbanksdesign/nu-disco-vscode-theme)
 1. Clone your new repository locally
 1. Install dependencies using yarn or npm
 1. Run `npm run build` to create the theme files or run `npm run watch` to watch for file changes and run the build process
@@ -163,13 +163,13 @@ You can run `npm run build` or `npm run watch` it will run the **build.js** file
 
 ## Application styles
 
-These are the theme styles of the editor *outside* of syntax highlighting colors, but does include some styles of the text editor itself like highlighting backgrounds, borders, and backgrounds. This is everything like the side bar, file tree, tabs, action bar, popups, etc. [Here is the API reference for application theme colors](https://code.visualstudio.com/api/references/theme-color). It helps me to think of these as 'application' styles rather than 'colors'. The `colors` attribute in the theme file is a flat object with dot notation separated keys. For example if you wanted to change the background of the activity bar, which is on the far left or right of VSCode, you would add this to the colors object:
+These are the theme styles of the editor *outside* of syntax highlighting colors, but does include some styles of the text editor itself like highlighting backgrounds, borders, and backgrounds. This is everything like the side bar, file tree, tabs, action bar, popups, etc. [Here is the full API reference for application theme colors](https://code.visualstudio.com/api/references/theme-color). It helps me to think of these as the application colors, even though they are defined in a `colors` attribute in a VSCode theme file. The `colors` attribute in the theme file is a flat object with dot notation separated keys. For example if you wanted to change the background of the activity bar, which is on the far left or right of VSCode, you would add this to the colors object:
 
 ```json
 "activityBar.background": "#ffffff"
 ```
 
-The activity bar has other colors you can set like `activityBar.foreground` and `activityBar.border`. This is the first thing that was helpful to use Style Dictionary when creating a theme: you can split up the colors into different files and use the object structure represented in the dot notation names to make it easier to read. With Style Dictionary you can use plain JSON, [JSON5](https://json5.org), or Node modules that export plain objects. I went with JSON5 so I could add comments to remind myself what things were. For example, the **tokens/application/activityBar.json5** file looks like this:
+The activity bar has other colors you can set like `activityBar.foreground` and `activityBar.border`. This is the first thing that was helpful to use Style Dictionary when creating a theme: you can split up the colors into different files and use the object structure represented in the dot notation names to make it easier to read. With Style Dictionary you can use plain JSON, [JSON5](https://json5.org), or Node modules that export plain objects. I went with JSON5 so I could add comments to remind myself what things were. For example, this is the **tokens/application/activityBar.json5** file:
 
 ```json
 // The Activity Bar is displayed either on the far left or right of the workbench
@@ -180,7 +180,6 @@ The activity bar has other colors you can set like `activityBar.foreground` and 
     // Drag and drop feedback color for the Activity Bar items
     "dropBackground": { "value": "{color.background.drop.value}" },
     "foreground": { "value": "{color.font.link.secondary.active.value}" },
-    "border": { "value": "#FFFFFF00" }
   },
   "activityBarBadge": {
     "background": { "value": "{color.background.badge.value}" },
@@ -189,7 +188,7 @@ The activity bar has other colors you can set like `activityBar.foreground` and 
 }
 ```
 
-<Tip>If you want to hide a border, you can define its color as `#ffffff00` which is fully transparent white in RGBA Hex.</Tip>
+<Tip>If you want to hide a border, you can define its color as `#0000` which is fully transparent white in RGBA Hex.</Tip>
 
 This brings me to the second reason why Style Dictionary is helpful: [aliases](https://amzn.github.io/style-dictionary/#/properties?id=attribute-reference-alias). You can define common colors that are used throughout the theme, like `color.background.tertiary` and reference them in the application and syntax styles.
 
@@ -199,7 +198,6 @@ One thing you might notice is that each color definition is not a string, but ra
 "activityBar.background": "#231934",
 "activityBar.dropBackground": "#52E7E166",
 "activityBar.foreground": "#52E7E1CC",
-"activityBar.border": "#FFFFFF00",
 "activityBarBadge.background": "#00837F",
 "activityBarBadge.foreground": "#FFFFFFEE",
 ```
@@ -208,7 +206,7 @@ The most difficult thing for me was trying to figure out what all the color name
 
 ### Editor highlighting and selecting
 
-One of the more interesting, and confusing, things I found creating a VSCode theme was all of the different editor highlight and selection states. When the cursor is within certain keywords, the editor might highlight other words as well for a variety of reasons. There can also be multiple layers of highlighting taking place on the same word as well. Then there is text selection, with inactive and active states. This is all very powerful, but at times confusing. Take a look at this example, notice the different background colors of highlighted text:
+One of the more interesting, and confusing, things I found creating a VSCode theme was all of the different editor highlight and selection states. When the cursor is within certain keywords, the editor might highlight the word itself and other words as well for a variety of reasons. There can also be multiple layers of highlighting taking place on the same word as well. Then there is text selection, with inactive and active states. This is all very powerful, but at times confusing. Take a look at this example, notice the different background colors of highlighted text:
 
 <video loop="true" muted="true" autoplay="true" playsinline="true">
   <source src="assets/editor-highlight.mp4" type="video/mp4" />
@@ -218,15 +216,15 @@ One of the more interesting, and confusing, things I found creating a VSCode the
 
 ## Syntax styles
 
-In syntax highlighting, source code is broken down into scopes. For example `+` is an arithmetic operator in Javascript. Groups of characters like `var`, strings like `'Bill'`, or variable names like `firstName` would all be scopes. Scopes can also be larger and contain other scopes as well. `var name = 'Danny'` in Javascript is itself a scope, a variable expression, that contains other more specific scopes like `var`, `name`, `=`, and `'Danny'`.
+In syntax highlighting, source code is broken down into scopes. For example `+` is an arithmetic operator in Javascript. Groups of characters like `var`, strings like `'Bill'`, or variable names like `firstName` would all be scopes. Scopes can also be larger and contain other scopes. `var name = 'Danny'` in Javascript is itself a scope, a variable expression, that contains other more specific scopes like `var`, `name`, `=`, and `'Danny'`.
 
-Scope names are dot separated object paths. For example the scope of `+` in Javascript is `keyword.operator.arithmetic.js`. To apply styles to scopes you can target them at any level of the object path and the styles will be applied and overridden like you might expect. If you define a style for the `keyword` scope that style will be applied to all scopes under the `keyword` namespace unless you override it with more specific sub-scope like `keyword.operator.assignment.js`. The last part of every scope is the name of the syntax like 'js' or 'yaml'.
+Scope names are dot separated object paths. The scope of `+` in Javascript is `keyword.operator.arithmetic.js`. To apply styles to scopes you can target them at any level of the object path and the styles will be applied and overridden like you might expect. If you define a style for the `keyword` scope that style will be applied to all scopes under the `keyword` namespace unless you override it with more specific sub-scope like `keyword.operator.assignment.js`. The last part of every scope is the name of the syntax like 'js' or 'yaml'.
 
 Let's say you have this simple Javascript file:
 
 <Scopes />
 
-There are **9** syntax scopes in this example. The first scope which is the least specific is the source scope. The whole file is in the source scope, and because this is a javascript file the source scope is `source.js`. If you only set `source.js` to be blue then every character will be blue. This scope contains all other scopes in this file.
+There are **9** syntax scopes in this example. The first scope which is the least specific is the source scope. The whole file is in the source scope, and because this is a javascript file the source scope is `source.js`. **Scope styles are inherited.** If you set `source.js` to be blue then every character will be blue. This scope contains all other scopes in this file. 
 
 The next scope is `meta.var.expr.js`, which includes everything starting with `var` and ending right before the semi-colon. This scope contains everything related to a variable expression, like assigning a variable. Within this scope there are more specific scopes that will only match a particular element like 'var', 'name', or '=' in this example. There is one more scope that includes nested scopes as well and that is `string.quoted.single.js`, which includes 'Danny' as well as the quotation marks, which themselves have their own more specific scope. To help visualize, let's try to build these scopes in HTML and CSS
 
@@ -276,7 +274,7 @@ That HTML and CSS would produce this highlighted syntax:
 
 The only thing that is not the same as HTML and CSS is that scopes are nested. For instance there is no `js` scope, even though in this example you could write CSS to target the `js` class.
 
-I like to think of this as double-edged scope nesting because you can apply a style to a very generic scope on the *syntax* side, like styling the whole `meta.class` scope which applies to all nested elements inside of a class definition. Or you can also apply a style to the `punctuation` scope which applies to all sub-scopes under punctuation like `punctuation.definition.comment.js` and `punctuation.separator.comma.js`. Because of this, defining a style on a top level scope like `keyword` or `meta` can be dangerous. This was a bit difficult to wrap my mind around, but it provides a lot of power and flexibility. 
+Styling scopes is a double-edged sword because you can apply a style to a very generic scope on the *syntax* side that will get inherited, like styling the `meta.class` scope which applies to all nested elements inside of a class definition. Or you can also apply a style to the `punctuation` scope which applies to all sub-scopes under punctuation like `punctuation.definition.comment.js` and `punctuation.separator.comma.js`. Because of this, defining a style on a top level scope like `keyword` or `meta` can be dangerous. This was a bit difficult to wrap my mind around, but it provides a lot of power and flexibility. 
 
 Normally when building a VSCode theme to create these syntax highlighting styles you would put objects in the `tokenColors` array in the theme JSON like this:
 
@@ -357,7 +355,7 @@ That design token file will generate these `tokenColors` objects in the VSCode t
 Here is an overview of the scope namespaces:
 
 1. **comment**: code comments, you can target single, block, and documentation type comments
-1. **constant**: things like numbers, booleans, null, escape characers
+1. **constant**: things like numbers, booleans, null, escape characters
 1. **entity**: names of functions, data structures, classes, etc., but not of variables which reference them. For example, `var foo = someFunction();`, `someFunction()` would be an entity. Entity also includes some HTML syntax like tags and tag attributes.
 1. **invalid**: illegal and deprecated
 1. **keyword**: things like `new`, import/export, and operators like conditionals or relational (less than, greater than, etc.). Does not include type elements like `async`, `var`, `let`, etc., those are in storage.
@@ -377,7 +375,7 @@ Here are some more references if you are curious about how scopes and syntaxes w
 * https://macromates.com/blog/2005/language-grammars/
 * https://macromates.com/blog/2005/introduction-to-scopes/
 
-<Tip>To inspect the scopes in VSCode, open the command palette and look for "Developer: Inspect TM Scopes". The order of the scopes goes from most-specific at the top, to least-specific at the bottom.</Tip>
+<Tip>To inspect the scopes in VSCode, open the command palette and look for <strong>Developer: Inspect TM Scopes</strong>. The order of the scopes goes from most-specific at the top, to least-specific at the bottom.</Tip>
 
 ----
 
@@ -385,7 +383,7 @@ Here are some more references if you are curious about how scopes and syntaxes w
 
 Let's take a look at how to build the theme files with Style Dictionary. All this code is already in the **build.js** file, but let's walk through what it is doing.
 
-The first thing is to add a [custom name transform](https://amzn.github.io/style-dictionary/#/api?id=registertransform). This will create the name for each design token in the way VSCode expects, which is a dot notation object path. 
+The first thing we need to do is to add a [custom name transform](https://amzn.github.io/style-dictionary/#/api?id=registertransform). This will create the name for each design token in the way VSCode expects, which is a dot notation object path. 
 
 ```javascript
 const StyleDictionary = require('style-dictionary');
@@ -416,7 +414,7 @@ StyleDictionary.registerTransform({
 });
 ```
 
-Next we add a [custom format](https://amzn.github.io/style-dictionary/#/api?id=registerformat). This will take all the design tokens and map them to the appropriate places in the VSCode theme JSON. A format in Style Dictionary takes the merged design token object, with tokens transforms, and the platform configuration and returns a string which will be written to a file. Internally Style Dictionary creates a flat array of all the design tokens, `dictionary.allProperties` below.
+Next we add a [custom format](https://amzn.github.io/style-dictionary/#/api?id=registerformat). This will take all the design tokens and map them to the appropriate places in the VSCode theme JSON. A format in Style Dictionary takes the merged design token object, with tokens transformed, and the platform configuration and returns a string which will be written to a file. Internally Style Dictionary creates a flat array of all the design tokens, `dictionary.allProperties` below.
 
 ```javascript
 // Add a custom format that will generate the VSCode theme JSON
@@ -458,7 +456,7 @@ StyleDictionary.registerFormat({
 });
 ```
 
-Finally we build the Style Dictionaries for each theme. This allows us to swap out light/dark tokens and build separate themes. I'll go into that a bit more in the next section.
+Finally we build a Style Dictionary for each theme. This allows us to swap out light/dark tokens and build separate themes. I'll go into that a bit more in the next section.
 
 ```javascript
 // Iterate over each theme type and build with style dictionary
@@ -500,8 +498,6 @@ Finally we build the Style Dictionaries for each theme. This allows us to swap o
 ```
 
 ## Themes
-
-VSCode extensions can contain multiple *themes*, and each theme has a type which can be dark, light, or high contrast. In your package.json file where you define which themes your extension includes, each theme has a `ui-theme` attribute which can be: `vs` (light), `vs-dark` (dark), or `hc-black` (high contrast). What makes this a bit confusing is the theme JSON file itself has a `type` attribute which can be `light` or `dark`.
 
 In order to create multiple VSCode themes without duplicating all the application and syntax tokens we can dynamically create 2 Style Dictionary instances in our build script. This is inspired from the [multi-brand multi-platform example](https://github.com/amzn/style-dictionary/tree/master/examples/advanced/multi-brand-multi-platform) in Style Dictionary. The design tokens defined in application and syntax reference ones in the theme type and core which allows you to define application and syntax tokens once rather than for each theme.
 
@@ -584,13 +580,17 @@ Pressing F5 will start debugging and open a new window with the extension runnin
 
 To really get a feel for how your theme looks, you can install it locally and use it when you work on other projects for a while. All of your installed extensions stored are in this directory: **~/.vscode/extensions/**. You can [symlink](https://www.makeuseof.com/tag/what-is-a-symbolic-link-what-are-its-uses-makeuseof-explains/) your local theme extension repository into that directory. If you make changes, then you can reload the window in VS Code and see the updated theme. You can symlink a directory using the `ln -s` command in Unix based systems (Mac and Linux). Here is what I ran:
 
-`ln -s [path/to/theme] ~/.vscode/extensions/[username].[themename]-[version]`
+```
+ln -s [path/to/theme] ~/.vscode/extensions/[username].[themename]-[version]
+```
 
 For example:
 
-`ln -s ~/Dev/nu-disco-vscode-theme ~/.vscode/extensions/dbanksdesign.nu-disco-theme-0.0.1`
+```
+ln -s ~/Dev/nu-disco-vscode-theme ~/.vscode/extensions/dbanksdesign.nu-disco-theme-0.0.1
+```
 
-After you do that, you can set the color theme with **cmd K + T** and you should see your themes in the list. Then to see changes in your current VS Code window open the quick command panel with **cmd+shift+p**. Then search for **Developer: Reload Window**.
+After you do that, you can set the color theme with **cmd + K T** and you should see your themes in the list. Then to see changes in your current VS Code window open the quick command panel with **cmd+shift+P**. Then search for **Developer: Reload Window**.
 
 ### Testing terminal colors
 
