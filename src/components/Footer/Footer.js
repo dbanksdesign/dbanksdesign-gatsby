@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, Link, graphql } from 'gatsby'
 import styles from './Footer.module.css'
-import {FaGithub, FaTwitter, FaInstagram, FaDribbble} from 'react-icons/fa'
+import {FaGithub, FaTwitter, FaInstagram, FaDribbble, FaRss} from 'react-icons/fa'
 
 export default () => (
   <StaticQuery
@@ -29,6 +29,11 @@ export default () => (
           </div>
 
           <div>
+            <a className={styles.socialLink}
+              aria-label="Blog RSS Feed"
+              href="/rss.xml">
+              <FaRss />
+            </a>
             <a className={styles.socialLink}
               aria-label="Danny Banks on Github"
               href={`https://github.com/${github}`}>

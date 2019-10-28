@@ -1,0 +1,22 @@
+.scope {
+  display: inline-block;
+  padding: var(--size-padding-small);
+  border: 2px solid #FF82B466;
+  position: relative;
+}
+
+.scope:hover {
+  background: #FF82B422;
+  border-color: #FF82B4;
+}
+
+.scope:hover::before {
+  content: attr(data-scope);
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  z-index: 2;
+  background: rgba(0,0,0,0.75);
+  font-size: var(--size-font-small);
+  padding: 0.125rem;
+}

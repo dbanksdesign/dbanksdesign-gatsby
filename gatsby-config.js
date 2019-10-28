@@ -127,7 +127,7 @@ module.exports = {
             }
             `,
             output: '/rss.xml',
-            title: 'Gatsby RSS feed',
+            title: 'dbanksdesign RSS feed',
           },
         ],
       },
@@ -139,7 +139,7 @@ module.exports = {
         short_name: `dbanksdesign`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#DD99FF`,
         display: `standalone`,
         favicon: true,
         icon: `static/favicon.png`,
