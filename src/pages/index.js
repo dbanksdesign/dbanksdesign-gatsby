@@ -37,7 +37,7 @@ class Home extends React.Component {
         <div>
           <h1 style={{textAlign: 'left'}}>Danny Banks</h1>
           <h2>Design Systems Architect<sup>*</sup>, Design Technologist, Designineer at <Amazon /></h2>
-          <p>I design and develop <mark>design system</mark> things. Occassionally I write and speak about it too. I work on mobile and web apps, designing and developing.</p>
+          <p>I design and develop <mark>design system</mark> things. Occasionally I write and speak about it too. I work on mobile and web apps, designing and developing.</p>
           <p><em>* Design System Architect is a title I gave myself.</em></p>
         </div>
         <hr />
