@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import SEO from '$components/SEO'
 import TOC from '$components/TOC'
 import smoothScroll from '$components/TOC/smoothScroll'
@@ -42,7 +42,7 @@ class BlogPostTemplate extends React.Component {
           <span className="post-date">{post.frontmatter.date}</span>
         </section>
         
-        <MDXRenderer>{post.code.body}</MDXRenderer>
+        <MDXRenderer>{post.body}</MDXRenderer>
 
         {/* <nav className="post-nav">
           {previous && (
@@ -77,9 +77,7 @@ export const pageQuery = graphql`
           label
         }
       }
-      code {
-        body
-      }
+      body
     }
   }
 `

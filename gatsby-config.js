@@ -35,7 +35,7 @@ module.exports = {
     },
     `gatsby-transformer-javascript-frontmatter`,
     {
-      resolve: `gatsby-mdx`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
         // Apply gatsby-mdx to both .mdx and .md files
         extensions: ['.mdx', '.md'],
@@ -74,7 +74,6 @@ module.exports = {
                 title
                 description
                 siteUrl
-                siteUrl
                 site_url: siteUrl
               }
             }
@@ -87,8 +86,8 @@ module.exports = {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   data: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  url: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
                   custom_elements: [{ 'content:encoded': edge.node.code.boy }],
                 })
               })

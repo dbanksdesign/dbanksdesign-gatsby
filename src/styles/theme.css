@@ -255,8 +255,7 @@ h4 {
 mark {
   background-color: var(--color-background-highlight);
   color: inherit;
-  padding: var(--size-padding-tiny);
-  margin: -0.25rem;
+  padding: var(--size-padding-xs) var(--size-padding-tiny);
 }
 
 svg,
