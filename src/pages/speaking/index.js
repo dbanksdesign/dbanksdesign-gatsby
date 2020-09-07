@@ -5,6 +5,19 @@ import SEO from '$components/SEO'
 import Talk from '$components/Talk'
 
 const talks = [{
+  event: 'Clarity 2020',
+  eventLink: 'https://clarityconf.com/2020',
+  date: {day:'04', month:'SEP', year:'2020'},
+  title: 'An Introduction to Multi-Platform Design Systems',
+  slideLink: 'https://noti.st/danielbanks/4cfWGA/an-introduction-to-multi-platform-design-systems',
+},{
+  event: 'OSCON 2019',
+  eventLink: 'https://conferences.oreilly.com/oscon/oscon-or',
+  date: {day: '18', month: 'JUL', year: '2019'},
+  title: 'Building Consistent Cross Platform Interfaces',
+  slideLink: 'http://bit.ly/oscon-2019-cross-platform',
+  videoLink: 'https://www.youtube.com/watch?v=OCMt-aA8XBA'
+},{
   event: 'FrontConf 2019',
   eventLink: 'https://frontconf.com/',
   date: {day: '27', month: 'APR', year: '2019'},
@@ -42,13 +55,7 @@ const talks = [{
   slideLink: 'https://dbanksdesign.github.io/style-dictionary-presentation'
 }];
 
-const upcomingTalks = [{
-  event: 'OSCON 2019',
-  eventLink: 'https://conferences.oreilly.com/oscon/oscon-or',
-  date: {day: '18', month: 'JUL', year: '2019'},
-  title: 'Building Consistent Cross Platform Interfaces',
-  slideLink: ''
-}]
+const upcomingTalks = [];
 
 class Speaking extends React.Component {
   render() {
