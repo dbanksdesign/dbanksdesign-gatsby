@@ -9,9 +9,7 @@ class Scrollsy extends React.Component {
   
   componentDidMount() {
     this.offsets = this.props.items.map((link) => {
-      if (!document.getElementById(link.anchor)) {
-        console.log(link);
-      } else {
+      if (document.getElementById(link.anchor)) {
         return document.getElementById(link.anchor).offsetTop;
       }
     });
