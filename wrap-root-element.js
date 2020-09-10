@@ -2,6 +2,11 @@ import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import Code from './src/components/Code'
 import { preToCodeBlock } from 'mdx-utils'
+import Prism from "prism-react-renderer/prism";
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+
+require("prismjs/components/prism-swift");
 
 // components is its own object outside of render so that the references to
 // components are stable
