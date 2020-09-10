@@ -1,0 +1,27 @@
+.breakdown {
+  position: relative;
+  display: flex;
+}
+
+.breakdown-bar {
+  display: inline-block;
+  line-height: 2rem;
+  padding: 0 var(--size-padding-small);
+  border: 0.125rem solid var(--color-font-code-2);
+}
+
+.breakdown-bar:not(:first-child) {
+  margin-left: var(--size-padding-small);
+}
+
+.breakdown-bar:nth-child(2) { border-color: var(--color-font-code-3); }
+.breakdown-bar:nth-child(3) { border-color: var(--color-font-code-4); }
+
+.count {
+  line-height: 2rem;
+  padding: 0 var(--size-padding-small);
+  margin-bottom: var(--size-padding-small);
+  white-space: nowrap;
+  color: var(--color-font-inverse);
+  background: linear-gradient(90deg, var(--color-brand-secondary) 0%, var(--color-brand-primary) 100%);
+}

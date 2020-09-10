@@ -1,0 +1,11 @@
+.kpi {
+  
+}
+
+.kpiLabel {
+  color: var(--color-font-secondary);
+}
+
+.kpiValue {
+  font-size: var(--size-font-xl);
+}

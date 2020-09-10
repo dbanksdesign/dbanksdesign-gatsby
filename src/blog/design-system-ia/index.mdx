@@ -1,0 +1,124 @@
+---
+title: "Design System Information Architecture"
+date: '2019-10-30'
+---
+
+import GetStarted from "./GetStarted.js"
+import Counts from "./Counts.js"
+import Search from "./Search.js"
+import TopLevelCount from "./TopLevelCount.js"
+import NavPosition from "./NavPosition.js"
+import DSList from "./DSList.js"
+import KPI from "./KPI.js"
+import Breakdown from "./Breakdown.js"
+
+
+## Introduction
+
+I like learning from others and seeing unique perspectives. In my career I have taken a lot of inspiration and learned a lot from public design systems. I wanted to share what I have synthesized from admiring the amazing work companies and individuals have done. I have compiled some data on the information architecture of a sampling of public design systems. In this article I will show some general data like what terms are most common, as well as some call outs to specific examples I think are informative. As is customary, some disclaimers:
+
+1. Don't take any of these examples or data as what you *should* do for your organization. Every team, organization, and company are different and have different needs. 
+2. I tried my best to normalize the data. I used what I saw as the main navigations of the design system websites. This might not include things like other links on their homepages.
+3. I tried my best to include as many public design systems as possible, but I am human so there might be some omissions. If yours is not on here and you think it should, my website is available on Github, you can open a pull request! Or just DM me on twitter, that is a bit easier.
+
+
+Primary navigation items being clickable. If the design system website uses a side navigation bar, the primary navigation can either be in the form of section headers, expanders, or actual clickable targets that navigate to a page. Some sites like Thumbprint have the primary navigation items clickable, but navigate to the first secondary page in that section.
+
+## Top Level Stats
+
+<KPI value="6.3" label="Avg. top level nav items" />
+
+<KPI value="61" label="Design systems" />
+
+<TopLevelCount />
+
+## Most common top level nav items
+
+<Counts />
+
+### Getting Started... or not
+
+<Breakdown data={[{label:'Getting Started', value:19},{label:'Get Started', value:5}]} />
+
+### Search
+
+<Breakdown data={[{label:'With search', value:36}, {label:'Without search', value:25}]} />
+
+### Navigation Position
+
+<Breakdown data={[{label:'Top', value:23}, {label:'Side', value:38}]} />
+
+----
+
+## Layout
+
+There are 2 main layouts design system sites take: top navigation and side navigation. 
+
+----
+
+Including an overview page for each top-level navigation item. 
+
+----
+
+## Dive into sections
+
+Home - 7
+About - 6
+Welcome - 2
+Get started - 5
+Overview - 4
+
+### Foundation
+
+Foundation - 5
+Fundamentals - 2
+Principles - 2
+Brand - 7
+Styles - 5
+
+### Components
+
+Component overview pages that list all components and have statuses on them.
+
+### Patterns & Guidelines
+
+Patterns - 11
+Guidelines - 10
+
+
+### Content
+
+Content - 8
+
+
+I hope this article gave you inspiration for your design system. Like everything 
+
+What's new 4
+Resources - 15
+Support - 7
+Help - 2
+Updates - 2
+Utilities - 6
+Contributing - 3
+Tools - 2
+
+----
+
+One design system I did not include is the one I've worked on at Amazon. This is because it is not public, but if you find me in person I might show it to you. That does not mean I can't tell you the information architecture I used. This is what I believe is working for my use-case so take what you will. 
+
+Introduction
+This section includes 
+
+Foundation
+
+Layouts
+
+Components
+
+Guidelines
+
+----
+
+## Appendix
+
+<DSList />

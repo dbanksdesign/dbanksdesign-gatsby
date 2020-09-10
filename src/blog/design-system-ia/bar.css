@@ -1,0 +1,33 @@
+.bar-chart {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.bar-column {
+  flex: 1;
+  margin: var(--size-padding-xs);
+}
+
+.bar {
+  background: aquamarine;
+  position: relative;
+}
+
+.bar[data-count="0"] {
+  height: 0 !important;
+}
+
+.bar:not([data-count="0"])::after {
+  position: absolute;
+  top: var(--size-padding-xs);
+  content: attr(data-count);
+  color: var(--color-font-inverse);
+  text-align: center;
+  width: 100%;
+}
+
+.bar-label {
+  text-align: center;
+  color: var(--color-font-tertiary);
+}
