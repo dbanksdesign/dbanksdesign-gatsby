@@ -151,14 +151,23 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        custom: {
+          families: [`Atkinson Hyperlegible`],
+          urls: [`/fonts/fonts.css`]
+        }
+      }
+    },
+    {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
           {
-            family: `Source Sans Pro`,
-            subsets: [`latin`],
-            variants: [`200`,`400`,`400i`,`700`]
-          }, {
+          //   family: `Source Sans Pro`,
+          //   subsets: [`latin`],
+          //   variants: [`200`,`400`,`400i`,`700`]
+          // }, {
             family: 'Source Code Pro',
             subsets: ['latin'],
             variants: ['400']
