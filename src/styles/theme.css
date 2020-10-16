@@ -105,7 +105,7 @@
   --time-duration-base: 0.2s;
 
   --font-family-mono: 'Source Code Pro', monospace;
-  --font-family-primary: 'Source Sans Pro', 'Open Sans', Arial, Helvetica, sans-serif;
+  --font-family-primary: 'Atkinson Hyperlegible', 'Source Sans Pro', 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 body.light {
@@ -180,6 +180,7 @@ body {
   background-color: var(--color-background-primary);
   transition: background-color var(--time-duration-base) ease;
   transition: color var(--time-duration-base) ease;
+  letter-spacing: 0.05em;
 }
 
 a {
