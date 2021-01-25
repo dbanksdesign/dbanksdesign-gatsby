@@ -9,16 +9,18 @@ export default ({ event, eventLink, title, slideLink, videoLink, description, da
       <div className="talk-date-year">{date.year}</div>
     </div>
     <div className="talk-content">
+      <h3 className="talk-title">{title}</h3>
       <h4 className="talk-event">
         <a href={eventLink}>{event}</a>
+        {slideLink ?
+          <span> &bull; <a href={slideLink}>Slides</a></span> : null}
       </h4>
-      <h5 className="talk-title">{title}</h5>
-      {description &&
-        <p className="talk-description">{description}</p>}
-      {slideLink &&
-        <a href={slideLink}>Slides</a>}
-      {videoLink &&
-        <a href={videoLink}>Video</a>}
+      {description ?
+        <p className="talk-description">{description}</p> : null}
+      {videoLink ?
+        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoLink}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen /> : null}
+
+
     </div>
   </section>
 )
