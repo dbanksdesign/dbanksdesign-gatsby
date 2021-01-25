@@ -83,10 +83,10 @@ class Speaking extends React.Component {
         </div>
 
         <h4 className="font-secondary">Upcoming Events</h4>
-        {upcomingTalks.map(talk => <Talk {...talk} />)}
+        {upcomingTalks.map(talk => <Talk {...talk} key={talk.event} />)}
 
         <h4 className="font-secondary">Past Events</h4>
-        {talks.map(talk => <Talk {...talk} />)}
+        {talks.map(talk => <Talk {...talk} key={talk.event} />)}
       </div>
     )
   }

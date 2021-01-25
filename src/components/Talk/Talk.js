@@ -18,7 +18,7 @@ export default ({ event, eventLink, title, slideLink, videoLink, description, da
       {description ?
         <p className="talk-description">{description}</p> : null}
       {videoLink ?
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoLink}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen /> : null}
+        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoLink}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /> : null}
 
 
     </div>
