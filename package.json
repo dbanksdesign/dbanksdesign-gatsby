@@ -30,7 +30,8 @@
     "serve": "gatsby serve",
     "deploy": "npm run build && gatsby-plugin-s3 deploy",
     "deploy-only": "gatsby-plugin-s3 deploy",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js",
+    "preload-fonts": "gatsby-preload-fonts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.16",
@@ -67,6 +68,8 @@
   "devDependencies": {
     "eslint": "^7.8.1",
     "eslint-plugin-react": "^7.20.6",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-preload-fonts": "^1.8.0",
     "prettier": "^2.1.1"
   }
 }

@@ -12,6 +12,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-preload-fonts`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -160,18 +161,10 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-          //   family: `Source Sans Pro`,
-          //   subsets: [`latin`],
-          //   variants: [`200`,`400`,`400i`,`700`]
-          // }, {
-            family: 'Source Code Pro',
-            subsets: ['latin'],
-            variants: ['400']
-          }
+          `source code pro\:400`
         ],
       },
     },
