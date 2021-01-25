@@ -9,14 +9,16 @@ const talks = [{
   eventLink: 'https://clarityconf.com/2020',
   date: {day:'04', month:'SEP', year:'2020'},
   title: 'An Introduction to Multi-Platform Design Systems',
+  description: `You already have amazing design systems with battle-tested components, thorough documentation, and a frictionless developer experience - there's just one small problem: it's web-only. Let's expand our design systems thinking to create a cohesive multi-platform experience that works for customers and creators. In this talk we will explore the environments, ergonomics, and economics of building design systems on multiple platforms.`,
   slideLink: 'https://noti.st/danielbanks/4cfWGA/an-introduction-to-multi-platform-design-systems',
+  videoLink: 'tOQ8llEwNHI'
 },{
   event: 'OSCON 2019',
   eventLink: 'https://conferences.oreilly.com/oscon/oscon-or',
   date: {day: '18', month: 'JUL', year: '2019'},
   title: 'Building Consistent Cross Platform Interfaces',
   slideLink: 'http://bit.ly/oscon-2019-cross-platform',
-  videoLink: 'https://www.youtube.com/watch?v=OCMt-aA8XBA'
+  videoLink: 'OCMt-aA8XBA'
 },{
   event: 'FrontConf 2019',
   eventLink: 'https://frontconf.com/',
