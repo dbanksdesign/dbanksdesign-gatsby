@@ -33,8 +33,6 @@ class BlogPostTemplate extends React.Component {
     
     return (
       <>
-        {toc &&
-          <TOC links={toc} />}
         <SEO title={frontmatter.title} description={post.excerpt} />
         <div className="blog-content">
         <h1>{frontmatter.title}</h1>
@@ -57,6 +55,8 @@ class BlogPostTemplate extends React.Component {
           )}
         </nav> */}
         </div>
+        {toc &&
+          <TOC links={toc} />}
       </>
     )
   }

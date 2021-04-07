@@ -10,9 +10,9 @@
 
 .toc-inner {
   position: fixed;
-  top: 3rem;
+  top: 0;
   bottom: 0;
-  left: 0;
+  right: 0;
   width: 10rem;
   padding-top: var(--size-padding-xl);
   overflow-y: auto;

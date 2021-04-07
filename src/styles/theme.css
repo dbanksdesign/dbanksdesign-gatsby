@@ -203,7 +203,7 @@ p {
 
 code,
 pre {
-  font-size: inherit;
+  font-size: var(--size-font-small);
   font-family: 'Source Code Pro', monospace;
 }
 
@@ -227,6 +227,7 @@ hr {
   border-style: solid;
   width: 25%;
   margin: var(--size-padding-xl) 0;
+  clear: both;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -426,5 +427,28 @@ figcaption {
 @media(min-width: 1400px) {
   html {
     font-size: 150%;
+  }
+}
+
+.card {
+  background-color: var(--color-background-primary);
+  color: var(--color-font-primary);
+}
+
+.clear {
+  clear: both;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #000;
+    --color-font-primary: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+  :root {
+    --color-background-primary: #fff;
+    --color-font-primary: #000;
   }
 }

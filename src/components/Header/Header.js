@@ -48,11 +48,13 @@ export default class Header extends Component {
   }
 
   toggleTheme = () => {
-    const newTheme = themeMap[this.state.theme];
-    document.body.className = newTheme;
-    this.setState({
-      theme: newTheme
-    });
+    const theme = this.props.theme === 'dark' ? 'light' : 'dark';
+    window.__setPreferredTheme( theme );
+    // document.body.className = newTheme;
+    // this.props.setTheme({theme});
+    // this.setState({
+    //   theme: newTheme
+    // });
   }
 
   toggleNav = () => {
@@ -87,7 +89,7 @@ export default class Header extends Component {
         <button className="theme-toggle-button"
           aria-hidden={true}
           onClick={this.toggleTheme}>
-          {themeEmoji[this.state.theme]}
+          {themeEmoji[this.props.theme]}
         </button>
         </div>
       </header>
