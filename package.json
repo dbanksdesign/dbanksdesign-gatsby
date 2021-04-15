@@ -66,6 +66,7 @@
     "react-twitter-widgets": "^1.7.1"
   },
   "devDependencies": {
+    "caniuse-lite": "^1.0.30001208",
     "eslint": "^7.8.1",
     "eslint-plugin-react": "^7.20.6",
     "gatsby-plugin-google-fonts": "^1.0.1",

@@ -9,16 +9,20 @@ import './BlogPost.css'
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
     const { hash } = this.props.location;
+    const { frontmatter={} } = this.props.data.mdx;
     if (hash && hash.length > 0) {
       setTimeout(() => {
         smoothScroll.scrollTo(hash.replace('#',''))
       }, 100);
     }
+    if (frontmatter.className && document) {
+      document.documentElement.classList.add(frontmatter.className);
+    }
   }
   
   componentWillUnmount() {
     const { frontmatter={} } = this.props.data.mdx;
-    if (frontmatter.className) {
+    if (frontmatter.className && document) {
       document.documentElement.classList.remove(frontmatter.className);
     }
   }
@@ -36,10 +40,6 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext;
     if (frontmatter.toc) {
       toc = frontmatter.toc;
-    }
-    console.log(frontmatter);
-    if (frontmatter.className) {
-      document.documentElement.classList.add(frontmatter.className);
     }
     
     return (
