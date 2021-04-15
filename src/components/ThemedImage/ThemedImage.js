@@ -15,8 +15,6 @@ const ThemedImage = ({ children, width=100, style={} }) => {
         .find(el => el.props && el.props.className === 'gatsby-resp-image-wrapper')
         .props.children
         .find(el => el.props && el.props.href);
-      console.log(element);
-      // console.log(child);
       // by convention if it has 'dark' in the path it is the dark mode image
       if (element.props.href.indexOf('dark') > -1) {
         darkElem = child;

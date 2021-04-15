@@ -81,6 +81,17 @@
   --color-core-purple: #DD99FF;
   --color-core-purlple-light: #F2D9FF;
 
+  /* Pinks */
+  --color-core-pink-100: #e0447c;
+  --color-core-pink-80: #ef588b;
+  --color-core-pink-60: #ff76ae;
+  --color-core-pink-40: #ff95c1;
+  --color-core-pink-20: #ffb5d5;
+
+  --color-core-pink-dark: #b22f5b;
+  --color-core-pink: #ff76ae;
+  --color-core-pink-light: #ffb5d5;
+  
   /* Sizes */
   --size-padding-xs: 0.125rem;
   --size-padding-tiny: 0.25rem;
@@ -317,7 +328,7 @@ blockquote {
   font-weight: 200;
   font-size: var(--size-font-large);
   padding: var(--size-padding-base);
-  margin: var(--size-padding-xl) -2rem;
+  margin: var(--size-padding-xl);
   /* border-left: var(--size-border-large) solid var(--color-border-tertiary); */
   text-align: center;
   position: relative;
@@ -329,7 +340,6 @@ blockquote:after {
   font-size: 5rem;
   line-height: 1;
   color: var(--color-font-quaternary);
-
 }
 
 blockquote:before {
@@ -388,10 +398,21 @@ li > ul {
   margin-bottom: 0;
 }
 
+p + ul {
+  margin-top: calc(-1 * var(--size-padding-base))
+}
+
+figure {
+  padding: var(--size-padding-base);
+  border: var(--size-border-base) solid var(--color-border-tertiary);
+  margin-bottom: var(--size-padding-large);
+}
+
 figcaption {
   color: var(--color-font-tertiary);
   text-align: center;
   font-size: var(--size-font-small);
+  margin-top: var(--size-padding-base);
 }
 
 @media screen and (min-width: 600px) {
@@ -437,6 +458,25 @@ figcaption {
 
 .clear {
   clear: both;
+}
+
+.toggle-buttons {
+  border: var(--size-border-base) solid var(--color-border-primary);
+  box-shadow: -4px 4px 0 0 var(--color-border-tertiary);
+  display: inline-block;
+}
+
+.toggle-button {
+  padding: var(--size-padding-small) var(--size-padding-base);
+  font-size: var(--size-font-base);
+  color: var(--color-font-link);
+}
+
+.toggle-button.active {
+  color: var(--color-font-primary);
+  background-color: var(--color-background-secondary);
+  /* border-color: var(--color-brand-primary);
+  box-shadow: none;; */
 }
 
 @media (prefers-color-scheme: dark) {

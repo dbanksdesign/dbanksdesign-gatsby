@@ -50,11 +50,6 @@ export default class Header extends Component {
   toggleTheme = () => {
     const theme = this.props.theme === 'dark' ? 'light' : 'dark';
     window.__setPreferredTheme( theme );
-    // document.body.className = newTheme;
-    // this.props.setTheme({theme});
-    // this.setState({
-    //   theme: newTheme
-    // });
   }
 
   toggleNav = () => {

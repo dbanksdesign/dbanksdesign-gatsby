@@ -14,12 +14,16 @@
 .post-metadata {
   text-align: center;
   padding-bottom: var(--size-padding-large);
-  margin-bottom: var(--size-padding-xl);
   position: relative;
   color: var(--color-font-tertiary);
 }
 
-.post-metadata::after {
+.blog-header {
+  position: relative;
+  margin-bottom: var(--size-padding-xl);
+}
+
+.blog-header::after {
   position: absolute;
   content: '';
   width: 50%;

@@ -1,0 +1,52 @@
+.blog-header {
+  background: center / contain no-repeat url('images/sun-light.svg');
+  min-height: 500px;
+}
+
+.dark .blog-header {
+  background-image: url('images/sun-dark.svg');
+}
+
+.dark h1 {
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.blog-header::after {
+  display: none;
+}
+
+.dm-token-structure-name {
+  font-size: 16px;
+  fill: var(--color-font-primary);
+}
+
+.dm-token-structure-title {
+  font-size: 24px;
+  font-weight: bold;
+  fill: var(--color-font-primary);
+}
+
+.dm-token-structure-token {
+  fill: var(--color-background-primary);
+  stroke: var(--color-border-primary);
+}
+
+.dm-token-structure-token-shadow {
+  fill: var(--color-border-secondary);
+}
+
+.dm-token-structure-line {
+  stroke: var(--color-border-primary);
+}
+
+.dm-token-structure-swatch {
+  
+}
+
+.token-structure-light .dm-token-structure-swatch {
+  fill: #000;
+}
+
+.token-structure-dark .dm-token-structure-swatch {
+  fill: #fff;
+}

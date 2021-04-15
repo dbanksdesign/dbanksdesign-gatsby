@@ -103,3 +103,11 @@ p + .prism-code {
 .token.punctuation {
   color: var(--color-font-secondary);
 }
+
+.token.template-string.interpolation {
+  color: var(--color-font-code-3);
+}
+
+.token.template-string.interpolation-punctuation {
+  color: var(--color-font-code-2);
+}
