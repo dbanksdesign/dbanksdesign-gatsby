@@ -1,0 +1,314 @@
+---
+title: "Gatsby and JSDoc"
+date: '2019-05-21'
+draft: true
+---
+
+In this article you will learn how to hook up an npm module with JSDoc comments into a Gatsby site. To follow along with this you can take a look at this repository on Github. Each step is on a branch so you can take a look at each step or just skip ahead and see the final result.
+
+If you want to get started, you can use this gatsby starter
+
+## Why Gatsby
+
+I won't give the full pitch on Gatsby, but I will say it is a great framework for building documentation sites for a few reasons:
+
+1. Easy to generate an SEO-friendly site that is easy to deploy to AWS, Netlify, etc.
+1. Works with Markdown as well as React (and MDX) for building simple pages with markdown files or more interactive ones with React and MDX
+1. It has a robust plugin architecture and notably for this article, a plugin to get JSDoc data.
+
+## Why JSDoc
+
+JSDoc has been the standard for documenting Javascript code for many years now. It also has the added benefit of being the same syntax as other code comment documentation schemas such as JavaDoc. 
+
+## Step 1: Set up Gatsby
+First, we need to set up a Gatsby site with some basic plugins. Why not start with the [official starter](https://github.com/gatsbyjs/gatsby-starter-default):
+
+```
+gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+```
+
+So after you do that you should be able to run `npm start` which will start up the dev server and you should see this:
+
+
+Before we go on to the next step, make sure to edit **gatsby-config.js** and put in your information.
+
+
+## Step 2: Getting JSDoc setup
+
+Lets start creating a library to document. For now we can just create a directory in our package so that we can make changes quickly. If you are actually doing this to a real library you would probably want to depend on your library in your Gatsby package.
+
+Create a `lib` directory in the root of your package, and create an `index.js` file. This will serve as our ingress to the library we are creating. In index.js create an empty object export and write a simple JSDoc comment:
+
+```js
+/**
+ * My super cool library
+ */
+module.exports = {
+  
+}
+```
+
+Now we need to get Gatsby and DocumentationJS looking at that new file we just created. Open up your **gatsby-config.js** file. First thing is add another plugin object with `gatsby-source-filesystem`. Make sure this in addition to the other one; give it a path of the lib directory you created, and give it a name:
+
+```js
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `jsdoc`,
+      path: `${__dirname}/lib`,
+    },
+  },
+```
+
+The name is helpful when using GraphQL to query for specific files. This will come up later. Now that we have this, we can see the files in GraphQL. If you haven't yet, make sure to start your local dev server with `npm start` and head to 'localhost:8000/___graphql'. This is built into Gatsby and is super helpful to poke around the data that is available when building your site. All of the JSDoc information will make its way to GraphQL. Now if query 
+
+```GraphQL
+{
+  allFile {
+    nodes {
+      sourceInstanceName
+      base
+    }
+  }
+}
+```
+
+You can see your 'index.js' file in there, and notice the attribute 'sourceInstanceName': it is the name we gave it in the config. This lets us filter the file query to only return files from a given sourceInstanceName:
+
+```GraphQL
+{
+  allFile(filter: {sourceInstanceName: {eq: "jsdoc"}}) {
+    nodes {
+      sourceInstanceName
+      base
+    }
+  }
+}
+```
+
+If you aren't familiar with GraphQL (I wasn't) the explorer panel is your friend. I figured out what I was doing by poking around for a few hours. If you want to dig more into GraphQL here are some resources:
+*
+*
+
+Ok, we still need to get the JSDoc data in there. For that we will use [gatsby-transformer-documentationjs](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-transformer-documentationjs) which is powered by [DocumentationJS](http://documentation.js.org/). So lets add it to our package (stop the documentation server process if you haven't yet):
+
+```
+npm i --save-dev gatsby-transformer-documentationjs
+```
+
+Now lets add it to our **gatsby-config.js** plugin array, it doesn't matter where in the array it goes:
+
+```js
+`gatsby-transformer-documentationjs`,
+```
+
+A transformer plugin in Gatsby looks at source data, like files found in `gatsby-source-filesystem`, and *transform* them, either adding extra attributes or creating new top-level GraphQL fields. The documentationjs transformer looks at files found by the source filesystem and sees if they are Javascript files and if they have JSDoc comments. It will then create extra data in GraphQL for you to use.
+
+Restart up the dev server again `npm start` and head to the GraphQL debug page. You should now see some extra fields, like allDocumentationJs, in the explorer panel on the left:
+
+
+`allDocumentationJs` will be like database of all the JSDoc elements it finds. Try this GraphQL query:
+
+```GraphQL
+{
+  allDocumentationJs {
+    nodes {
+      description {
+        internal {
+          content
+        }
+      }
+    }
+  }
+}
+```
+
+You should see the content of your JSDoc comment in there! We can query JSDoc data by file as well:
+
+```GraphQL
+{
+  allFile(filter: {sourceInstanceName: {eq: "jsdoc"}}) {
+    nodes {
+      sourceInstanceName
+      base
+      childDocumentationJs {
+        description {
+          internal {
+            content
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Lets add a function to our exports 
+
+```js
+/**
+ * My super cool library
+ * @module superCool
+ */
+
+module.exports = {
+  /**
+   * Adds things
+   * 
+   * @param {number} num1 the first number to add
+   * @param {number} num2 the second number to add
+   * @returns {number}
+   */
+  add: function(num1, num2) {
+    return num1 + num2;
+  }
+}
+```
+
+If you start to explore all the data that the documentationjs transformer puts in GraphQL it can get kind of confusing. There is A LOT in there. And a lot of the fields get nested for things like parameters and returns. 
+
+One important thing to note: *everything* is a 'node' in allDocumentationJs. Even with just the single module, and a single method with 2 parameters and a return, there are 5 nodes! This is where using `filter` in GraphQL will come in handy. Also, whenever there is anything in JSDoc that might reference another thing, like a param, return, or type, documentationjs will add all the data of that thing, like name, type, etc. This is helpful so you don't have to write complex queries, but makes exploring around GraphQL a bit cumbersome. 
+
+## Step 3: Getting JSDoc data into a page
+
+Hopefully you haven't given up yet, you are so close! Now that we have JSDoc data in our GraphQL schema, lets add a documentation page to display that data. 
+
+Create a page in **src/pages/** and call it **api.js**. This will be the starting point to
+
+```jsx
+import React, { Component } from 'react'
+import { graphql } from 'gatsby'
+
+class API extends Component {
+  render() {
+    const { data } = this.props;
+    const elems = data.allDocumentationJs.nodes;
+
+    return (
+      <>
+        <h1>API</h1>
+        {elems.map((elem) => (
+          <div key={elem.name} id={elem.name}>
+            {elem.name}
+          </div>
+        ))}
+      </>
+    )
+  }
+}
+
+export default API
+
+export const pageQuery = graphql`
+  query {
+    allDocumentationJs(filter:{
+      memberof: {eq: "superCool"}
+    }) {
+      nodes {
+        name
+        description {
+          internal {
+            content
+          }
+        }
+        kind
+        memberof
+        params {
+          name
+          description {
+            internal {
+              content
+            }
+          }
+          type {
+            name
+          }
+        }
+        returns {
+          type {
+            name
+          }
+        }
+      }
+    }
+  }
+`
+```
+
+
+Quick Tip! If you find yourself trying to remember the tags and JSDoc syntax, here is a handy-dandy cheatsheet: https://devhints.io/jsdoc
+
+If you'd like syntax highlighting for JSDoc comments here are some plugins: https://github.com/documentationjs/documentation/wiki/Text-editor-plugins
+
+
+Manipulating Markdown in JSDoc comments
+
+This took me a little time to figure out, but it is definitely doable. The use case I had is that I was migrating an existing documentation site built on Docsify, which takes markdown files and turns it into a small SPA on the fly. It would automatically change links to other markdown files in the doc site to links without the '.md' extension. I wanted to recreate that functionality because in some of our JSDoc comments we used markdown style links where the url ended with '.md' which wouldn't work here. 
+
+Luckily thanks to Gatsby and Remark's plugin architecture it was relatively easy to do once you know what you are doing. To do this lets take a brief look at Remark and Abstract Syntax Trees (AST). 
+
+[Remark](https://remark.js.org/) is an ecosystem of plugins for processing markdown, and the most popular *transformer* of markdown content for Gatsby. Gatsby has 'sources' which define where to get content for your site, and transformers take that content and transform it. 
+
+Add gatsby-transformer-remark to your gatsby-config.js file:
+
+```js
+  {
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      // CommonMark mode (default: true)
+      commonmark: true,
+      // Footnotes mode (default: true)
+      footnotes: true,
+      // Pedantic mode (default: true)
+      pedantic: true,
+      // GitHub Flavored Markdown mode (default: true)
+      gfm: true,
+      // Plugins configs, we will add to this soon
+      plugins: [],
+    },
+  },
+```
+
+The remark transformer will take markdown content and create new fields in Gatsby's GraphQL schema that have the html output from the markdown. In the configuration there is a place to add plugins to the remark transformer. This is where we will add custom code to change all links with '.md' to something else.
+
+The Gatsby documentation site also has a [guide on how to use remark plugins](https://www.gatsbyjs.org/docs/remark-plugin-tutorial/). 
+
+[Loading plugins from your local plugins folder](https://www.gatsbyjs.org/docs/loading-plugins-from-your-local-plugins-folder/)
+
+TIP: When writing local Gatsby plugins, make sure to remove your `.cache` if you make an update to them. Because Gatsby sees that the source files are unchanged, it does not re-run the plugin. This caused me to curse at the heavens more than a few times. For more information, take a look at [this article on the Gatsby site](https://www.gatsbyjs.org/docs/debugging-cache-issues/)
+
+
+[gatsby-remark-copy-linked-files](https://www.npmjs.com/package/gatsby-remark-copy-linked-files)
+
+This is a remark plugin that will make files you reference in markdown, like an image, will be available.
+
+If you are using MDX:
+https://gatsby-mdx.netlify.com/guides/using-gatsby-remark-images/
+
+
+### Examples
+
+Issue: DocumentationJS doesn't work well with Github style markdown examples. For instance, this:
+```js
+/**
+ * The only top-level method that needs to be called
+ * to build the Style Dictionary.
+ *
+ * @example
+ * ```js
+ * const StyleDictionary = require('style-dictionary').extend('config.json');
+ * StyleDictionary.buildAllPlatforms();
+ * ```
+ */
+```
+
+The code highlighter will take everything after `@example`, including the "```js". That is definitely not what we want. Also if you have multiple example blocks for some reason, those won't work either as they will include the backticks. 
+
+
+### Example codebases
+
+
+### Linking to Github
+`https://github.com/amzn/style-dictionary/blob/master/lib/${file.relativePath}#L${elem.codeLocation.start.line}`
+
+### Getting source code in docs
