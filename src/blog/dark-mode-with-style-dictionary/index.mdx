@@ -41,7 +41,7 @@ import "./dark-mode-styles.css";
 
 ## Introduction
 
-This article assumes you have a basic understanding of design tokens and [Style Dictionary][style dictionary]. Even if you don't the first sections about how dark mode works on different platforms might be useful to you. Here are some articles if you'd like to get started with design tokens or Style Dictionary: [Awesome Design Tokens by Stu Robson](https://github.com/sturobson/Awesome-Design-Tokens)
+This article assumes you have a basic understanding of design tokens and [Style Dictionary][style dictionary]. Even if you don't, the first sections about how dark mode works on different platforms might be useful to you. Here is a resource with lots of articles and content if you'd like to get started with design tokens or Style Dictionary: [Awesome Design Tokens by Stu Robson](https://github.com/sturobson/Awesome-Design-Tokens)
 
 <figure>
   <video loop={true} muted={true} autoplay={true} controls={true} playsinline={true}>
@@ -50,29 +50,30 @@ This article assumes you have a basic understanding of design tokens and [Style 
   <figcaption>What we are going to build</figcaption>
 </figure>
 
-Let me start by saying: **supporting light and dark mode in an application or design system is hard.** Especially if your app is on multiple platforms and even more so if you have a large application. Light and dark mode on a personal site (like this one) is a whole different set of challenges. One more warning before moving on: 
+Let me start by saying: **supporting light and dark mode in an application or design system is hard,** especially if your app is on multiple platforms and even more so if you have a large application. Light and dark mode on a personal site (like this one) is a whole different set of challenges. One more warning before moving on: 
 
 > Doing dark mode poorly is *worse* than not doing dark mode at all.
+> <cite>myself, from personal experience</cite>
 
 Having certain pages or worse, certain components on a page, in light mode and others in dark mode is painful to look at. Even if you don't have that issue, making sure color contrast ratios meet accessibility standards and the visual hierarchies remain in both modes is a lot of work.
 
-Having said all that, using [design tokens](https://designtokens.org) can drastically simplify the creation and maintenance of color modes across platforms. I love that design tokens can integrate into any platform in a standard way by generating source code artifacts so that developers on a given platform don't even necessarily have to know they are interacting with design tokens. Building with design tokens on a given platform should feel natural. My approach to design token integration is to, as closely as possible, integrate with the built-in mechanisms in each platform to handle color modes rather than outputting some proprietary code.
+Having said all that, using [design tokens](https://designtokens.org) can drastically simplify the creation and maintenance of color modes across platforms. I love that design tokens can integrate into any platform in a standard way by generating source code artifacts so that developers on a given platform don't even necessarily have to know they interact with design tokens. Building with design tokens on a given platform should feel natural. My approach to design token integration is to, as closely as possible, integrate with the built-in mechanisms in each platform to handle color modes rather than outputting some proprietary code.
 
-We are going to build a design token package using Style Dictionary that has support for light and dark mode for color tokens and graphic assets (using tokens as well). It will have demo apps in Android, iOS, and Web to show how it would integrate into those platforms. This article will serve as a high-level explanation of concepts; the why and how things work. The [Github repository](repo) has everything fully implemented with comments and more in-depth explanations. 
+We are going to build a design token package using Style Dictionary that has support for light and dark mode for color tokens and graphic assets (using tokens as well). It has demo apps in Android, iOS, and Web to show how it would integrate into those platforms. This article will serve as a high-level explanation of concepts, the why and how things work. The [Github repository](repo) has everything fully implemented with comments and more in-depth explanations. 
 
 This article and sample will not cover:
-* How to think about and build dark mode support from a UX perspective (like building a setting page or control for toggling light/dark mode)
-* Non-platform or framework-specific ways of implementing light/dark mode. For example, using a `<ThemeProvider>` in React or using a CSS-in-JS framework. You can absolutely still use those things if you want. I chose not to include every possible integration and instead stick to the native web, Android, and iOS mechanisms for light/dark mode.
+* **How to think about and build dark mode support from a UX perspective (like creating a setting page or control for toggling light/dark mode)**
+* Non-platform or framework-specific ways of implementing light/dark mode. For example, using a `<ThemeProvider>` in React or using a CSS-in-JS framework. You can still use those things if you want. I chose not to include every possible integration and instead stick to the native web, Android, and iOS mechanisms for light/dark mode.
 * React Native, Flutter, Android Jetpack Compose, Nativescript, and other cross-platform libraries because this article is already probably too long. But maybe I will cover those in a future article. 
-* A "complete" design token package or design system. To keep it short this will focus only on color tokens with different tiers, which will be explained later, and graphic assets as design tokens. I only built 2 very components: button, and badge with limited options just to illustrate how the color tokens work at a component level. 
+* A "complete" design token package or design system. To keep this article short, we will only focus on color tokens and graphic assets as design tokens. I only built two components: button and badge with limited options, just to illustrate how the color tokens work at a component level. 
 
-I have found 2 different approaches for implementing dark mode: single-token and multi-file. Both approaches have their pros and cons, so you can decide what works best for you. If you want to skip all the explanation and go straight into the code, here is the repository: [dbanksdesign/style-dictionary-dark-mode][repo]. The repository has 3 branches: 
+I have found two different methods for implementing dark mode: single-token and multi-file. Both methods have their pros and cons, so you can decide what works best for you. If you want to skip all the explanation and go straight into the code, here is the repository: [dbanksdesign/style-dictionary-dark-mode][repo]. The repository has three branches: 
 
 * [starter](https://github.com/dbanksdesign/style-dictionary-dark-mode/tree/starter): the project before any dark mode stuff
 * [single-token](https://github.com/dbanksdesign/style-dictionary-dark-mode/tree/single-token): the full implementation using the single-token approach
 * [multi-file](https://github.com/dbanksdesign/style-dictionary-dark-mode/tree/multi-file): the full implementation using the multi-file approach with file extensions. 
 
-Before we start, let's look at how different platforms handle color modes. If you don't care about this stuff and want to just jump into the setup you can skip these sections.
+Before we start, let's look at how different platforms handle color modes. If you don't care about this stuff and want to jump into the setup, you can skip these sections.
 
 
 ----
@@ -80,7 +81,7 @@ Before we start, let's look at how different platforms handle color modes. If yo
 
 ## Web
 
-The built-in way to support color modes on the web is to use the [`prefers-color-scheme` CSS media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). The available options for this query are: light, dark, and no-preference.
+The built-in way to support color modes on the web is to use the [`prefers-color-scheme` CSS media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). The available options for this query are light, dark, and no-preference.
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -133,7 +134,7 @@ darkQuery.addListener(function(e) {
 });
 ```
 
-If you wanted, you could write completely separate sets of styles for light and dark mode for each component. But that sounds a bit tedious and error prone. Instead, people tend to use [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) (sometimes called CSS variables) in addition to the `prefers-color-scheme` media query:
+If you wanted, you could write completely separate sets of styles for light and dark mode for each component. But that sounds a bit tedious and error-prone. Depending on your browser support requirements, you could use [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) (sometimes called CSS variables) in addition to the `prefers-color-scheme` media query:
 
 ```css
 :root {
@@ -154,7 +155,7 @@ If you wanted, you could write completely separate sets of styles for light and 
 }
 ```
 
-Using CSS custom properties and having a layer of semantic tokens allows you to not have to re-style every component for light and dark mode. The above example is very simple, but can be expanded to a fit the needs of a full design system. Also if you are using inline SVG (as opposed to using SVG in an `<img>` tag), your SVG can be styled with CSS and can use CSS custom properties as well! One more quick tip before we move on: you can use the `currentColor` property in SVG as well to have the graphic inherit its color from its parent. This is useful if you have an icon inside a link or button for example. 
+Using CSS custom properties and having a layer of semantic tokens allows you to not have to re-style every component for light and dark mode. The above example is small, but can be expanded to a fit the needs of whole design systems. Also if you are using inline SVG (as opposed to using SVG in an `<img>` tag), your SVG can be styled with CSS and also use CSS custom properties! One more quick tip before we move on: you can use the `currentColor` property in SVG and have the graphic inherit its color from its parent. This is useful if you have an icon inside a link or button, for example.
 
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
@@ -165,7 +166,7 @@ Using CSS custom properties and having a layer of semantic tokens allows you to 
 </svg>
 ```
 
-[See this MDN article for more information about the prefers-color-scheme media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
+See [this MDN article](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) for more information about the prefers-color-scheme media query
 
 This Style Dictionary demo will create CSS files with CSS custom properties and media queries as well as light and dark SVG graphics. 
 
@@ -231,7 +232,6 @@ If you are working in Android Studio, there are different file explorer views in
 ![Android view organizes files to reduce clutter](images/as-android-dark.png)
 
 </ThemedImage>
-
 
 <div style={{clear: 'both'}} />
 
