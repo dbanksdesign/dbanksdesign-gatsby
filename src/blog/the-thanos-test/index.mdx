@@ -1,0 +1,88 @@
+---
+title: "The Thanos Test"
+draft: true
+date: '2019-04-28'
+---
+
+![I don't feel so good](https://media.giphy.com/media/AiEr9b7sX5VKIoIvQL/giphy.gif)
+
+> I don't feel so good Mr. Stark...  
+> — <cite>[Spider Man](https://www.youtube.com/watch?v=PZmtb8eDDNs)</cite>
+
+Imagine you and your team were dusted in the Thanos Snap[^1]. Would a team of similarly skilled people carry on your team's charter to in a way that would make you proud?[^2]
+
+This question is a, honestly pretty morbid, thought experiment. If you answered yes to the question, you pass; if not you have work to do. It is a bit hard framing it as a binary question, but  Now to be clear, I think most people and teams would not truly meet this test. 
+
+This is may sound super morbid, but this concept has really made me a better designer/developer/teammate. If you and your team were dusted in the [Thanos Snap™](https://www.youtube.com/watch?v=PZmtb8eDDNs), or rather just quit the company, would a similar team be able to carry on your team's charter in a way that would make you proud? If the answer is anything other than "yes", you have work to do. 
+
+The reason this is important is having these silos of tribal knowledge does not empower others to do their jobs well. It forces them to talk to you or your team to find out how to do something. I want to have all of my experience and knowledge in a way for anyone in the team or company to be able to use. That empowers them and reduces the dependency on me. 
+
+### Tribal knowledge
+
+The main reason for this thought experiment is reduce tribal knowledge in a team or company. If you are not familiar with the term, tribal knowledge refers to any unwritten knowledge that is known to some, the tribe, but not others. This could be some debugging process only one person knows or a team's unwritten coding rules or design guidelines. 
+
+Tribal knowledge in a company is not good for many reasons, but mainly that it creates an in and out group. If you aren't part of the "tribe" that knows certain unwritten rules, you cannot effectively do your job and could feel ashamed for not knowing something that, what seems to be, everyone else knows. (Never feel ashamed for not knowing something, especially if it is tribal knowledge) Additionally, if the "tribe" ever leaves, that knowledge leaves with them. New team members might spend days or weeks trying to figure out why a build is failing because they don't know the special trick. 
+
+One of the, *many*, things my partner has taught me in our relationship is that if you are upset with someone you should tell them why because the probably don't know. If you don't tell someone what is bothering you, how will they know to fix it? It is no use to stew in anger while the other person knows you are clearly upset, but does not know how to fix it. The same is true of tribal knowledge, if I don't know about a set of guidelines or rules, how am I expected to follow them?
+
+## How to fix it
+
+Enacting mechanisms, codifying knowledge, and documenting decisions are how we reduce tribal knowledge, increase efficiency, and ensure long-lasting success after we are gone. 
+
+### Enacting mechanisms
+
+> Good intentions never work, you need good mechanisms to ...
+> - <cite>Jeff Bezos</cite>
+
+Mechanisms in code are things like, automated testing, code linting, and Continuous Integration / Continuous Deployment (CI/CD) pipelines. As a new developer to a project, I get automatic feedback when I try to commit code and the unit tests fail or the code linter returns an error. Other mechanisms can be things like 
+
+Mechanisms are the best solution to the Thanos Test and reducing tribal knowledge because they happen automatically and 
+
+### Codifying knowledge
+
+
+
+### Documenting decisions
+
+Writing well documented code. Some people say that best code requires no documentation because the code is self-explanatory. I think there are a few things wrong with this. Firstly, we live in the real world, the real world has timelines, competing priorities, and a whole lot of messiness. Sure we all would love to write the most well thought out and organized code, but that doesn't happen all of the time. Secondly, comments in code should explain *why* the code is written that way, not *how* it works or *what* it is doing. Even the best code can't explain *why* it was written that way even if it is clear how it works and what it is doing.
+
+On the subject of documenting code, please use whatever your language's documentation comment standard is (JSDoc, JavaDoc, etc.), it is so useful. I'm not talking about just writing the bare minimum so your code passes a linting test for documentation comments, but actually explaining what methods do and what arguments are used for. I've seen my fair share of Javadoc comments that just repeat the classname in a sentence:
+
+```java
+/**
+ * BannerComponent
+ * Class for creating a banner.
+ */
+public class BannerComponent {
+  //
+}
+```
+
+Don't do this.
+
+
+### Contribution model
+
+Can anyone at your company contribute code, design, or features to your product? The best thing your team could do is treat itself as contributors. Dog-fooding[^3] your own mechanisms and processes. This allows your team to understand and appreciate how others outside the team can contribute, as well as set your team up for success when team members leave. It also reduces the "us versus them" mentality.
+
+### Single points of failure
+
+A single point of failure (SPOF) is generally a bad thing. Have you ever had a project held up because someone was out of the office or had higher priorities? 
+
+### Codifying knowledge in design systems
+
+
+
+### Rebuttals
+
+The common arguments against similar thought experiments usually talk about devaluing individual contributors. If you left your job and some other person could replace you so easily, are you really that good of an employee? This argument is a bit myopic; it obscures the fact that you, the person that left, did the work to spread your expertise by creating repeatable mechanisms and codifying your knowledge. It also assumes that the next person to replace you will not make any improvements to mechanisms or shared knowledge and will only follow what was made before them, which doesn't sound like an equally competent person because you would be adding and improving.
+
+In conclusion, 
+
+----
+
+[^1]: In the Marvel movies, Avengers: Infinity War, and Avengers: Endgame, as well as the Marvel comics refer to "the snap" as the event in which the villain Thanos snaps his hand and wipes out half of all living beings in the universe. 
+
+[^2]: I'm modifying the [Bus Test](http://www.urbandictionary.com/define.php?term=bus%20test) or [Bus Factor](https://en.wikipedia.org/wiki/Bus_factor) thought experiment here. Most publications on the bus test focus on one individual, I think it could be expanded for a whole team. 
+
+[^3]: Dog-fooding is a term used to describe using your own product, being your own customer. This allows you to see in the eyes of your customers. It comes from the phrase to "eat your own dog food", which is kind of gross. 
