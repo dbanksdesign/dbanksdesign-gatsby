@@ -1,0 +1,29 @@
+.fidelity-graph-label {
+  fill: var(--color-font-tertiary);
+  font-size: var(--size-font-large);
+}
+
+.fidelity-graph-value {
+  fill: var(--color-font-inverse);
+  font-size: var(--size-font-large);
+}
+
+.fidelity-graph-border {
+  stroke: var(--color-border-primary);
+}
+
+.fidelity-graph-design {
+  fill: var(--color-brand-primary);
+}
+
+.fidelity-graph-development {
+  fill: var(--color-brand-secondary);
+}
+
+.fidelity-gradient-start {
+  stop-color: var(--color-brand-primary);
+}
+
+.fidelity-gradient-stop {
+  stop-color: var(--color-brand-secondary);
+}
