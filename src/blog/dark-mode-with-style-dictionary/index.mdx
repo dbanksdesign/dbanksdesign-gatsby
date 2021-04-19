@@ -176,9 +176,9 @@ This Style Dictionary demo will create CSS files with CSS custom properties and 
 
 ## Android
 
-*Note: [Android Jetpack Compose](https://developer.android.com/jetpack/compose) is a new (as of this writing) way to build interfaces in Android that doesn't use resource XML files. I chose to omit Jetpack Compose for brevity, but you can take a look at some discussion on this [Style Dictionary issue](https://github.com/amzn/style-dictionary/issues/478) and [this Gist](https://gist.github.com/bherbst/1b8c9a66953f25044631db68dd773429) about it.*
+*Note: [Android Jetpack Compose](https://developer.android.com/jetpack/compose) is a new (as of this writing) way to build interfaces in Android that doesn't use resource XML files. I chose to omit Jetpack Compose for brevity, but you can look at some discussion on this [Style Dictionary issue](https://github.com/amzn/style-dictionary/issues/478) and [this Gist](https://gist.github.com/bherbst/1b8c9a66953f25044631db68dd773429) about it.*
 
-Design token integration in Android works really well because the Android platform has a concept of [resources](https://developer.android.com/guide/topics/resources/providing-resources), which are very much like design tokens in XML form. Maybe a more apt comparison is Android resources are more like CSS in XML form. You can define resource values, which are similar to a design token or CSS custom property, but you can also define styles and themes which are collections of resources and applied styling. You can also build components, layouts, and pages in resource XML too. 
+Design token integration in Android works well because the Android platform has a concept of [resources](https://developer.android.com/guide/topics/resources/providing-resources), which are very much like design tokens in XML form. Maybe a more apt comparison is Android resources are more like CSS in XML form. You can define resource values, which are similar to a design token or CSS custom property, but you can also define styles and themes which are collections of resources and applied styling. You can also build components, layouts, and pages in resource XML too. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -189,11 +189,11 @@ Design token integration in Android works really well because the Android platfo
 </resources>
 ```
 
-Let's focus on how Android handles light and dark mode with resources. An Android project, a library or application, the folder structure matters for things like resources. Android resources are XML files with a specific folder structure. There are different types of resources like values, styles, layouts, and drawables. We will focus on values and drawables (vector graphics and images). Android resource values are very similar to design tokens or CSS custom properties: they have a name, a value, and a type like color or dimen (short for dimension). 
+Let's focus on how Android handles light and dark mode with resources. In an Android project, a library or application, the folder structure matters for things like resources. Android resources are XML files with a specific folder structure. There are different types of resources like values, styles, layouts, and drawables. We will focus on values and drawables (vector graphics and images). Android resource values are very similar to design tokens or CSS custom properties: they have a name, a value, and a type like `color` or `dimen` (short for dimension). 
 
-Android uses the names of resource folders to decide when to apply certain resources in certain contexts, like light/dark mode, screen size, locale, OS version, layout direction, and device orientation just to name a few. 
+Android uses the names of resource folders to decide when to apply specific resources in certain contexts, like light/dark mode, screen size, locale, OS version, layout direction, and device orientation, just to name a few. 
 
-Resource folders in Android can have *qualifiers.* Qualifiers override resources depending on the context the application is running in, for example light or dark mode. You can also use qualifiers to specify different layouts and resources for certain device sizes, locales, screen densities, and more. Android calls light and dark mode, *notnight* and *night* respectively. Without any qualifier, all resources apply to both night and notnight mode. What I have seen mostly is having a unqualified directory, like `values` and a dark mode one `values-night` with dark mode overrides. 
+Resource folders in Android can have *qualifiers.* Qualifiers override resources depending on the application’s context, for example, light or dark mode. You can also use qualifiers to specify different layouts and resources for certain device sizes, locales, screen densities, and more. Android calls light and dark mode, *notnight* and *night*, respectively. Without any qualifier, all resources apply to both night and notnight mode. I have mostly seen having an unqualified directory, like `values` and a dark mode one `values-night` with dark mode overrides. 
 
 <FileTree items={[{
   name: 'res',
@@ -283,9 +283,9 @@ Here is the same Android vector drawable with references to resources. If the co
 </vector>
 ```
 
-What we will do is take graphics written in SVG defined in our Style Dictionary package and convert them to Android vector drawable files. Android also has support for raster based graphics like PNG as well so we could convert our graphics to PNG, but because we can use a vector based format we will go with that. We will be using an NPM library, [svg2vectordrawable](https://www.npmjs.com/package/svg2vectordrawable), to translate an SVG file into Android Vector Drawable format.
+We will take graphics written in SVG defined in our Style Dictionary package and convert them to Android vector drawable files. Android also has support for raster-based graphics like PNG. We could convert our graphics to PNG, but because we can use a vector-based format we will go with that. We will be using an NPM library, [svg2vectordrawable](https://www.npmjs.com/package/svg2vectordrawable), to translate SVG into Android Vector Drawable format.
 
-*Note: converting SVG to Android Vector Drawables is not always a 1:1 conversion because there are a number of things in SVG that are either not supported in Android Vector Drawables or have a completely different paradigm. For example, `transform` and `stroke-dasharray` in SVG have no equivalent in vector drawables.*
+*Note: converting SVG to Android Vector Drawables is not always a 1:1 conversion because there are several things in SVG that are either not supported in Android Vector Drawables or have a completely different paradigm. For example, `transform` and `stroke-dasharray` in SVG have no equivalent in vector drawables.*
 
 
 ----
