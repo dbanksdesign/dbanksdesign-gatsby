@@ -53,6 +53,9 @@ module.exports = {
             }
           },{
             resolve: `gatsby-remark-smartypants`
+          },{
+            resolve: `gatsby-remark-prismjs`,
+            options: {}
           }
         ]
       }

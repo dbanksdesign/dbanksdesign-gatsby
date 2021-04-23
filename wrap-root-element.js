@@ -1,7 +1,5 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import Code from './src/components/Code'
-import { preToCodeBlock } from 'mdx-utils'
 import Prism from "prism-react-renderer/prism";
 
 (typeof global !== "undefined" ? global : window).Prism = Prism;
@@ -13,16 +11,6 @@ const anchorify = str => str.replace(/[^\s|\w|-]/g,'').replace(/\s/g,'-')
 // components is its own object outside of render so that the references to
 // components are stable
 const components = {
-  pre: preProps => {
-    const props = preToCodeBlock(preProps)
-    // if there's a codeString and some props, we passed the test
-    if (props) {
-      return <Code {...props} />
-    } else {
-      // it's possible to have a pre without a code in it
-      return <pre {...preProps} />
-    }
-  },
   // remark-autolink-headers is crapping out. doing this myself
   h2: props => {
     if (typeof props.children === 'string') {
@@ -53,6 +41,7 @@ const components = {
     }
   },
 }
+
 export const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
 )

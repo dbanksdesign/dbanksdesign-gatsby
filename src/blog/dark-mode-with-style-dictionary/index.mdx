@@ -1,6 +1,6 @@
 ---
 title: "Dark Mode with Style Dictionary"
-date: '2021-04-01'
+date: '2021-04-21'
 className: 'dark-mode'
 excerpt: 'Dark mode is so hot right now. This article goes in depth into how dark mode works on Android, iOS, and the web as well as tips on how to structure your design tokens and 2 different implementations of dark mode in Style Dictionary.'
 toc:
@@ -59,7 +59,7 @@ Having certain pages or worse, certain components on a page, in light mode and o
 
 Having said all that, using [design tokens](https://designtokens.org) can drastically simplify the creation and maintenance of color modes across platforms. I love that design tokens can integrate into any platform in a standard way by generating source code artifacts so that developers on a given platform don't even necessarily have to know they interact with design tokens. Building with design tokens on a given platform should feel natural. My approach to design token integration is to, as closely as possible, integrate with the built-in mechanisms in each platform to handle color modes rather than outputting some proprietary code.
 
-We are going to build a design token package using Style Dictionary that has support for light and dark mode for color tokens and graphic assets (using tokens as well). It has demo apps in Android, iOS, and Web to show how it would integrate into those platforms. This article will serve as a high-level explanation of concepts, the why and how things work. The [Github repository](repo) has everything fully implemented with comments and more in-depth explanations. 
+We are going to build a design token package using [Style Dictionary][style dictionary] that has support for light and dark mode for color tokens and graphic assets (using tokens as well). It has demo apps in Android, iOS, and Web to show how it would integrate into those platforms. This article will serve as a high-level explanation of concepts, the why and how things work. The [Github repository](repo) has everything fully implemented with comments and more in-depth explanations. 
 
 This article and sample will not cover:
 * **How to think about and build dark mode support from a UX perspective (like creating a setting page or control for toggling light/dark mode)**
@@ -157,7 +157,7 @@ If you wanted, you could write completely separate sets of styles for light and 
 
 Using CSS custom properties and having a layer of semantic tokens allows you to not have to re-style every component for light and dark mode. The above example is small, but can be expanded to a fit the needs of whole design systems. Also if you are using inline SVG (as opposed to using SVG in an `<img>` tag), your SVG can be styled with CSS and also use CSS custom properties! One more quick tip before we move on: you can use the `currentColor` property in SVG and have the graphic inherit its color from its parent. This is useful if you have an icon inside a link or button, for example.
 
-```html
+```xml{3,5}
 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
   <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
     fill="var(--color-font-primary)"/>
@@ -269,7 +269,7 @@ Very similar to SVG on the web, we can:
 
 Here is the same Android vector drawable with references to resources. If the colors referenced in this graphic have light and dark qualified values, those will be applied appropriately. No need to create a separate dark version of this graphic. 
 
-```xml
+```xml{7,8}
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
   android:width="128dp"
   android:height="128dp"
@@ -293,7 +293,7 @@ We will take graphics written in SVG defined in our Style Dictionary package and
 
 ## iOS
 
-While Android has resources, iOS has assets. iOS has image and color assets, which can support color modes (and have more modes than just light and dark too). Assets are stored in an [asset catalog](https://help.apple.com/xcode/mac/current/#/dev10510b1f7) which is a folder with sub-folders that have a specific extension (.colorset or .imageset) and a JSON files named **Contents.json**. Here is an example of an asset catalog in Xcode:
+While Android has resources, iOS has assets. iOS has image and color assets, which can support color modes (and have more modes than just light and dark too). Assets are stored in an [asset catalog](https://help.apple.com/xcode/mac/current/#/dev10510b1f7) which is a folder with sub-folders that have a specific extension (.colorset or .imageset) and a JSON file named **Contents.json**. Here is an example of an asset catalog in Xcode:
 
 <ThemedImage style={{width: '80%', marginLeft: '10%'}}>
 
@@ -337,7 +337,7 @@ If you want to dive deeper on asset catalogs I suggest this article: [Working wi
 
 ### Colors
 
-A colorset contains a single **Contents.json** file which describes the color and potentially different values for the color in different contexts like light and dark mode. Here is a color with light and dark mode:
+A colorset contains a single **Contents.json** file that describes the color and potentially different values for the color in other contexts like light and dark mode. Here is a color with light and dark mode:
 
 ```json
 {
@@ -383,11 +383,11 @@ A colorset contains a single **Contents.json** file which describes the color an
 A few things to notice:
 
 - `colors` is an array of color objects because one color might have multiple values, one for each different context like light and dark mode.
-- A `color` can have an `appearances` array, which will let iOS know when that color should be used. There are 2 types of appearances you can have: luminosity and contrast. Luminosity can be 'light', 'dark', or 'any'. Contrast can be 'high' or nothing, meaning normal contrast. *(sidenote: this is kind of weird, from a user's perspective both contrast and luminosity are binary settings: light/dark and on/off for contrast. Why then are luminosity and contrast different for a developer?)*
+- A `color` can have an `appearances` array, allowing iOS to know when to use that color. There are two types of appearances you can have: luminosity and contrast. Luminosity can be 'light', 'dark', or 'any'. Contrast can be 'high' or nothing, meaning normal contrast. *(sidenote: From a user's perspective, both contrast and luminosity are binary settings: light/dark and on/off for contrast. Why then are luminosity and contrast different for a developer?)*
 - `idiom` tells Xcode which device to target for that color. `universal` means all devices. You could also say `iPhone` `iPad` `Mac` and others.
-- `color-space` tells iOS which colorspace the color should be used in. The options are `srgb` and `display-p3`. If you wanted, you could provide different colors for different color spaces. Most of the time everything is assumed to be in the `srgb` colorspace, but if you want to learn more about colorspaces, here is a great article: [https://bjango.com/articles/colourmanagementgamut/](https://bjango.com/articles/colourmanagementgamut/)
+- `color-space` tells iOS which colorspace the color should be used in. The options are `srgb` and `display-p3`. If you wanted, you could provide different colors for different color spaces. Most of the time, everything is assumed to be in the `srgb` colorspace, but if you want to learn more about colorspaces, here is a great article: [https://bjango.com/articles/colourmanagementgamut/](https://bjango.com/articles/colourmanagementgamut/)
 
-All of these settings multiply the number of potential different colors a single colorset could be. For example if you want to target light and dark mode as well as high and regular contrast you would have 4 (2 x 2) colors. If you added colorspace you would then have 8 (2 x 2 x 2). You don't need to necessarily have different colors for each, but you can see how complicated it can potentially get. Once you have your colors defined in an asset catalog you can reference them in code:
+All of these settings multiply the number of different potential colors a single colorset could be. For example, if you want to target light and dark mode, and high and regular contrast, you would have 4 (2 x 2) colors. If you added colorspace, you would then have 8 (2 x 2 x 2). You don't need have different colors for each, but you can see how complicated it can get. Once you have your colors defined in an asset catalog, you can reference them in code:
 
 ```swift
 // SwiftUI
@@ -398,7 +398,7 @@ Text("Hello, World!")
 textLabel.textColor = UIColor(named: "backgroundPrimary")
 ```
 
-Using a colorset is not the only way to define colors on iOS. You can define them purely in code (Objective-C or Swift) as well. One unfortunate thing about colorsets is that because they are plain JSON you cannot have a colorset reference another colorset like you can with Android resources. To get around that we will create a subset of the color tokens as colorsets and then create a Color extension in Swift that references the colorsets
+Using a colorset is not the only way to define colors on iOS. You can define them purely in code (Objective-C or Swift) as well. One unfortunate thing about colorsets is that because they are plain JSON files, you cannot have a colorset reference another colorset like you can with Android resources. To get around that, we will create a subset of the color tokens as colorsets and then create a Color extension in Swift that references the colorsets
 
 ```swift
 extension Color {
@@ -423,7 +423,7 @@ Text("Hello, World!")
 
 ### Graphics
 
-Images in iOS are very similar to colors, there is an imageset just like the colorset that can be added to an asset catalog. Here is what an imageset directory looks like:
+Images in iOS are very similar to colors. There is an imageset just like the colorset that can be added to an asset catalog. Here is what an imageset directory looks like:
 
 <FileTree items={[{
   name: 'logo.imageset',
@@ -440,7 +440,7 @@ Images in iOS are very similar to colors, there is an imageset just like the col
   }]
 }]} />
 
-There can be more images if you want to supply different resolutions like 1x, 2x, etc. For simplicity we will use a single size and have light/dark modes for each image. The **Contents.json** file would look like this:
+There can be more images if you want to supply different resolutions like 1x, 2x, etc. For simplicity, we will use a single size and have light/dark modes for each image. The **Contents.json** file would look like this:
 
 ```json
 {
@@ -477,14 +477,14 @@ Image.init("logo")
 UIImage(named: "logo")
 ```
 
-For this article I will be focusing on Swift and SwiftUI, but if your app is still on Objective-C you can still use iOS assets and UIKit. You will need to translate some code accordingly. Here are some more resources about supporting dark mode in iOS:
+For this article, I will be focusing on Swift and SwiftUI, but if your app is still on Objective-C you can still use iOS assets and UIKit. You will need to translate some code accordingly. Here are some more resources about supporting dark mode in iOS:
 
 * [https://developer.apple.com/documentation/xcode/supporting_dark_mode_in_your_interface](https://developer.apple.com/documentation/xcode/supporting_dark_mode_in_your_interface)
 * [https://nshipster.com/dark-mode/](https://nshipster.com/dark-mode/)
 
-To summarize, we will build for iOS is an asset catalog with color and image assets that have light and dark mode. Additionally we will create some Swift extensions for Color and Image to make referencing the design tokens a bit easier.
+We will build an asset catalog with color and image assets that have light and dark modes. Additionally, we will create some Swift extensions for Color and Image to make referencing the design tokens a bit easier.
 
-Now that we have an idea of what we need to build for each platform, lets take a look at how we can structure our tokens to support color modes.
+Now that we have an idea of what we need to build for each platform, let's take a look at how we can structure our tokens to support color modes.
 
 
 ----
@@ -492,19 +492,19 @@ Now that we have an idea of what we need to build for each platform, lets take a
 
 ## Token structure
 
-Let me start off by saying: **there is no single right or wrong way to support color modes with design tokens**. Here is just what I have found in my experience, but there could be other ways as well. We will first look at how to structure our tokens and then we will get into different ways to implement dark mode because the overall token structure won't change.
+Let me start by saying: **there is no single right or wrong way to support color modes with design tokens**. Here is just what I have found in my experience, but there could be other ways as well. We will first look at how to structure our tokens, and then we will get into different ways to implement dark mode because the overall token structure won't change.
 
 ### Multi-Tiered system
 
 <TokenStructure />
 
-The most important tip about implementing dark mode with design tokens is to follow a multi-tiered approach like the one in Brad Frost's article, [Creating themeable design systems](https://bradfrost.com/blog/post/creating-themeable-design-systems/), or something similar. Brad Frost call these tiers: brand definitions, high-level application, and component-specific. They are tiers because each one builds on top of each other, layering on meaning and context. The lowest level is the brand level. I have also seen this called 'core' as well. This tier of design tokens don't reference other tokens, they are raw values.
+The most important tip about implementing dark mode with design tokens is to follow a multi-tiered approach like the one in Brad Frost's article, [Creating themeable design systems](https://bradfrost.com/blog/post/creating-themeable-design-systems/), or something similar. Brad Frost calls these tiers: brand definitions, high-level application, and component-specific. They are tiers because each one builds on top of the other, layering on meaning and context. The lowest level is the brand level. I have also seen this called 'core' as well. This tier of design tokens doesn't reference other tokens; they are raw values.
 
-One thing to note here is that these tiers don't necessarily equate to object, file, or naming structure of the tokens, but is more conceptual based on *reference* structure of the tokens. The lowest level of tokens do not reference other tokens. They also do not have any contextual or semantic meaning, they are just *options*. 
+Note that these tiers don't necessarily equate to object, file, or naming structure of the tokens, but is more conceptual based on *reference* structure of the tokens. The lowest level of tokens does not reference other tokens. They also do not have any contextual or semantic meaning; they are just *options*. As we layer references on top of these options we also layer on meaning and context. `color.background.primary` gives context to how the token should be used. `button.background-color` gives a specific use for that token.
 
-One important concept in Style Dictionary is that you can organize your token files however you want. Style Dictionary will search for all the token files based on the configuration you give it, and it will perform a deep merge of the token objects it finds in those files. This is the difference of *object* structure and *file* structure. File structure is purely for the authoring experience. What really matters is the *object* structure. 
+A critical concept in Style Dictionary is that you can organize your token files however you want. Style Dictionary will search for all the token files based on the configuration you give it, and it will perform a deep merge of the token objects it finds in those files. This is the difference between *object* structure and *file* structure. The file structure is purely for the authoring experience. What matters is the *object* structure. 
 
-This structure is important because you don't want to have to replace every color token with a dark mode equivalent. Instead, only changing a thin semantic layer which component tokens reference. Let's take a look at a very small example:
+This structure is important because you don't want to replace every color token with a dark mode equivalent. Instead, only changing a thin semantic layer which component tokens reference. Let's take a look at a minimal example:
 
 ```json
 // core/brand tier
@@ -512,8 +512,7 @@ This structure is important because you don't want to have to replace every colo
   "color": {
     "core": {
       "neutral": {
-        "0": { "value": "#ffffff" },
-        // ...
+        "0": { "value": "#ffffff" }
       }
     }
   }
@@ -542,11 +541,11 @@ This structure is important because you don't want to have to replace every colo
 }
 ```
 
-In this example we have 3 tokens: `component.input.background-color` references `color.background.primary` which references `color.core.neutral.0`. You could imagine many component tokens referencing `color.background.primary`. If we wanted to support dark mode all we would have to do is change the value of `color.background.primary` to reference a dark color like `color.core.neutral.1000`. This way we wouldn't need to create dark mode tokens for every component and instead update a thin semantic layer. 
+In this example we have three tokens: `component.input.background-color` references `color.background.primary` which references `color.core.neutral.0`. You could imagine many component tokens referencing `color.background.primary`. If we wanted to support dark mode, all we would have to do is change the value of `color.background.primary` to reference a dark color like `color.core.neutral.1000`. We wouldn't need to create dark mode tokens for every component and instead update a thin semantic layer. 
 
 ### Use descriptive names
 
-Another tip is to avoid specific color or tint in your tokens names for the middle tier. For example avoid `color.font.lighter` or `color.font.orange` because these token names are too tightly coupled with their values. `color.font.darker` is assumed to be *darker* than `color.font.dark`, but in dark mode this would probably not mean what you want it to mean. Instead opt for ordinal naming like `color.font.primary` and `color.font.secondary`. In light mode `secondary` would be lighter, but in dark mode it would be darker, both meaning less visual weight. Similarly, avoiding referencing the canonical color name like `orange` and instead using names that have some semantic meaning like `danger` or `warning`. 
+Another tip is to avoid specific color or tint in your tokens names for the middle tier. For example avoid `color.font.lighter` or `color.font.orange` because these token names are too tightly coupled with their values. `color.font.darker` is assumed to be *darker* than `color.font.dark`, but in dark mode, this would probably not mean what you want it to mean. Instead opt for ordinal naming like `color.font.primary` and `color.font.secondary`. In light mode, `secondary` would be lighter, but it would be darker in dark mode, both meaning less visual weight. Similarly, avoid referencing the canonical color name like `orange`. Instead use names that have some semantic meaning like `danger` or `warning`. 
 
 
 ----
@@ -554,7 +553,7 @@ Another tip is to avoid specific color or tint in your tokens names for the midd
 
 ## Initial setup
 
-So we are not starting from zero, the demo repository has a [starter branch](https://github.com/dbanksdesign/style-dictionary-dark-mode/tree/starter) that has the Style Dictionary setup we will start with. It has Android, iOS, and web demo apps and a limited set of design tokens and graphics *without dark mode*. The project roughly looks like this:
+We are not starting from zero: the demo repository has a [starter branch](https://github.com/dbanksdesign/style-dictionary-dark-mode/tree/starter) with the Style Dictionary setup we will begin with. It has Android, iOS, and web demo apps and a limited set of design tokens and graphics *without dark mode*. The project roughly looks like this:
 
 <FileTree link="https://github.com/dbanksdesign/style-dictionary-dark-mode/tree/starter/" items={[{
   name: 'actions',
@@ -635,7 +634,7 @@ So we are not starting from zero, the demo repository has a [starter branch](htt
 
 1. You will need [CocoaPods](https://cocoapods.org/) installed
 1. Go into the **ios/demo** directory with `cd ios/demo`
-1. Run `pod install` to install the style dictionary CocoaOod
+1. Run `pod install` to install the style dictionary CocoaPod
 1. Open the Xcode workspace: `open StyleDictionaryDarkModeDemo.xcworkspace`
 1. Click the ▶️ button to build and run the demo
 
@@ -657,7 +656,7 @@ So we are not starting from zero, the demo repository has a [starter branch](htt
 
 ### Graphics in Style Dictionary
 
-This is an interesting topic that deserves its own article. I will briefly touch on it here as it relates to dark mode. Design tokens can encapsulate things more complex than a color or size, they could be a whole graphic or icon too. For example you could create a logo design token that points to an SVG file:
+This is an interesting topic that deserves its own article. I will briefly touch on it here as it relates to dark mode. Design tokens can encapsulate things more complex than a color or size, they could be a whole graphic or icon too. For example, you could create a logo design token that points to an SVG file:
 
 ```json
 {
@@ -669,7 +668,7 @@ This is an interesting topic that deserves its own article. I will briefly touch
 
 That SVG file could then reference other design tokens:
 
-```xml
+```xml{5}
 <!-- assets/svg/logo.svg -->
 <svg width="100" height="100" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
@@ -685,7 +684,7 @@ const fs = require('fs-extra');
 const template = require('lodash/template');
 
 function(dictionary, config) {
-  const { androidPath, iosPath, buildPath } = config;
+  const { androidPath='', iosPath='', buildPath='' } = config;
   
   dictionary.allProperties
     .filter(token => {
@@ -702,7 +701,7 @@ function(dictionary, config) {
       const svg = src(dictionary.properties);
       
       // Make sure the directory exists and write the new SVG file
-      const outputPath = `${buildPath||''}${name}.svg`;
+      const outputPath = `${buildPath}${name}.svg`;
       fs.ensureFileSync(outputPath);
       fs.writeFileSync(outputPath, svg);
       console.log(`✔︎  ${outputPath}`);
@@ -716,7 +715,7 @@ function(dictionary, config) {
 
 ### Output references
 
-The second important part is the [`outputReferences`](https://amzn.github.io/style-dictionary/#/version_3?id=output-references) option that is coming out in [Style Dictionary 3.0](https://amzn.github.io/style-dictionary/#/version_3). Normally, Style Dictionary resolves all references (aka aliases) so that token values in output files are raw values. For example if you had these 2 tokens:
+The second important part is the [`outputReferences`](https://amzn.github.io/style-dictionary/#/version_3?id=output-references) option that is coming out in [Style Dictionary 3.0](https://amzn.github.io/style-dictionary/#/version_3). Typically, Style Dictionary resolves all references (aka aliases) so that token values in output files are raw values. For example, if you had these 2 tokens:
 
 ```json
 {
@@ -734,16 +733,16 @@ and you output an CSS variables file, it would look like this:
 --color-danger: #ff0000;
 ```
 
-Style Dictionary resolves the references and outputs the resolved value of the tokens. However, this does not make good use of languages like CSS where you can have variables reference other variables. The `outputReferences` option allows certain formats to not use the resolved value for references and instead refer to the variable. The CSS variables file becomes:
+Style Dictionary resolves the references and outputs the resolved value of the tokens. However, this does not make good use of languages like CSS, where you can have variables reference other variables. The `outputReferences` option allows certain formats not to use the resolved value for references and instead refer to the variable. The CSS variables file becomes:
 
 ```css
 --color-red: #ff0000;
 --color-danger: var(--color-red);
 ```
 
-With the `outputReferences` option we can now output only the colors that change in the different modes, and keep the references to them. This will make smaller output files and make better use of the platforms.
+With the `outputReferences` option, we can now output only the colors that change in the different modes and keep the references. This will make smaller output files and make better use of the platforms.
 
-Now let's look at how we can implement these dark mode tokens. I often say you can achieve anything in Style Dictionary with the right configuration and token setup. This is why I am showing 2 approaches, both work and have the same end result. The difference is in the configuration and the token authoring experience.
+Now let's look at how we can implement these dark mode tokens. I often say you can achieve anything in Style Dictionary with the proper configuration and token setup. This is why I am showing 2 approaches. Both work and have the same end result. The difference is in the configuration and the token authoring experience.
 
 
 ----
