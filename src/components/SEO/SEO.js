@@ -39,12 +39,8 @@ function SEO({ description, lang, meta, image: metaImage, keywords, title }) {
                 content: `website`,
               },
               {
-                name: `twitter:card`,
-                content: `summary`,
-              },
-              {
                 name: `twitter:creator`,
-                content: data.site.siteMetadata.author,
+                content: `@${data.site.siteMetadata.social.twitter}`,
               },
               {
                 name: `twitter:title`,
@@ -120,6 +116,9 @@ const detailsQuery = graphql`
         description
         author
         siteUrl
+        social {
+          twitter
+        }
       }
     }
   }
