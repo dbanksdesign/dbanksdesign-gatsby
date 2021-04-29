@@ -183,6 +183,7 @@ body {
 a {
   color: var(--color-font-link);
   transition: all var(--time-duration-base) ease;
+  text-underline-offset: var(--size-padding-tiny);
 }
 
 a:hover {
@@ -263,6 +264,7 @@ video {
   max-width: 100%;
   max-height: 100%;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .font-secondary { color: var(--color-font-secondary); }
@@ -468,3 +470,9 @@ figcaption {
 
 .green { color: var(--color-font-code-2); }
 .red { color: var(--color-font-code-4); }
+
+h2 > svg {
+  margin-left: var(--size-padding-base);
+  opacity: 0.5;
+  vertical-align: baseline;
+}

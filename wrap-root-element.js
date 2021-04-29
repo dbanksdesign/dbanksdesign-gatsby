@@ -16,13 +16,9 @@ const components = {
     if (typeof props.children === 'string') {
       return <h2 id={anchorify(props.children)} {...props} />
     } else {
-      const id = anchorify(props.children.map((node) => {
-        if (typeof node === 'string') {
-          return node;
-        } else {
-          return node.props.children
-        }
-      }).join('-'))
+      const id = anchorify(props.children
+          .filter(node => typeof node === 'string')
+          .join('-'));
       return <h2 id={id} {...props} />
     }
   },

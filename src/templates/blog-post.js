@@ -38,13 +38,23 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.mdx;
     const { frontmatter={} } = post;
     const { previous, next } = this.props.pageContext;
+    const image = frontmatter.image
+      ? post.frontmatter.image.childImageSharp.resize
+      : null;
+      
     if (frontmatter.toc) {
       toc = frontmatter.toc;
     }
     
     return (
       <>
-        <SEO title={frontmatter.title} description={post.excerpt} />
+        <SEO
+          title={frontmatter.title}
+          description={frontmatter.description || post.excerpt}
+          image={image}
+          pathname={this.props.location.pathname}
+        />
+        {/* <SEO title={frontmatter.title} description={post.excerpt} /> */}
         <div className="blog-content">
           <header className="blog-header">
             <h1>{frontmatter.title}</h1>
@@ -86,6 +96,15 @@ export const pageQuery = graphql`
         title
         className
         date(formatString: "MMMM DD, YYYY")
+        image: featured {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
+            }
+          }
+        }
         toc {
           anchor
           label
