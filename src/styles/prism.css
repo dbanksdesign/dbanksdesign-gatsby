@@ -1,9 +1,16 @@
-.prism-code {
+.prism-code,
+.gatsby-highlight {
   padding: var(--size-padding-base);
   margin-bottom: var(--size-padding-xl);
-  background-color: var(--color-background-tertiary);
+  background-color: var(--color-background-secondary);
   overflow-x: auto;
   display: block;
+}
+
+.gatsby-highlight code {
+  background-color: transparent;
+  padding: 0;
+  color: var(--color-font-code-6);
 }
 
 p + .prism-code {
@@ -33,7 +40,7 @@ p + .prism-code {
 
 .token.attr-name,
 .token.namespace {
-  color: var(--color-font-code-1);
+  color: var(--color-font-code-7);
 }
 
 .token.tag {
@@ -47,7 +54,7 @@ p + .prism-code {
 .token.boolean,
 .token.number,
 .token.function {
-  color: var(--color-font-code-3);
+  color: var(--color-font-code-1);
 }
 
 .token.property,
@@ -62,7 +69,7 @@ p + .prism-code {
 .token.atrule,
 .token.keyword,
 .token.builtin {
-  color: var(--color-font-code-2);
+  color: var(--color-font-code-3);
 }
 
 .token.string,
@@ -70,13 +77,13 @@ p + .prism-code {
 .token.attr-value,
 .token.regex,
 .token.variable {
-  color: var(--color-font-code-1);
+  color: var(--color-font-code-2);
 }
 
 .token.operator,
 .token.entity,
 .token.url {
-  color: var(--color-font-code-5);
+  color: var(--color-font-primary);
 }
 
 .token.important,
@@ -102,4 +109,30 @@ p + .prism-code {
 
 .token.punctuation {
   color: var(--color-font-secondary);
+}
+
+.token.template-string.interpolation {
+  color: var(--color-font-code-3);
+}
+
+.token.interpolation-punctuation {
+  color: var(--color-font-code-7);
+}
+
+.gatsby-highlight-code-line {
+  position: relative;
+  background-color: var(--color-background-selection);
+  display: block;
+  margin-right: calc(-1 * var(--size-padding-base));
+  margin-left: calc(-1 * var(--size-padding-base));
+  padding-right: var(--size-padding-base);
+  padding-left: var(--size-padding-base);
+}
+
+.gatsby-highlight-code-line::before {
+  content: "👀";
+  position: absolute;
+  top: 0;
+  right: var(--size-padding-small);
+  bottom: 0;
 }

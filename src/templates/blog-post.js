@@ -9,10 +9,21 @@ import './BlogPost.css'
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
     const { hash } = this.props.location;
+    const { frontmatter={} } = this.props.data.mdx;
     if (hash && hash.length > 0) {
       setTimeout(() => {
         smoothScroll.scrollTo(hash.replace('#',''))
       }, 100);
+    }
+    if (frontmatter.className && document) {
+      document.documentElement.classList.add(frontmatter.className);
+    }
+  }
+  
+  componentWillUnmount() {
+    const { frontmatter={} } = this.props.data.mdx;
+    if (frontmatter.className && document) {
+      document.documentElement.classList.remove(frontmatter.className);
     }
   }
   
@@ -25,24 +36,24 @@ class BlogPostTemplate extends React.Component {
   render() {
     let toc;
     const post = this.props.data.mdx;
-    const { frontmatter } = post;
+    const { frontmatter={} } = post;
     const { previous, next } = this.props.pageContext;
-    if (frontmatter && frontmatter.toc) {
+    if (frontmatter.toc) {
       toc = frontmatter.toc;
     }
     
     return (
       <>
-        {toc &&
-          <TOC links={toc} />}
         <SEO title={frontmatter.title} description={post.excerpt} />
         <div className="blog-content">
-        <h1>{frontmatter.title}</h1>
-        <section className="post-metadata">
-          <span className="post-date">{post.frontmatter.date}</span>
-        </section>
+          <header className="blog-header">
+            <h1>{frontmatter.title}</h1>
+            <section className="post-metadata">
+              <span className="post-date">{post.frontmatter.date}</span>
+            </section>
+          </header>
         
-        <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer>{post.body}</MDXRenderer>
 
         {/* <nav className="post-nav">
           {previous && (
@@ -57,6 +68,8 @@ class BlogPostTemplate extends React.Component {
           )}
         </nav> */}
         </div>
+        {toc &&
+          <TOC links={toc} />}
       </>
     )
   }
@@ -71,6 +84,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       frontmatter {
         title
+        className
         date(formatString: "MMMM DD, YYYY")
         toc {
           anchor

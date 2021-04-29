@@ -1,6 +1,6 @@
 
 .toc {
-  width: 10rem;
+  width: 15rem;
   position: relative;
 }
 
@@ -9,19 +9,11 @@
 }
 
 .toc-inner {
-  position: fixed;
-  top: 3rem;
-  bottom: 0;
-  left: 0;
-  width: 10rem;
-  padding-top: var(--size-padding-xl);
+  position: sticky;
+  top: 0;
+  padding-right: var(--size-padding-base);
+  padding-top: var(--size-padding-base);
   overflow-y: auto;
-  /* border-right: 1px solid var(--color-core-purple-100); */
-}
-
-.toc h4 {
-  padding: 0 var(--size-padding-base);
-  margin-bottom: 0;
 }
 
 .toc ul {
@@ -36,6 +28,7 @@
   text-decoration: none;
   font-size: var(--size-font-small);
   color: var(--color-font-tertiary);
+  border-left: var(--size-border-base) solid var(--color-border-tertiary);
 }
 
 .toc-link:focus {
@@ -45,4 +38,5 @@
 .toc-link.is-current {
   color: var(--color-font-primary);
   font-weight: bold;
+  border-color: var(--color-brand-primary);
 }

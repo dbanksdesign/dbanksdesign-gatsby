@@ -1,0 +1,67 @@
+.file-tree {
+  list-style: none;
+  background-color: var(--color-background-secondary);
+  margin: 0;
+  margin-bottom: var(--size-padding-large);
+  padding: var(--size-padding-base);
+}
+
+.file-tree ul {
+  list-style: none;
+  margin: 0;
+}
+
+.file-tree-item > svg {
+  vertical-align: middle;
+  margin-right: var(--size-padding-small);
+}
+
+.file-tree li {
+  position: relative;
+  line-height: 2;
+  padding: 0 var(--size-padding-base) 0 var(--size-padding-large);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.file-tree li:before {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: var(--size-padding-base);
+  height: var(--size-border-base);
+  margin: auto;
+  content: '';
+  background-color: var(--color-border-secondary);
+}
+
+.file-tree li:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--size-border-base);
+  height: 100%;
+  content: '';
+  background-color: var(--color-border-secondary);
+}
+
+.file-tree li:last-child:after {
+  height: 1rem;
+}
+
+.file-tree > li {
+  padding-left: 0;
+}
+
+.file-tree > li:before,
+.file-tree > li:after {
+  display: none;
+}
+
+.file-tree-item-description {
+  color: var(--color-font-tertiary);
+  margin-left: var(--size-padding-small);
+  font-style: italic;
+  font-size: var(--size-font-small);
+}
