@@ -91,7 +91,7 @@
   --size-breakpoint-large : 1400px;
 
   --hue-teal: 175deg;
-  --color-background-selection: hsl(var(--hue-teal), 85%, 35%, 0.25);
+  --color-background-selection: hsl(var(--hue-teal), 85%, 35%, 0.125);
   
   --time-duration-base: 0.2s;
 
@@ -121,7 +121,7 @@ body.light {
   --color-background-success: var(--color-core-green-light);
   --color-background-error: var(--color-core-red-light);
   
-  --color-background-selection: hsl(var(--hue-teal), 85%, 60%, 0.25);
+  --color-background-selection: hsl(var(--hue-teal), 85%, 60%, 0.125);
 
   --color-brand-primary : var(--color-core-purple-dark);
   --color-brand-secondary : var(--color-core-teal-dark);
@@ -465,3 +465,6 @@ figcaption {
   /* border-color: var(--color-brand-primary);
   box-shadow: none;; */
 }
+
+.green { color: var(--color-font-code-2); }
+.red { color: var(--color-font-code-4); }
