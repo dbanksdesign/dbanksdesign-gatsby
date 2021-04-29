@@ -1,17 +1,17 @@
-.blog-header {
+.dark-mode .blog-header {
   background: center / contain no-repeat url('images/sun-light.svg');
   min-height: 500px;
 }
 
-.dark .blog-header {
+.dark-mode .dark .blog-header {
   background-image: url('images/sun-dark.svg');
 }
 
-.dark h1 {
+.dark-mode .dark h1 {
   text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
-.blog-header::after {
+.dark-mode .blog-header::after {
   display: none;
 }
 

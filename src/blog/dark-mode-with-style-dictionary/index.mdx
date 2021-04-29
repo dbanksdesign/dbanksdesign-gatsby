@@ -2,6 +2,7 @@
 title: "Dark Mode with Style Dictionary"
 date: '2021-04-29'
 className: 'dark-mode'
+featured: 'images/social.png'
 excerpt: 'Dark mode is so hot right now. This article goes in depth into how dark mode works on Android, iOS, and the web as well as tips on how to structure your design tokens and 2 different implementations of dark mode in Style Dictionary.'
 toc:
   - anchor: 'Introduction'
@@ -26,6 +27,8 @@ toc:
     label: 'Conclusion'
 ---
 
+import { DiAndroid, DiApple, DiCss3 } from "react-icons/di";
+import { RiStackLine, RiPencilRuler2Line, RiFileCopy2Line, RiFileCodeLine, RiGitPullRequestLine, RiGithubFill, RiContrastLine } from "react-icons/ri";
 import ThemedImage from "$components/ThemedImage";
 import FileTree from "$components/FileTree";
 import TokenStructure from "./TokenStructure";
@@ -81,7 +84,7 @@ Before we start, let's look at how different platforms handle color modes. If yo
 ----
 
 
-## Web
+## Web<DiCss3 />
 
 The built-in way to support color modes on the web is to use the [`prefers-color-scheme` CSS media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme). The available options for this query are `light`, `dark`, and `no-preference`.
 
@@ -176,7 +179,7 @@ To support dark mode in Style Dictionary we will create light and dark CSS files
 ----
 
 
-## Android
+## Android<DiAndroid />
 
 *Note: [Android Jetpack Compose](https://developer.android.com/jetpack/compose) is a new (as of this writing) way to build interfaces in Android that doesn't use resource XML files. I chose to omit Jetpack Compose for brevity, but you can look at some discussion on this [Style Dictionary issue](https://github.com/amzn/style-dictionary/issues/478) and [this Gist](https://gist.github.com/bherbst/1b8c9a66953f25044631db68dd773429) about it if you are keen.*
 
@@ -294,7 +297,7 @@ We will take graphics written in SVG defined in our Style Dictionary package and
 ----
 
 
-## iOS
+## iOS<DiApple />
 
 While Android has resources, iOS has assets. iOS has image and color assets, which can support color modes (and have more modes than just light and dark too). Assets are stored in an [asset catalog](https://help.apple.com/xcode/mac/current/#/dev10510b1f7) which is a folder with sub-folders that have a specific extension (.colorset or .imageset) and a JSON file named **Contents.json**. Here is an example of an asset catalog in Xcode:
 
@@ -504,7 +507,7 @@ Now that we have an idea of what we need to build for each platform, let's take 
 ----
 
 
-## Token structure
+## Token structure<RiStackLine />
 
 Let me start by saying: **there is no single right or wrong way to support color modes with design tokens**. Here is just what I have found in my experience, but there could be other ways as well. We will first look at how to structure our tokens, and then we will get into different ways to implement dark mode because the overall token structure won't change.
 
@@ -565,7 +568,7 @@ Another tip is to avoid specific color or tint in your tokens names for the midd
 ----
 
 
-## Initial setup
+## Initial setup<RiPencilRuler2Line />
 
 We are not starting from zero: the [main branch on the demo repository][repo] is the Style Dictionary setup we will begin with. It has Android, iOS, and web demo apps and a limited set of design tokens and graphics **without dark mode**. The project roughly looks like this:
 
@@ -759,10 +762,9 @@ Now let's look at how we can implement these dark mode tokens. I often say you c
 ----
 
 
-## Multi-file method
+## Multi-file method<RiFileCopy2Line />
 
-* [Show me the code][multi-file]
-* [Show me just the changes in pull request form][multi-file-pr]
+[Full code <RiGithubFill />][multi-file] &bull; [Changes only <RiGitPullRequestLine />][multi-file-pr]
 
 1. Get the multi-file branch of the demo: `git fetch && git checkout multi-file`
 1. Run Style Dictionary: `npm run build`
@@ -1100,10 +1102,9 @@ We will then do a similar thing for [image assets](https://github.com/dbanksdesi
 ----
 
 
-## Single token method
+## Single-token method<RiFileCodeLine />
 
-* [Show me the code][single-token]
-* [See the just the changes in pull request form][single-token-pr]
+[Full code <RiGithubFill />][single-token] &bull; [Changes only <RiGitPullRequestLine />][single-token-pr]
 
 1. Get the single-token branch of the demo: `git fetch && git checkout single-token`
 1. Run Style Dictionary: `npm run build`
@@ -1308,7 +1309,7 @@ extension Color {
 ----
 
 
-## Bonus: high contrast mode
+## Bonus: high contrast mode<RiContrastLine />
 
 <ThemedImage style={{maxWidth: '15rem', float: 'left', marginRight: 'var(--size-padding-base)', marginBottom: 'var(--size-padding-base)'}}>
 
