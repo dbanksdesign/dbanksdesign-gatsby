@@ -12,6 +12,12 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [require(`postcss-preset-env`)({ stage: 0 })],
+      },
+    },
     `gatsby-plugin-preload-fonts`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -149,12 +155,6 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: 'www.dbanks.design'
-      },
-    },
-    {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         custom: {
@@ -163,13 +163,13 @@ module.exports = {
         }
       }
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `source code pro\:400`
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       `source code pro\:400`
+    //     ],
+    //   },
+    // },
   ],
 }

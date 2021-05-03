@@ -16,7 +16,7 @@ export const frontmatter = {
   graphic: "assets/logo.svg"
 }
 
-export default () => (
+const Blogmate = () => (
   <>
     <SEO title="" />
     <section>
@@ -125,4 +125,6 @@ export default () => (
       </div>
     </section>
   </>
-)
+);
+
+export default Blogmate;

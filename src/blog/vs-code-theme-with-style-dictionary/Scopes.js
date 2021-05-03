@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
-export default () => (
+const Scopes = () => (
   <div>
     <pre className="prism-code">
       <span data-scope="source.js" className={`${styles.scope} ${styles.scope0}`}>
@@ -18,13 +18,13 @@ export default () => (
           <span data-scope="string.quoted.single.js" className={`${styles.scope} ${styles.scope5}`}>
             <span data-scope="punctuation.definiton.string.begin.js" className={`${styles.scope} ${styles.scope6}`}>'</span>
             Danny
-            <span data-scope="punctuation.definiton.string.end.js" className={`${styles.scope} ${styles.scope7}`}>'</span>
+            <span data-scope="punctuation.definiton.string.end.js" className={`${styles.scope} ${styles.scope6}`}>'</span>
           </span>
         </span>
-        <span data-scope="punctuation.terminator.statement.js" className={`${styles.scope} ${styles.scope8}`}>;</span>
+        <span data-scope="punctuation.terminator.statement.js" className={`${styles.scope} ${styles.scope1}`}>;</span>
       </span>
     </pre>
   </div>
-)
+);
 
-// var name = 'Danny';
+export default Scopes;

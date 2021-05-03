@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './Role.module.css'
+import React from 'react';
+import * as styles from './Role.module.css';
 
 export const Roles = ({ children }) => (
   <div className={styles.roles}>

@@ -1,7 +1,7 @@
-import React from 'react'
-import logoStyles from './Logo.module.css'
+import React from 'react';
+import * as logoStyles from './Logo.module.css';
 
-export default () => (
+const Logo = () => (
   <span className={logoStyles.logo}>
     <svg version="1.1" viewBox="0 0 360 360">
       <g className={logoStyles.g} transform="translate(-20.000000, -20.000000)">
@@ -13,4 +13,6 @@ export default () => (
       </g>
     </svg>
   </span>
-)
+);
+
+export default Logo;

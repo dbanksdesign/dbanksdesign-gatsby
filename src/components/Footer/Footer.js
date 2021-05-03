@@ -1,9 +1,9 @@
-import React from 'react'
-import { StaticQuery, Link, graphql } from 'gatsby'
-import styles from './Footer.module.css'
-import {FaGithub, FaTwitter, FaInstagram, FaDribbble, FaRss} from 'react-icons/fa'
+import React from 'react';
+import { StaticQuery, Link, graphql } from 'gatsby';
+import * as styles from './Footer.module.css';
+import {FaGithub, FaTwitter, FaInstagram, FaDribbble, FaRss} from 'react-icons/fa';
 
-export default () => (
+const Footer = () => (
   <StaticQuery
     query={graphql`
       query FooterQuery {
@@ -58,4 +58,6 @@ export default () => (
         </footer>
       )
     }} />
-)
+);
+
+export default Footer;
