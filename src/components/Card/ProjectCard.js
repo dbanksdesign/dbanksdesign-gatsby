@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styles from './Card.module.css'
+import React from 'react';
+import * as styles from './Card.module.css';
 
 export default ({ title, description, graphic, url, emoji }) => (
   <a href={url} className={styles.projectCard}>

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import styles from './DesignSystems.module.css'
+import * as styles from './DesignSystems.module.css'
 import data from './data'
 
 const DesignSystem = ({ title, ds, token, image }) => (
@@ -40,9 +40,9 @@ const DesignSystem = ({ title, ds, token, image }) => (
         </Fragment>}
     </dl>
   </div>
-)
+);
 
-export default () => (
+const DesignSystems = () => (
   <StaticQuery
     query={graphql`
       query {
@@ -70,4 +70,6 @@ export default () => (
       })
     }}
   />
-)
+);
+
+export default DesignSystems;

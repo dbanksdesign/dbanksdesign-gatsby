@@ -9,8 +9,10 @@ export const frontmatter = {
   description: "This library provides helpers and classes that make it easy to read/write/manipulate Sketch files in Javascript, without Sketch installed!"
 }
 
-export default () => (
+const SketchConstructor = () => (
   <>
     <h1>Sketch Constructor</h1>
   </>
-)
+);
+
+export default SketchConstructor;

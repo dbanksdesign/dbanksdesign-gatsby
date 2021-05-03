@@ -1,13 +1,40 @@
 .scope {
+  --scope-h: var(--hue-pink);
+  --scope-s: var(--s-3);
+  --scope-l: var(--l-3);
   display: inline-block;
   padding: var(--size-padding-small);
-  border: 2px solid #FF82B466;
+  border: 2px solid hsl(
+    var(--scope-h),
+    var(--scope-s),
+    var(--scope-l),
+    0.5
+  );
   position: relative;
 }
 
+.scope0 { --scope-h: var(--hue-red); }
+.scope1 { --scope-h: var(--hue-orange); }
+.scope2 { --scope-h: var(--hue-yellow); }
+.scope3 { --scope-h: var(--hue-green); }
+.scope4 { --scope-h: var(--hue-teal); }
+.scope5 { --scope-h: var(--hue-blue); }
+.scope6 { --scope-h: var(--hue-purple); }
+.scope7 { --scope-h: var(--hue-pink); }
+
 .scope:hover {
-  background: #FF82B422;
-  border-color: #FF82B4;
+  background: hsl(
+    var(--scope-h),
+    var(--scope-s),
+    var(--scope-l),
+    0.25
+  );
+  border-color: hsl(
+    var(--scope-h),
+    var(--scope-s),
+    var(--scope-l),
+    0.5
+  );
 }
 
 .scope:hover::before {
@@ -16,7 +43,8 @@
   top: -1rem;
   left: -1rem;
   z-index: 2;
-  background: rgba(0,0,0,0.75);
+  background: var(--color-background-primary);
   font-size: var(--size-font-small);
-  padding: 0.125rem;
+  padding: var(--size-padding-xs) var(--size-padding-tiny);
+  box-shadow: 0.125rem 0.125rem var(--color-border-tertiary);
 }

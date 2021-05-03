@@ -267,6 +267,10 @@ video {
   vertical-align: middle;
 }
 
+button svg {
+  vertical-align: baseline;
+}
+
 .font-secondary { color: var(--color-font-secondary); }
 .font-tertiary { color: var(--color-font-tertiary); }
 .text-center { text-align: center; }

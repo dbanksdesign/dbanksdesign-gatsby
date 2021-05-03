@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './Amazon.module.css'
+import * as styles from './Amazon.module.css'
 
-export default () => (
+const Amazon = () => (
   <span className={styles.amazon}>
   <svg className={styles.svg} viewBox="0 0 276 83" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g stroke="none" fill="none" fillRule="evenodd">
@@ -18,4 +18,6 @@ export default () => (
     </g>
   </svg>
   </span>
-)
+);
+
+export default Amazon;

@@ -9,9 +9,11 @@ export const frontmatter = {
   description: "Style Dictionary is a build system that allows you to define styles once, in a way for any platform or language to consume."
 }
 
-export default () => (
+const StyleDictionary = () => (
   <>
     <h1>hi</h1>
     <img src={styleDictionaryLogo} />
   </>
-)
+);
+
+export default StyleDictionary;
