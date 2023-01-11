@@ -52,7 +52,7 @@
     "gatsby-remark-smartypants": "^2.3.10",
     "gatsby-source-filesystem": "^3.4.0",
     "gatsby-transformer-javascript-frontmatter": "^2.3.11",
-    "gatsby-transformer-remark": "^2.8.34",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^3.4.0",
     "mdx-utils": "^0.2.0",
     "postcss-preset-env": "^6.7.0",
